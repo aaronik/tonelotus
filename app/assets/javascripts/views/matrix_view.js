@@ -1,21 +1,9 @@
 ToneLotus.Views.MatrixView = Backbone.View.extend({
 	initialize: function(options){
 		this.gridSize = options.gridSize;
-		this.totalLoopTime = options.totalLoopTime;
-		this.startMasterLoop();
-	},
+		this.instrument = options.instrument;
 
-	startMasterLoop: function(){
-		var that = this;
-		var columnLoopTime = this.totalLoopTime / this.gridSize;
-		var column = 0;
-
-		setInterval(function(){
-			column = (column + 1) % that.gridSize;
-
-			Backbone.trigger(column);
-
-		}, columnLoopTime)
+		this.listenTo(Backbone, 'masterRedraw', this.redraw);
 	},
 
 	render: function(){
@@ -25,12 +13,18 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 			var toneView = new ToneLotus.Views.ToneView({
 				toneViewNumber: counter,
-				gridSize: that.gridSize
+				gridSize: that.gridSize,
+				instrument: that.instrument
 			});
 
 			that.$el.append(toneView.render().$el);
 		});
 
 		return this;
+	},
+
+	redraw: function(){
+		this.$el.empty();
+		this.render();
 	}
 })

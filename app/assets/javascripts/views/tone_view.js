@@ -2,13 +2,17 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	initialize: function(options){
 		this.toneViewNumber = options.toneViewNumber;
 		this.gridSize = options.gridSize;
+		this.instrument = options.instrument;
 
-		this.generateTone();
+		// this.generateTone(); // OBSOLETE
+		ToneLotus.assignTone(this);
 
 		this.listenTo(Backbone, 'spacePress', this.unselect);
 
 		var column = this.toneViewNumber % this.gridSize;
 		this.listenTo(Backbone, column, this.potentiallyActivate);
+
+		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
 	},
 
 	events: {
@@ -51,59 +55,4 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 
 		return this;
 	},
-
-	generateTone: function(){
-		var row = Math.floor(this.toneViewNumber / this.gridSize);
-
-		switch(row){
-			case 0:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/c6.mp3'] });
-				break;
-			case 1:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/a5.mp3'] });
-				break;
-			case 2:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/g5.mp3'] });
-				break;
-			case 3:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/e5.mp3'] });
-				break;
-			case 4:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/d5.mp3'] });
-				break;
-			case 5:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/c5.mp3'] });
-				break;
-			case 6:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/a4.mp3'] });
-				break;
-			case 7:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/g4.mp3'] });
-				break;
-			case 8:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/e4.mp3'] });
-				break;
-			case 9:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/d4.mp3'] });
-				break;
-			case 10:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/c4.mp3'] });
-				break;
-			case 11:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/a3.mp3'] });
-				break;
-			case 12:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/g3.mp3'] });
-				break;
-			case 13:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/e3.mp3'] });
-				break;
-			case 14:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/d3.mp3'] });
-				break;
-			case 15:
-				this.toneSound = new Howl({ urls: ['audios/fm_synth/c3.mp3'] });
-				break;
-		}	
-	}
 });
