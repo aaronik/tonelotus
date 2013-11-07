@@ -4,12 +4,21 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		this.listenTo(Backbone, 'drumkit_1', function(){ this.drawMatrix('drumkit_1') });
 		this.listenTo(Backbone, 'fm_synth', function(){ this.drawMatrix('fm_synth') });
+		this.listenTo(Backbone, 'updateTime', this.updateTime);
 	},
 
 	routes: {
 		'':'initializePage',
 		':gridSize':'initializePage',
 		':gridSize/:totalLoopTime':'initializePage'
+	},
+
+	updateTime: function(){
+		newTime = parseInt($('#update-time-info').val())
+
+		this.totalLoopTime = newTime;
+		window.clearInterval(this.masterLoop);
+		this.startMasterLoop();
 	},
 
 	initializePage: function(gridSize, totalLoopTime){
@@ -50,7 +59,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
 		var column = 0;
 
-		setInterval(function(){
+		this.masterLoop = setInterval(function(){
 			column = (column + 1) % that.gridSize;
 
 			Backbone.trigger(column);

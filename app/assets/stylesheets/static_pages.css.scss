@@ -30,33 +30,47 @@ body {
 #menu-accordion-wrapper {
 	display: inline-block;
 	width: 25%;
-	padding: 10px;
+	padding: 20px;
 	float: right;
 	margin-top: 2%;
+
+	opacity: 0.3;
+	transition: all 0.3s;
+
+	&:hover {
+		opacity: 0.7;
+	}
 }
 
 #menu-accordion {
 
-	// opacity: 0.3;
-	transition: all 0.3s;
+
 
 	h3 {
-		background: $body-background-color;
-		border: 1px solid black;
+		background: $body-background-color + 100;
+		opacity: 0.7;
+		// border: 1px solid black;
 		border-radius: 3px;
 		padding: 5px;
-		margin: 0 5px 5px 5px;
+		margin: 0 5px 0px 5px;
+		transition: all 0.3s;
 
 		&:hover {
-			opacity: 1;
+			opacity: 0.9;
 		}
 	}
 
 	p {
-		background: blue;
+		background: $body-background-color + 200;
+		opacity: 0.7;
 		border-radius: 3px;
-		margin: 0 10px 10px 10px;
+		margin: 10px 5px 10px 5px;
 		padding: 5px;
+		transition: all 0.3s;
+
+		&:hover {
+			opacity: 0.9;
+		}
 	}
 }
 

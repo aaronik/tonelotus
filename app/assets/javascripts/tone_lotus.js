@@ -21,7 +21,9 @@ $(document).ready(function(){
 
   // listen for space press or others...
   $(document).keypress(function(eventObject){
-    Backbone.trigger('spacePress');
+    if(eventObject.which === 32){
+      Backbone.trigger('spacePress');
+    }
   })
 
   //make the menu on the side an accordion
@@ -40,5 +42,9 @@ $(document).ready(function(){
 
   $('.eventControls').click(function(event){
     Backbone.trigger(event.target.id);
+  })
+
+  $('#update-time').click(function(){
+    Backbone.trigger('updateTime');
   })
 });
