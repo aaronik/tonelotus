@@ -1,11 +1,7 @@
 -get elements playing audio at right time intervals
 -background change colors slowly, yet psychodelically
-
--find amazing animation for click
- -use JS library (none so far look great)
- -tell all surrounding elements to change colors in outward moving pattern
- -do box shadow eruption - put it on .selected elements all to happen once the first time they comei nto existence
--make more amazing animation for when the tone rings
+-add copyright to footer, add keyboard instructions(s: save, i: instrument, space: clear)
+-keep it playing when focus is not on that window
 
 -look into getting SASS to abstract away vendor prefixes (compass)
 -get sass to include ceaser-easing correctly and make a non-linear burst animation
