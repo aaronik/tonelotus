@@ -1,0 +1,2 @@
+-best practice for communicating b/t views (space bar clears tones) => Backbone.trigger(), Backbone is a global event bus
+-timing - originally each view has its own timer, make one global timer

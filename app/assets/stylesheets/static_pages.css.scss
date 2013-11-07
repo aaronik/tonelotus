@@ -1,0 +1,80 @@
+// Imports
+// @import "ceaser-easing";
+
+// Globals
+$tone-background-color: #C5D200;
+$tone-selected-background-color: #73A4D9;
+$tone-height-width: 24px;
+$tone-padding: 3px;
+$tone-margin-top-bottom: -1px;
+$tone-margin-left-right: 1px;
+
+$tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-left-right * 2)) * 16;
+
+$body-background-color: #5F5535;
+
+body {
+	background: $body-background-color;
+}
+
+#matrix-wrapper {
+	border-radius: 10px;
+	// border: 1px solid black;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+	// box-shadow: 10px 10px 100px 100px black;
+
+	>div {
+		// inside matrix wrapper, contains all the tone divs
+		margin-left: auto;
+		margin-right: auto;
+		// border: 1px solid red;
+		width: $tone-wrapper-width;
+	}
+}
+
+.tone {
+	display: inline-block;
+	z-index: 2;
+	padding: $tone-padding;
+	margin-top: $tone-margin-top-bottom;
+	margin-bottom: $tone-margin-top-bottom;
+	margin-left: $tone-margin-left-right;
+	margin-right: $tone-margin-left-right;
+	border-radius: 3px;
+	height: $tone-height-width;
+	width: $tone-height-width;
+	background: $tone-background-color;
+	opacity: 0.9;
+	transition: opacity 0.3s, background 0.3s; 
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.selected {
+	background: $tone-selected-background-color;
+}
+
+div.explode {
+	-webkit-animation: explode2 0.3s linear;
+}
+
+@-webkit-keyframes explode {
+	0% { box-shadow: 0 0 0px 0px orange; z-index: -5; }
+	25% { box-shadow: 0 0 50px 50px blue; z-index: -5;  }
+	50% { box-shadow: 0 0 100px 100px red; z-index: -5;  }
+	75% { box-shadow: 0 0 150px 150px yellow; z-index: -5;  }
+	100% { box-shadow: 0 0 200px 200px white; z-index: -5;  }
+}
+
+@-webkit-keyframes explode2 {
+	0% { box-shadow: 0 0 0px 0px orange; z-index: -5; }
+	25% { box-shadow: 0 0 5px 5px blue; z-index: -5;  }
+	50% { box-shadow: 0 0 10px 10px red; z-index: -5;  }
+	75% { box-shadow: 0 0 5px 5px yellow; z-index: -5;  }
+	100% { box-shadow: 0 0 0px 0px white; z-index: -5;  }
+}

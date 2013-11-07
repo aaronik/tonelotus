@@ -1,0 +1,13 @@
+-get elements playing audio at right time intervals
+-background change colors slowly, yet psychodelically
+
+-find amazing animation for click
+ -use JS library (none so far look great)
+ -tell all surrounding elements to change colors in outward moving pattern
+ -do box shadow eruption - put it on .selected elements all to happen once the first time they comei nto existence
+-make more amazing animation for when the tone rings
+
+-look into getting SASS to abstract away vendor prefixes (compass)
+-get sass to include ceaser-easing correctly and make a non-linear burst animation
+-get new instruments - Zyn: SynthPiano(FM Synth 1, BinaryPiano1), Pads(Sine Pad)
+ -https://developer.mozilla.org/en-US/docs/Web_Audio_API to create audio in browser
