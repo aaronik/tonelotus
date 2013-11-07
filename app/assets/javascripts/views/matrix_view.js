@@ -28,7 +28,6 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 				gridSize: that.gridSize
 			});
 
-			// debugger // in this debugger, toneView is defined correctly
 			that.$el.append(toneView.render().$el);
 		});
 

@@ -2,10 +2,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	initialize: function(options){
 		this.toneViewNumber = options.toneViewNumber;
 		this.gridSize = options.gridSize;
-		this.totalLoopTime = 2000; // OBSOLETE
-		this.waitTime = (this.toneViewNumber % 16) * (this.totalLoopTime / 16); //OBSOLETE
 
-		// this.startTimingLoop(); //OBSOLETE
 		this.generateTone();
 
 		this.listenTo(Backbone, 'spacePress', this.unselect);
@@ -20,7 +17,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 
 	activate: function(){
 		var that = this;
-		// this.$el.removeClass('explode').addClass('explode');
+
 		that.$el.addClass('explode');
 		setTimeout(function(){
 			that.$el.removeClass('explode');
@@ -51,8 +48,6 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		var that = this;
 
 		this.$el.attr('class', 'tone');
-		// this.$el.text(that.toneViewNumber.toString());
-		// this.$el.text('a');
 
 		return this;
 	},

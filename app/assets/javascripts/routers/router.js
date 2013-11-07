@@ -10,6 +10,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	home: function(gridSize, totalLoopTime){
+		this.broadcastRedraw();
+
 		var gridSize = (gridSize || 16);
 		var totalLoopTime = (totalLoopTime || 2000);
 
@@ -19,6 +21,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 			totalLoopTime: totalLoopTime
 		});
 		this.$matrixEl.html(matrixView.render().$el);
+	},
+
+	broadcastRedraw: function(){
+		// broadcast a universal redraw event, errbody listens, errbody decouples themselves from listenTos and the dom
 	}
 
 })
