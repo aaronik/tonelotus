@@ -16,6 +16,7 @@
 //= require backbone
 //= require tone_lotus
 //= require howler.min
+//= require jquery-ui-1.10.3.custom.min
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

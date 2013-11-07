@@ -1,1 +1,1 @@
--to add a new instrument: change dropdown on the right in appropriate erb file, add stuff to assign_tone.js
+-to add a new instrument: change dropdown on the right in appropriate erb file, add stuff to assign_tone.js, add listener to router

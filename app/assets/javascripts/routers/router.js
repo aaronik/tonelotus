@@ -1,6 +1,9 @@
 ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	initialize: function($matrixEl){
 		this.$matrixEl = $matrixEl;
+
+		this.listenTo(Backbone, 'drumkit_1', function(){ this.drawMatrix('drumkit_1') });
+		this.listenTo(Backbone, 'fm_synth', function(){ this.drawMatrix('fm_synth') });
 	},
 
 	routes: {
@@ -12,30 +15,43 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	initializePage: function(gridSize, totalLoopTime){
 		this.broadcastRedraw();
 
-		var gridSize = (gridSize || 16);
-		var totalLoopTime = (totalLoopTime || 2000);
-		this.startMasterLoop(gridSize, totalLoopTime);
+		this.gridSize = (gridSize || 16);
+		this.totalLoopTime = (totalLoopTime || 2000);
+		this.startMasterLoop();
 
-		this.drawMatrix(gridSize, totalLoopTime);
+		this.drawMatrix('fm_synth');
 	},
 
-	drawMatrix: function(gridSize, totalLoopTime){
-		var matrixView = new ToneLotus.Views.MatrixView({
-			gridSize: gridSize,
-			totalLoopTime: totalLoopTime,
-			instrument: 'drumkit_1'
-		});
+	drawMatrix: function(instrument){
+		var matrixView;
+		Backbone.trigger('delegateEvents'); // otherwise toneViews' events are decoupled
 
-		this.$matrixEl.html(matrixView.render().$el);
+		if(ToneLotus.existingMatrixHash[instrument]){
+			// if a matrix with this instrument has already been created
+			matrixView = ToneLotus.existingMatrixHash[instrument];
+
+			this.$matrixEl.html(matrixView.$el)
+		} else {
+			// otherwise create new matrixView, assign to global hash, render it up.
+			matrixView = new ToneLotus.Views.MatrixView({
+				gridSize: this.gridSize,
+				totalLoopTime: this.totalLoopTime,
+				instrument: instrument
+			});
+
+			ToneLotus.existingMatrixHash[instrument] = matrixView;
+
+			this.$matrixEl.html(matrixView.render().$el);
+		}
 	},
 
-	startMasterLoop: function(gridSize, totalLoopTime){
+	startMasterLoop: function(){
 		var that = this;
-		var columnLoopTime = totalLoopTime / gridSize;
+		var columnLoopTime = this.totalLoopTime / this.gridSize;
 		var column = 0;
 
 		setInterval(function(){
-			column = (column + 1) % gridSize;
+			column = (column + 1) % that.gridSize;
 
 			Backbone.trigger(column);
 

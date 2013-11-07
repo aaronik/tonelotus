@@ -2,6 +2,8 @@
 -background change colors slowly, yet psychodelically
 -add copyright to footer, add keyboard instructions(s: save, i: instrument, space: clear)
 -keep it playing when focus is not on that window
+-tones should be switch off able while they're being played, currently they aren't.
+-matrix cannot be selected once it's been switched from in the instruments panel.  Must be a listener decoupling.
 
 -look into getting SASS to abstract away vendor prefixes (compass)
 -get sass to include ceaser-easing correctly and make a non-linear burst animation

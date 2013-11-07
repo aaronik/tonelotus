@@ -4,19 +4,27 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.gridSize = options.gridSize;
 		this.instrument = options.instrument;
 
-		// this.generateTone(); // OBSOLETE
 		ToneLotus.assignTone(this);
 
-		this.listenTo(Backbone, 'spacePress', this.unselect);
+		// difference b/t spacePress and masterRedraw is spacePress unselects all elements,
+		//  masterRedraw removes them entirely.
+		this.listenTo(Backbone, 'spacePress', this.spacePress);
+		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
+		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
 
 		var column = this.toneViewNumber % this.gridSize;
 		this.listenTo(Backbone, column, this.potentiallyActivate);
 
-		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
+
 	},
 
 	events: {
 		'click':'toggleSelected'
+	},
+
+	spacePress: function(){
+		this.unselect();
+		this.stopListening();
 	},
 
 	activate: function(){

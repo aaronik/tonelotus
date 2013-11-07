@@ -17,12 +17,57 @@ body {
 	background: $body-background-color;
 }
 
+#main-wrapper {
+	display: inline-block;
+	width: 100%;
+}
+
+#track-wrapper {
+	display: inline-block;
+	width: 25%
+}
+
+#menu-accordion-wrapper {
+	display: inline-block;
+	width: 25%;
+	padding: 10px;
+	float: right;
+	margin-top: 2%;
+}
+
+#menu-accordion {
+
+	// opacity: 0.3;
+	transition: all 0.3s;
+
+	h3 {
+		background: $body-background-color;
+		border: 1px solid black;
+		border-radius: 3px;
+		padding: 5px;
+		margin: 0 5px 5px 5px;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	p {
+		background: blue;
+		border-radius: 3px;
+		margin: 0 10px 10px 10px;
+		padding: 5px;
+	}
+}
+
 #matrix-wrapper {
+	display: inline-block;
 	border-radius: 10px;
 	// border: 1px solid black;
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
+	width: 40%;
+	min-width: 530px;
+	// margin-left: auto;
+	// margin-right: auto;
 	margin-top: 2%;
 	// box-shadow: 10px 10px 100px 100px black;
 
