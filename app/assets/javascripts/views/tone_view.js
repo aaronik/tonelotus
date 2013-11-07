@@ -57,52 +57,52 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 
 		switch(row){
 			case 0:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/c6.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/c6.mp3'] });
 				break;
 			case 1:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/a5.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/a5.mp3'] });
 				break;
 			case 2:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/g5.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/g5.mp3'] });
 				break;
 			case 3:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/e5.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/e5.mp3'] });
 				break;
 			case 4:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/d5.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/d5.mp3'] });
 				break;
 			case 5:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/c5.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/c5.mp3'] });
 				break;
 			case 6:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/a4.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/a4.mp3'] });
 				break;
 			case 7:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/g4.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/g4.mp3'] });
 				break;
 			case 8:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/e4.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/e4.mp3'] });
 				break;
 			case 9:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/d4.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/d4.mp3'] });
 				break;
 			case 10:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/c4.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/c4.mp3'] });
 				break;
 			case 11:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/a3.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/a3.mp3'] });
 				break;
 			case 12:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/g3.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/g3.mp3'] });
 				break;
 			case 13:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/e3.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/e3.mp3'] });
 				break;
 			case 14:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/d3.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/d3.mp3'] });
 				break;
 			case 15:
-				this.toneSound = new Howl({ urls: ['audios/binary_piano/c3.mp3'] });
+				this.toneSound = new Howl({ urls: ['audios/fm_synth/c3.mp3'] });
 				break;
 		}	
 	}
