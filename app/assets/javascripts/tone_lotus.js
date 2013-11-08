@@ -4,7 +4,7 @@ window.ToneLotus = {
   Views: {},
   Routers: {},
 
-  existingMatrixHash: {},
+  matrixHash: {},
 
   initialize: function() {
   	var $matrixEl = $('#matrix-wrapper');
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
   // listen for space press or others...
   $(document).keypress(function(eventObject){
-    if(eventObject.which === 32){
+    if(eventObject.which == 32){
       Backbone.trigger('spacePress');
     }
   })
@@ -36,15 +36,18 @@ $(document).ready(function(){
 
   //listen for instrument changes
   $('.instrument').click(function(event){
-    // console.log(event.target.id)
+    $('.instrument').removeClass('selectedInstrument');
+    $(event.target).addClass('selectedInstrument');
+
     Backbone.trigger(event.target.id);
   })
 
   $('.eventControls').click(function(event){
+    console.log(event.target.id);
     Backbone.trigger(event.target.id);
   })
 
-  $('#update-time').click(function(){
+  $('#update-time-button').click(function(){
     Backbone.trigger('updateTime');
   })
 });

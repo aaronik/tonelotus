@@ -1,3 +1,4 @@
+-spacePress doesn't register after another key's been pressed
 -implement p for pause (stop timer or something)
 -implement tone pause when not on page
 -put audios in models, and models in collections, so everything can be fetched from the server when i want it to...

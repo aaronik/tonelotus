@@ -24,17 +24,18 @@ body {
 
 #track-wrapper {
 	display: inline-block;
-	width: 25%
+	width: 25%;
+	padding: 25px;
 }
 
 #menu-accordion-wrapper {
 	display: inline-block;
 	width: 25%;
-	padding: 30px;
+	padding: 30px 0 80px 50px;
 	float: right;
 	margin-top: 2%;
 
-	opacity: 0.3;
+	opacity: 0.1;
 	transition: all 0.3s;
 
 	&:hover {
@@ -47,9 +48,8 @@ body {
 	h3 {
 		background: $body-background-color + 100;
 		opacity: 0.7;
-		// border: 1px solid black;
 		border-radius: 3px;
-		padding: 5px;
+		padding: 20px;
 		margin: 0 1px 0px 1px;
 		transition: all 0.3s;
 
@@ -58,17 +58,29 @@ body {
 		}
 	}
 
+	.top-accordion-menu-tab {
+		border-top-left-radius: 40px;
+	}
+
+	.bottom-accordion-menu-tab {
+		border-bottom-left-radius: 40px;
+	}
+
 	p {
 		background: $body-background-color + 130;
 		opacity: 0.7;
 		border-radius: 3px;
 		margin: 1px 1px 1px 10px;
 		padding: 5px;
-		transition: all 0.3s;
+		-webkit-transition: all 0.3s;
 
 		&:hover {
 			opacity: 0.9;
 		}
+	}
+
+	p.selectedInstrument {
+		background: blue;
 	}
 }
 
@@ -84,19 +96,14 @@ footer {
 #matrix-wrapper {
 	display: inline-block;
 	border-radius: 10px;
-	// border: 1px solid black;
 	width: 40%;
 	min-width: 530px;
-	// margin-left: auto;
-	// margin-right: auto;
 	margin-top: 2%;
-	// box-shadow: 10px 10px 100px 100px black;
 
 	>div {
 		// inside matrix wrapper, contains all the tone divs
 		margin-left: auto;
 		margin-right: auto;
-		// border: 1px solid red;
 		width: $tone-wrapper-width;
 	}
 }
@@ -121,7 +128,7 @@ footer {
 	}
 }
 
-.selected {
+.selectedTone {
 	background: $tone-selected-background-color;
 }
 

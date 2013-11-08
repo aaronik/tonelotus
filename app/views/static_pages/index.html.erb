@@ -8,9 +8,9 @@
 
 <div id='menu-accordion-wrapper'>
 	<div id='menu-accordion'>
-	  <h3>Instruments</h3>
+	  <h3 class='top-accordion-menu-tab'>Instruments</h3>
 	  <div>
-	    <p id='fm_synth' class='instrument'>fm_synth</p>
+	    <p id='fm_synth' class='instrument selectedInstrument'>fm_synth</p>
 	    <p id='sine_pad' class='instrument'>sine_pad</p>
 	    <p id='drumkit_1' class='instrument'>drumkit_1</p>
 	  </div>
@@ -23,8 +23,11 @@
 	  </div>
 	  <h3>Matrix Duration</h3>
 	  <div>
-		  <input id='update-time-info' type='text' placeholder='Total Time in Milliseconds'>
-		  <button id='update-time'>Update</button>
+		  <input id='update-time-text-input' type='text' placeholder='Total Time in Milliseconds'>
+		  <button id='update-time-button'>Update</button>
+	  </div>
+	  <h3 class='bottom-accordion-menu-tab'></h3>
+	  <div>
 	  </div>
 	</div>
 </div>
