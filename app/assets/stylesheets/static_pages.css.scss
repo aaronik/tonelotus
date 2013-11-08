@@ -162,18 +162,34 @@ div.explode {
 	-webkit-animation: explode2 0.3s linear;
 }
 
-@-webkit-keyframes explode {
-	0% { box-shadow: 0 0 0px 0px orange; z-index: -5; }
-	25% { box-shadow: 0 0 50px 50px blue; z-index: -5;  }
-	50% { box-shadow: 0 0 100px 100px red; z-index: -5;  }
-	75% { box-shadow: 0 0 150px 150px yellow; z-index: -5;  }
-	100% { box-shadow: 0 0 200px 200px white; z-index: -5;  }
+@-webkit-keyframes explode2 {
+	0% { 
+		box-shadow: 0 0 0px 0px orange; 
+		z-index: -5;
+	}
+	25% { 
+		box-shadow: 0 0 5px 5px blue; 
+		z-index: -5;
+	}
+	50% { 
+		box-shadow: 0 0 10px 10px red; 
+		z-index: -5;
+		background: purple;  
+	}
+	75% { 
+		box-shadow: 0 0 5px 5px yellow; 
+		z-index: -5;  
+	}
+	100% { 
+		box-shadow: 0 0 0px 0px white; 
+		z-index: -5;  
+	}
 }
 
-@-webkit-keyframes explode2 {
-	0% { box-shadow: 0 0 0px 0px orange; z-index: -5; }
-	25% { box-shadow: 0 0 5px 5px blue; z-index: -5;  }
-	50% { box-shadow: 0 0 10px 10px red; z-index: -5;  }
-	75% { box-shadow: 0 0 5px 5px yellow; z-index: -5;  }
-	100% { box-shadow: 0 0 0px 0px white; z-index: -5;  }
-}
+// @-webkit-keyframes explode {
+// 	0% { box-shadow: 0 0 0px 0px orange; z-index: -5; }
+// 	25% { box-shadow: 0 0 50px 50px blue; z-index: -5;  }
+// 	50% { box-shadow: 0 0 100px 100px red; z-index: -5;  }
+// 	75% { box-shadow: 0 0 150px 150px yellow; z-index: -5;  }
+// 	100% { box-shadow: 0 0 200px 200px white; z-index: -5;  }
+// }

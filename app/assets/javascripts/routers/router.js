@@ -11,6 +11,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		});
 
 		this.listenTo(Backbone, 'updateTime', this.updateTime);
+		this.listenTo(Backbone, 'pause', this.pause);
 	},
 
 	routes: {
@@ -23,8 +24,12 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		newTime = parseInt($('#update-time-text-input').val())
 
 		this.totalLoopTime = newTime;
-		window.clearInterval(this.masterLoop);
+		this.removeMasterLoop();
 		this.startMasterLoop();
+	},
+
+	removeMasterLoop: function(){
+		window.clearInterval(this.masterLoop);
 	},
 
 	initializePage: function(gridSize, totalLoopTime){
@@ -67,28 +72,15 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.$matrixEl.html(matrixView.$el);
 	},
 
-	// drawMatrix: function(instrument){
-	// 	var matrixView;
-	// 	Backbone.trigger('delegateEvents'); // otherwise toneViews' events are decoupled
-
-	// 	if(ToneLotus.existingMatrixHash[instrument]){
-	// 		// if a matrix with this instrument has already been created
-	// 		matrixView = ToneLotus.existingMatrixHash[instrument];
-
-	// 		this.$matrixEl.html(matrixView.$el)
-	// 	} else {
-	// 		// otherwise create new matrixView, assign to global hash, render it up.
-	// 		matrixView = new ToneLotus.Views.MatrixView({
-	// 			gridSize: this.gridSize,
-	// 			totalLoopTime: this.totalLoopTime,
-	// 			instrument: instrument
-	// 		});
-
-	// 		ToneLotus.existingMatrixHash[instrument] = matrixView;
-
-	// 		this.$matrixEl.html(matrixView.render().$el);
-	// 	}
-	// },
+	pause: function(){
+		if(this.masterLoop){
+			this.removeMasterLoop();
+			delete this.masterLoop;
+			console.log('i detected a master loop')
+		} else {
+			this.startMasterLoop();
+		}
+	},
 
 	startMasterLoop: function(){
 		var that = this;
@@ -96,9 +88,9 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var column = 0;
 
 		this.masterLoop = setInterval(function(){
-			column = (column + 1) % that.gridSize;
-
 			Backbone.trigger(column);
+
+			column = (column + 1) % that.gridSize;
 
 		}, columnLoopTime)
 	},

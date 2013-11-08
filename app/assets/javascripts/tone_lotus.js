@@ -21,8 +21,19 @@ $(document).ready(function(){
 
   // listen for space press or others...
   $(document).keypress(function(eventObject){
-    if(eventObject.which == 32){
-      Backbone.trigger('spacePress');
+    console.log(eventObject.which)
+    // if(eventObject.which == 32){
+    //   Backbone.trigger('spacePress');
+    // }
+
+    switch(eventObject.which){
+      case 32: 
+        Backbone.trigger('spacePress');
+        break;
+      case 112:
+        Backbone.trigger('pause');
+        break;
+
     }
   })
 
