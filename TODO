@@ -1,3 +1,4 @@
+-make the updateTime form a view of its own
 -background change colors slowly, yet psychodelically
 -add copyright to footer, add keyboard instructions(s: save, i: instrument, space: clear)
 -keep it playing when focus is not on that window

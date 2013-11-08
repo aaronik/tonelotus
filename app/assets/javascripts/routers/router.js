@@ -4,6 +4,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		this.listenTo(Backbone, 'drumkit_1', function(){ this.drawMatrix('drumkit_1') });
 		this.listenTo(Backbone, 'fm_synth', function(){ this.drawMatrix('fm_synth') });
+		this.listenTo(Backbone, 'sine_pad', function(){ this.drawMatrix('sine_pad') });
+
 		this.listenTo(Backbone, 'updateTime', this.updateTime);
 	},
 

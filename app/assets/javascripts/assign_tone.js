@@ -8,6 +8,9 @@ ToneLotus.assignTone = function(view){
 		case 'drumkit_1':
 			drumkit_1(row, view);
 			break;
+		case 'sine_pad':
+			sine_pad(row, view);
+			break;
 	}
 }
 
@@ -113,6 +116,59 @@ var drumkit_1 = function(row, view){
 			break;
 		case 15:
 			view.toneSound = new Howl({ urls: ['audios/drumkit_1/bass.mp3'] });
+			break;
+	}
+}
+
+var sine_pad = function(row, view){
+	switch(row){
+		case 0:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/c6.mp3'] });
+			break;
+		case 1:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/a5.mp3'] });
+			break;
+		case 2:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/g5.mp3'] });
+			break;
+		case 3:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/e5.mp3'] });
+			break;
+		case 4:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/d5.mp3'] });
+			break;
+		case 5:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/c5.mp3'] });
+			break;
+		case 6:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/a4.mp3'] });
+			break;
+		case 7:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/g4.mp3'] });
+			break;
+		case 8:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/e4.mp3'] });
+			break;
+		case 9:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/d4.mp3'] });
+			break;
+		case 10:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/c4.mp3'] });
+			break;
+		case 11:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/a3.mp3'] });
+			break;
+		case 12:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/g3.mp3'] });
+			break;
+		case 13:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/e3.mp3'] });
+			break;
+		case 14:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/d3.mp3'] });
+			break;
+		case 15:
+			view.toneSound = new Howl({ urls: ['audios/sine_pad/c3.mp3'] });
 			break;
 	}
 }
