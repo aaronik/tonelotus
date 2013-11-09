@@ -53,12 +53,20 @@ $(document).ready(function(){
     Backbone.trigger(event.target.id);
   })
 
+  //temp, send Mainframe Operations events
   $('.eventControls').click(function(event){
     console.log(event.target.id);
     Backbone.trigger(event.target.id);
   })
 
+  //when update time is clicked
   $('#update-time-button').click(function(){
     Backbone.trigger('updateTime');
   })
+
+  //when tab is switched.  BROKEN - happens when terminal is brought up...
+  // window.onblur = function(){
+  //   Backbone.trigger('pause');
+  // }
+
 });

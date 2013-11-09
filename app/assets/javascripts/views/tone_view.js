@@ -16,6 +16,8 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	initializeListeners: function(){
 		// difference b/t spacePress and masterRedraw is spacePress unselects all elements,
 		//  masterRedraw removes them entirely.
+		
+		
 		this.listenTo(Backbone, 'spacePress', this.spacePress);
 		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
 		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
