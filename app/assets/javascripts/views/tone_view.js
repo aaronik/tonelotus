@@ -10,7 +10,14 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	events: {
-		'click':'toggleSelected'
+		'click':'toggleSelected',
+		'mouseover':'mouseoverHandler'
+	},
+
+	mouseoverHandler: function(){
+		if(ToneLotus.isMouseDown){
+			this.toggleSelected();
+		}
 	},
 
 	initializeListeners: function(){
@@ -21,6 +28,9 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.listenTo(Backbone, 'spacePress', this.spacePress);
 		this.listenTo(Backbone, 'masterRedraw', this.stopListening); // WARNING< THIS DOESN"T EXIST
 		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
+
+		var that = this;
+		// this.$el.hover(that.toggleSelected);
 
 		var column = this.toneViewNumber % this.gridSize;
 		this.listenTo(Backbone, column, this.potentiallyActivate);
@@ -49,6 +59,11 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 
 	selected: function(){
 		return this.isSelected == true;
+	},
+
+	select: function(){
+		this.isSelected = false;
+		this.$el.addClass('selectedTone');
 	},
 
 	unselect: function(){

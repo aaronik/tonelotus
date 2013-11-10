@@ -1,0 +1,191 @@
+/* line 16, ../../app/assets/stylesheets/static_pages.css.scss */
+body {
+  background: url("random_grey_variations.png");
+}
+
+/* line 24, ../../app/assets/stylesheets/static_pages.css.scss */
+#main-wrapper {
+  display: inline-block;
+  width: 100%;
+  min-width: 1307px;
+}
+
+/* line 30, ../../app/assets/stylesheets/static_pages.css.scss */
+#track-wrapper {
+  display: inline-block;
+  width: 25%;
+  padding-right: 50px;
+}
+
+/* line 36, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion-wrapper {
+  display: inline-block;
+  width: 25%;
+  padding: 30px 0 130px 50px;
+  float: right;
+  margin-top: 2%;
+  opacity: 0.1;
+  transition: all 0.3s;
+}
+/* line 46, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion-wrapper:hover {
+  opacity: 0.7;
+}
+
+/* line 53, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion h3 {
+  background: #c3b999;
+  opacity: 0.7;
+  border-radius: 3px;
+  padding: 20px;
+  margin: 0 1px 0px 1px;
+  transition: all 0.3s;
+}
+/* line 61, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion h3:hover {
+  opacity: 0.9;
+}
+/* line 66, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion .top-accordion-menu-tab {
+  border-top-left-radius: 40px;
+}
+/* line 70, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion .bottom-accordion-menu-tab {
+  border-bottom-left-radius: 40px;
+}
+/* line 74, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion p {
+  background: #e1d7b7;
+  opacity: 0.7;
+  border-radius: 3px;
+  margin: 1px 1px 1px 10px;
+  padding: 5px;
+  -webkit-transition: all 0.3s;
+}
+/* line 82, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion p:hover {
+  opacity: 0.9;
+}
+/* line 87, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion p.selectedInstrument {
+  box-shadow: inset 0 0 4px 4px orange;
+}
+/* line 92, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion #update-time-text-input {
+  background: white;
+  border: 1px solid #ffa853;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 3px #ffa853;
+  color: #666;
+  padding: 5px 10px;
+  margin-left: 20px;
+  width: 165px;
+  outline: none;
+}
+/* line 105, ../../app/assets/stylesheets/static_pages.css.scss */
+#menu-accordion #update-time-button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font: 14px/100% Arial, Helvetica, sans-serif;
+  padding: .5em 2em .55em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  border-radius: .5em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* line 119, ../../app/assets/stylesheets/static_pages.css.scss */
+footer {
+  opacity: 0.3;
+  width: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+}
+
+/* line 128, ../../app/assets/stylesheets/static_pages.css.scss */
+.clickable {
+  cursor: pointer;
+}
+
+/* line 132, ../../app/assets/stylesheets/static_pages.css.scss */
+#matrix-wrapper {
+  display: inline-block;
+  border-radius: 10px;
+  width: 40%;
+  min-width: 530px;
+  margin-top: 2%;
+}
+/* line 139, ../../app/assets/stylesheets/static_pages.css.scss */
+#matrix-wrapper > div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 512px;
+}
+
+/* line 147, ../../app/assets/stylesheets/static_pages.css.scss */
+.tone {
+  display: inline-block;
+  z-index: 1;
+  padding: 3px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  margin-left: 1px;
+  margin-right: 1px;
+  border-radius: 3px;
+  height: 24px;
+  width: 24px;
+  background: #c5d200;
+  opacity: 0.9;
+  transition: opacity 0.3s, background 0.3s;
+}
+/* line 162, ../../app/assets/stylesheets/static_pages.css.scss */
+.tone:hover {
+  opacity: 1;
+}
+
+/* line 167, ../../app/assets/stylesheets/static_pages.css.scss */
+.selectedTone {
+  background: #73a4d9;
+}
+
+/* line 171, ../../app/assets/stylesheets/static_pages.css.scss */
+div.explode {
+  -webkit-animation: explode 0.3s;
+}
+
+@-webkit-keyframes explode {
+  /* line 176, ../../app/assets/stylesheets/static_pages.css.scss */
+  0% {
+    box-shadow: 0 0 0px 0px orange;
+    z-index: -1;
+  }
+
+  /* line 180, ../../app/assets/stylesheets/static_pages.css.scss */
+  25% {
+    box-shadow: 0 0 5px 5px blue;
+    z-index: -1;
+  }
+
+  /* line 184, ../../app/assets/stylesheets/static_pages.css.scss */
+  50% {
+    box-shadow: 0 0 10px 10px red;
+    z-index: -1;
+    background: purple;
+  }
+
+  /* line 189, ../../app/assets/stylesheets/static_pages.css.scss */
+  75% {
+    box-shadow: 0 0 5px 5px yellow;
+    z-index: -1;
+  }
+
+  /* line 193, ../../app/assets/stylesheets/static_pages.css.scss */
+  100% {
+    box-shadow: 0 0 0px 0px white;
+    z-index: -1;
+  }
+}

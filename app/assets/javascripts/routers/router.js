@@ -21,7 +21,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	updateTime: function(){
-		newTime = parseInt($('#update-time-text-input').val())
+		var newTime = parseInt($('#update-time-text-input').val())
+		newTime = newTime * 16;
+
+		console.log(newTime);
 
 		this.totalLoopTime = newTime;
 		this.removeMasterLoop();

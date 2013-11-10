@@ -5,6 +5,7 @@ window.ToneLotus = {
   Routers: {},
 
   matrixHash: {},
+  isMouseDown: false,
 
   initialize: function() {
   	var $matrixEl = $('#matrix-wrapper');
@@ -22,10 +23,6 @@ $(document).ready(function(){
   // listen for space press or others...
   $(document).keypress(function(eventObject){
     console.log(eventObject.which)
-    // if(eventObject.which == 32){
-    //   Backbone.trigger('spacePress');
-    // }
-
     switch(eventObject.which){
       case 32: 
         Backbone.trigger('spacePress');
@@ -33,14 +30,13 @@ $(document).ready(function(){
       case 112:
         Backbone.trigger('pause');
         break;
-
     }
   })
 
   //make the menu on the side an accordion
   $('#menu-accordion').accordion({
     collapsible: true,
-    animate: 150,
+    animate: 200,
     active: false,
     heightStyle: 'content'
   });
@@ -68,5 +64,14 @@ $(document).ready(function(){
   // window.onblur = function(){
   //   Backbone.trigger('pause');
   // }
+
+  //For click and drag tones on
+  //Plays in harmony with .hover() listeners in tone views
+  $(document).mousedown(function(){
+    ToneLotus.isMouseDown = true;    
+  }).mouseup(function(){
+    ToneLotus.isMouseDown = false;
+    console.log('mouse up')
+  });
 
 });

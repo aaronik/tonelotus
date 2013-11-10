@@ -14,7 +14,11 @@ $tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-l
 $body-background-color: #5F5535;
 
 body {
-	background: $body-background-color;
+	// background: $body-background-color;
+	background: url('random_grey_variations.png');
+	// background: url('rubber_grip.png');
+	// background: url('squares.png');
+	// background: url('woven.png');
 }
 
 #main-wrapper {
@@ -81,7 +85,8 @@ body {
 	}
 
 	p.selectedInstrument {
-		background: blue;
+		// background: orange;
+		box-shadow: inset 0 0 4px 4px orange;
 	}
 
 	#update-time-text-input {
@@ -164,10 +169,10 @@ footer {
 }
 
 div.explode {
-	-webkit-animation: explode2 0.3s linear;
+	-webkit-animation: explode 0.3s;
 }
 
-@-webkit-keyframes explode2 {
+@-webkit-keyframes explode {
 	0% { 
 		box-shadow: 0 0 0px 0px orange; 
 		z-index: -1;

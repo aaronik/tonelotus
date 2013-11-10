@@ -1,11 +1,9 @@
+-turn milliseconds to BPM
 -implement tone pause when not on page * won't work with window.onblur
--fix distortion on sine_pad
 -make the updateTime form a view of its own
 -background change colors slowly, yet psychodelically
--click and drag to enable squares
+-click and drag to enable squares - document.createEvent('MouseEvents')
 -tones should be switch off able while they're being played, currently they aren't. * they're dropping below some div below them, and that's blocking their click
--separate Backbone.trigger calls into namespaced calls, can be done?
 -look into getting SASS to abstract away vendor prefixes (compass)
 -get sass to include ceaser-easing correctly and make a non-linear burst animation
--get new instruments - Zyn: SynthPiano(FM Synth 1, BinaryPiano1), Pads(Sine Pad)
- -https://developer.mozilla.org/en-US/docs/Web_Audio_API to create audio in browser
+-https://developer.mozilla.org/en-US/docs/Web_Audio_API to create audio in browser
