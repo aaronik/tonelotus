@@ -140,7 +140,7 @@ footer {
 
 .tone {
 	display: inline-block;
-	z-index: 2;
+	z-index: 1;
 	padding: $tone-padding;
 	margin-top: $tone-margin-top-bottom;
 	margin-bottom: $tone-margin-top-bottom;
@@ -169,24 +169,24 @@ div.explode {
 @-webkit-keyframes explode2 {
 	0% { 
 		box-shadow: 0 0 0px 0px orange; 
-		z-index: -5;
+		z-index: -1;
 	}
 	25% { 
 		box-shadow: 0 0 5px 5px blue; 
-		z-index: -5;
+		z-index: -1;
 	}
 	50% { 
 		box-shadow: 0 0 10px 10px red; 
-		z-index: -5;
+		z-index: -1;
 		background: purple;  
 	}
 	75% { 
 		box-shadow: 0 0 5px 5px yellow; 
-		z-index: -5;  
+		z-index: -1;  
 	}
 	100% { 
 		box-shadow: 0 0 0px 0px white; 
-		z-index: -5;  
+		z-index: -1;  
 	}
 }
 

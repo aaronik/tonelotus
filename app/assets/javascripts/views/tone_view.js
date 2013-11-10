@@ -16,10 +16,10 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	initializeListeners: function(){
 		// difference b/t spacePress and masterRedraw is spacePress unselects all elements,
 		//  masterRedraw removes them entirely.
-		
-		
+		this.isSelected = false;
+
 		this.listenTo(Backbone, 'spacePress', this.spacePress);
-		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
+		this.listenTo(Backbone, 'masterRedraw', this.stopListening); // WARNING< THIS DOESN"T EXIST
 		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
 
 		var column = this.toneViewNumber % this.gridSize;
@@ -36,7 +36,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		that.$el.addClass('explode');
 		setTimeout(function(){
 			that.$el.removeClass('explode');
-		}, 350);
+		}, 300);
 
 		this.toneSound.play();
 	},
@@ -48,14 +48,20 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	selected: function(){
-		return this.$el.hasClass('selectedTone');
+		return this.isSelected == true;
 	},
 
 	unselect: function(){
+		this.isSelected = false;
+
 		this.$el.removeClass('selectedTone');
 	},
 
 	toggleSelected: function(){
+		console.log('in toggleselected, tone_view.js');
+
+		this.isSelected = (this.isSelected == false ? true : false);
+
 		this.$el.toggleClass('selectedTone');
 	},
 
