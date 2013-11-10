@@ -21,8 +21,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	updateTime: function(){
-		var newTime = parseInt($('#update-time-text-input').val())
-		newTime = newTime * 16;
+		var bpm = parseInt($('#update-time-text-input').val())
+		var newTime = (240 / bpm) * 1000;
 
 		console.log(newTime);
 
