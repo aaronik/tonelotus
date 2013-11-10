@@ -20,18 +20,19 @@ body {
 #main-wrapper {
 	display: inline-block;
 	width: 100%;
+	min-width: 1307px;
 }
 
 #track-wrapper {
 	display: inline-block;
 	width: 25%;
-	padding: 30px;
+	padding-right: 50px;
 }
 
 #menu-accordion-wrapper {
 	display: inline-block;
 	width: 25%;
-	padding: 30px 0 130px 60px;
+	padding: 30px 0 130px 50px;
 	float: right;
 	margin-top: 2%;
 
