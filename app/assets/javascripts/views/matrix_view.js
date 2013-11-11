@@ -6,40 +6,10 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.currentMatrix = false;
 
 		this.listenTo( Backbone, 'masterRedraw', this.redraw );
-		this.initializeListeners();
-	},
-
-	initializeListeners: function(){
-		var that = this;
-
-		if ( this.staged || this.currentMatrix ) {
-
-			_(that.gridSize).times( function( column ) {
-				var triggerString = "triggerColumn" + column;
-				that.listenTo( Backbone, triggerString, function(){ that.delegateTrigger(column) } )
-			})
-
-		}
-	},
-
-	delegateTrigger: function(column){
-		var that = this;
-		// console.log("trigger heard at " + that.cid + " for column " + column);
-
-		var triggerString = this.cid + column;
-		console.log("emitting the following:");
-		console.log(triggerString);
-		Backbone.trigger(triggerString);
-	},
-
-	reinitializeListeners: function(){
-		this.stopListening();
-		this.initializeListeners();
 	},
 
 	makeCurrentMatrix: function(){
 		this.currentMatrix = true;
-		this.reinitializeListeners();
 	},
 
 	render: function(){

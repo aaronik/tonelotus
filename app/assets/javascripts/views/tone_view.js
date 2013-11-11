@@ -32,10 +32,8 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
 
 		var that = this;
-		// this.$el.hover(that.toggleSelected);
 
-		var listenString = this.matrix.cid + this.column;
-		alert(listenString);
+		var listenString = "triggerColumn" + this.column;
 		this.listenTo(Backbone, listenString, this.potentiallyActivate);
 	},
 
@@ -43,7 +41,25 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.unselect();
 	},
 
+	potentiallyActivate: function(){
+		if(this.selected() && ( this.matrix.staged || this.matrix.currentMatrix )){
+			this.activate();
+		}
+	},
+
 	activate: function(){
+		if( this.matrix.currentMatrix ){
+			this.activateWithAnimation();
+		} else {
+			this.activateWithoutAnimation();
+		}
+	},
+
+	activateWithoutAnimation: function(){
+		this.toneSound.play();
+	},
+
+	activateWithAnimation: function(){
 		var that = this;
 
 		that.$el.addClass('explode');
@@ -52,12 +68,6 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		}, 300);
 
 		this.toneSound.play();
-	},
-
-	potentiallyActivate: function(){
-		if(this.selected() && this.matrix.staged){
-			this.activate();
-		}
 	},
 
 	selected: function(){
