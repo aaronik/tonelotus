@@ -6,6 +6,7 @@
 $body-background-color: #333333;
 $tone-background-color: #C5D200;
 $tone-selected-background-color: #73A4D9;
+$tone-active-background-color: #DE2C0E;
 $tone-height-width: 24px;
 $tone-padding: 3px;
 $tone-margin-top-bottom: -1px;
@@ -21,6 +22,7 @@ $tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-l
 body {
 	pointer-events: none;
 	background: $body-background-color;
+	font-family: 'Sintony', sans-serif;
 	// background: url('random_grey_variations.png');
 	// background: url('rubber_grip.png');
 	// background: url('squares.png');
@@ -36,7 +38,7 @@ body {
 	min-width: 1307px;
 }
 
-#track-wrapper {
+#track-stage-wrapper {
 	display: inline-block;
 	width: 25%;
 	padding-right: 50px;
@@ -206,7 +208,7 @@ div.explode {
 	50% { 
 		box-shadow: 0 0 10px 10px #DE2C0E; 
 		z-index: -1;
-		background: #6C00CE;  
+		background: $tone-active-background-color;  
 	}
 	75% { 
 		box-shadow: 0 0 5px 5px #0086FF; 
@@ -230,7 +232,7 @@ div.explode {
 	50% { 
 		box-shadow: 0 0 10px 10px #DE2C0E; 
 		z-index: -1;
-		background: #6C00CE;  
+		background: $tone-active-background-color;  
 	}
 	75% { 
 		box-shadow: 0 0 5px 5px #0086FF; 
@@ -254,7 +256,7 @@ div.explode {
 	50% { 
 		box-shadow: 0 0 10px 10px #DE2C0E; 
 		z-index: -1;
-		background: #6C00CE;  
+		background: $tone-active-background-color;  
 	}
 	75% { 
 		box-shadow: 0 0 5px 5px #0086FF; 
@@ -278,7 +280,7 @@ div.explode {
 	50% { 
 		box-shadow: 0 0 10px 10px #DE2C0E; 
 		z-index: -1;
-		background: #6C00CE;  
+		background: $tone-active-background-color;  
 	}
 	75% { 
 		box-shadow: 0 0 5px 5px #0086FF; 
@@ -302,7 +304,7 @@ div.explode {
 	50% { 
 		box-shadow: 0 0 10px 10px #DE2C0E; 
 		z-index: -1;
-		background: #6C00CE;  
+		background: $tone-active-background-color;  
 	}
 	75% { 
 		box-shadow: 0 0 5px 5px #0086FF; 
