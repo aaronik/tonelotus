@@ -1,24 +1,24 @@
 /* line 17, ../../app/assets/stylesheets/static_pages.css.scss */
 body {
   pointer-events: none;
-  background: #5f5535;
+  background: #333333;
 }
 
-/* line 26, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 29, ../../app/assets/stylesheets/static_pages.css.scss */
 #main-wrapper {
   display: inline-block;
   width: 100%;
   min-width: 1307px;
 }
 
-/* line 32, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 35, ../../app/assets/stylesheets/static_pages.css.scss */
 #track-wrapper {
   display: inline-block;
   width: 25%;
   padding-right: 50px;
 }
 
-/* line 38, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 41, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion-wrapper {
   display: inline-block;
   pointer-events: auto;
@@ -29,12 +29,12 @@ body {
   opacity: 0.1;
   transition: all 0.3s;
 }
-/* line 49, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 52, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion-wrapper:hover {
   opacity: 0.7;
 }
 
-/* line 56, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 59, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion h3 {
   background: black;
   color: white;
@@ -45,20 +45,20 @@ body {
   margin: 0 1px 0px 1px;
   transition: all 0.3s;
 }
-/* line 67, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 70, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion h3:hover {
   opacity: 0.9;
 }
-/* line 72, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 75, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion .top-accordion-menu-tab {
   border-top-left-radius: 40px;
 }
-/* line 77, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 80, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion .bottom-accordion-menu-tab {
   border-bottom-left-radius: 40px;
   box-shadow: 2px 2px 5px 0px white;
 }
-/* line 82, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 85, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion p {
   background: black;
   color: white;
@@ -68,15 +68,15 @@ body {
   padding: 5px;
   -webkit-transition: all 0.3s;
 }
-/* line 92, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 95, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion p:hover {
   opacity: 0.9;
 }
-/* line 97, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 100, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion p.selectedInstrument {
   box-shadow: inset 0 0 4px 4px orange;
 }
-/* line 101, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 104, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion #update-time-text-input {
   background: white;
   border: 1px solid #ffa853;
@@ -88,7 +88,7 @@ body {
   width: 165px;
   outline: none;
 }
-/* line 114, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 117, ../../app/assets/stylesheets/static_pages.css.scss */
 #menu-accordion #update-time-button {
   display: inline-block;
   outline: none;
@@ -102,7 +102,7 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* line 128, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 131, ../../app/assets/stylesheets/static_pages.css.scss */
 footer {
   opacity: 0.3;
   width: 50%;
@@ -112,12 +112,12 @@ footer {
   margin-top: 2%;
 }
 
-/* line 137, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 140, ../../app/assets/stylesheets/static_pages.css.scss */
 .clickable {
   cursor: pointer;
 }
 
-/* line 141, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 144, ../../app/assets/stylesheets/static_pages.css.scss */
 #matrix-wrapper {
   display: inline-block;
   border-radius: 10px;
@@ -125,18 +125,19 @@ footer {
   min-width: 530px;
   margin-top: 2%;
 }
-/* line 148, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 151, ../../app/assets/stylesheets/static_pages.css.scss */
 #matrix-wrapper > div {
   margin-left: auto;
   margin-right: auto;
   width: 512px;
 }
 
-/* line 156, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 159, ../../app/assets/stylesheets/static_pages.css.scss */
 .tone {
   display: inline-block;
   pointer-events: auto;
   z-index: 1;
+  box-shadow: 1px 1px 0px 1px black;
   padding: 3px;
   margin-top: -1px;
   margin-bottom: -1px;
@@ -149,48 +150,48 @@ footer {
   opacity: 0.9;
   transition: opacity 0.3s, background 0.3s;
 }
-/* line 172, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 176, ../../app/assets/stylesheets/static_pages.css.scss */
 .tone:hover {
   opacity: 1;
 }
 
-/* line 177, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 181, ../../app/assets/stylesheets/static_pages.css.scss */
 .selectedTone {
   background: #73a4d9;
 }
 
-/* line 181, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 185, ../../app/assets/stylesheets/static_pages.css.scss */
 div.explode {
   -webkit-animation: explode 0.3s;
 }
 
 @-webkit-keyframes explode {
-  /* line 186, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 190, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: 0 0 0px 0px orange;
     z-index: -1;
   }
 
-  /* line 190, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 194, ../../app/assets/stylesheets/static_pages.css.scss */
   25% {
     box-shadow: 0 0 5px 5px blue;
     z-index: -1;
   }
 
-  /* line 194, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 198, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: 0 0 10px 10px red;
     z-index: -1;
     background: purple;
   }
 
-  /* line 199, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 203, ../../app/assets/stylesheets/static_pages.css.scss */
   75% {
     box-shadow: 0 0 5px 5px yellow;
     z-index: -1;
   }
 
-  /* line 203, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 207, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: 0 0 0px 0px white;
     z-index: -1;
