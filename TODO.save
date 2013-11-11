@@ -1,4 +1,0 @@
--implement tone pause when not on page * won't work with window.onblur
--make the updateTime form a view of its own
--look into getting SASS to abstract away vendor prefixes (compass)
--https://developer.mozilla.org/en-US/docs/Web_Audio_API to create audio in browser
