@@ -60,6 +60,18 @@ body {
 	}
 }
 
+#track-wrapper {
+	display: inline-block;
+	border-radius: 10px;
+	border: 3px dotted red;
+}
+
+#stage-wrapper {
+	display: inline-block;
+	border-radius: 30px;
+	border: 10px dotted white;
+}
+
 #menu-accordion {
 
 	h3 {
