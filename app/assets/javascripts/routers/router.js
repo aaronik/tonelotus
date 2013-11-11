@@ -44,13 +44,19 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		// initialize and draw the instrument the user will see first.
 		var matrixView = this.initializeMatrix(this.instruments[0]);
-		this.drawMatrix(this.instruments[0]);
+		this.assignCurrentMatrix(matrixView);
+		this.drawMatrix(matrixView.instrument);
 
-		// initialize and DON"T draw the rest of the instruments
+		// initialize but DON"T draw the rest of the instruments
 		var that = this;
 		this.instruments.slice(1).forEach(function(instrument){
 			that.initializeMatrix(instrument);
 		})
+	},
+
+	assignCurrentMatrix: function(matrix){
+		matrix.makeCurrentMatrix();
+		this.currentMatrix = matrix;
 	},
 
 	initializeMatrix: function(instrument){
@@ -72,6 +78,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		Backbone.trigger('delegateEvents');
 
 		var matrixView = ToneLotus.matrixHash[instrument];
+		this.assignCurrentMatrix(matrixView);
 		this.$matrixEl.html(matrixView.$el);
 	},
 
@@ -91,7 +98,9 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var column = 0;
 
 		this.masterLoop = setInterval(function(){
-			Backbone.trigger(column);
+			// Backbone.trigger(column);
+			var triggerString = "triggerColumn" + column;
+			Backbone.trigger(triggerString);
 
 			column = (column + 1) % that.gridSize;
 

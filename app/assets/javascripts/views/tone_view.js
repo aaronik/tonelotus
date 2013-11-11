@@ -3,6 +3,8 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.toneViewNumber = options.toneViewNumber;
 		this.gridSize = options.gridSize;
 		this.instrument = options.instrument;
+		this.matrix = options.matrix;
+		this.column = this.toneViewNumber % this.gridSize;
 
 		ToneLotus.assignTone(this);
 
@@ -32,8 +34,9 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		var that = this;
 		// this.$el.hover(that.toggleSelected);
 
-		var column = this.toneViewNumber % this.gridSize;
-		this.listenTo(Backbone, column, this.potentiallyActivate);
+		var listenString = this.matrix.cid + this.column;
+		alert(listenString);
+		this.listenTo(Backbone, listenString, this.potentiallyActivate);
 	},
 
 	spacePress: function(){
@@ -52,7 +55,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	potentiallyActivate: function(){
-		if(this.selected()){
+		if(this.selected() && this.matrix.staged){
 			this.activate();
 		}
 	},

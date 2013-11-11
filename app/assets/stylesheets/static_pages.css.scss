@@ -20,7 +20,7 @@ $tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-l
 
 
 body {
-	pointer-events: none;
+	// pointer-events: none;
 	background: $body-background-color;
 	font-family: 'Sintony', sans-serif;
 	// background: url('random_grey_variations.png');
@@ -40,8 +40,11 @@ body {
 
 #track-stage-wrapper {
 	display: inline-block;
+	height: 518px;
 	width: 25%;
+	margin-top: 2%;
 	padding-right: 50px;
+	float: left;
 }
 
 #menu-accordion-wrapper {
@@ -64,12 +67,16 @@ body {
 	display: inline-block;
 	border-radius: 10px;
 	border: 3px dotted red;
+	height: 100%;
+	width: 60%;
 }
 
 #stage-wrapper {
 	display: inline-block;
 	border-radius: 30px;
 	border: 10px dotted white;
+	height: 100%;
+	width: 30%;
 }
 
 #menu-accordion {
@@ -153,6 +160,8 @@ footer {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2%;
+	clear: left;
+	clear: right;
 }
 
 .clickable {

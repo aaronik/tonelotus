@@ -2,3 +2,8 @@
 -make the updateTime form a view of its own
 -look into getting SASS to abstract away vendor prefixes (compass)
 -https://developer.mozilla.org/en-US/docs/Web_Audio_API to create audio in browser
+
+-staging
+ -every time i call stage on a matrix, can reinitialize listeners to listen for new calls
+ -toneviews will now only be listening for a call with the specific name of their parent matrix in it
+ -the matrix view will hear the master timing call from the router, and decide whether to pass it to its tones or not
