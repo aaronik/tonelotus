@@ -37,8 +37,10 @@ $(document).ready(function(){
   $('#menu-accordion').accordion({
     collapsible: true,
     animate: 200,
+    // animated: 'bounceslide',
     active: false,
-    heightStyle: 'content'
+    heightStyle: 'content',
+    event: 'mouseover click'
   });
 
   //listen for instrument changes
