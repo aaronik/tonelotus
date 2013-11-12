@@ -17,12 +17,6 @@ window.ToneLotus = {
   }
 };
 
-ToneLotus.delegateDraggable = function(){
-  $('.staged').draggable({
-    revert: true
-  });
-},
-
 $(document).ready(function(){
 
   // fire up the backbone
@@ -30,7 +24,7 @@ $(document).ready(function(){
 
   // listen for space press or others...
   $(document).keypress(function(eventObject){
-    console.log(eventObject.which)
+    console.log(eventObject.which);
     switch(eventObject.which){
       case 32: //space
         Backbone.trigger('spacePress');
@@ -91,14 +85,22 @@ $(document).ready(function(){
     event: 'click'
   });
 
+  ToneLotus.delegateDraggable = function(){
+    $('.staged').draggable({
+      revert: true,
+      disabled: false
+    });
+  },
+
   $('#matrix-wrapper').droppable({
     drop: function(event){
-      console.log('dropped');
-      // $(event.toElement).attr('style', '');
+      // once dropped, turn off draggable for shizzle.
 
       var draggedMatrix = _.find(ToneLotus.matrixArray, function( matrix ){
         return matrix.cid == $(event.toElement).attr('data-cid');
       })
+
+      $(event.toElement).draggable("disable");
 
       draggedMatrix.$el.detach();
 

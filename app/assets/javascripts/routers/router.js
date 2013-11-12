@@ -153,7 +153,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var column = 0;
 
 		this.masterLoop = setInterval(function(){
-			// Backbone.trigger(column);
 			var triggerString = "triggerColumn" + column;
 			Backbone.trigger(triggerString);
 

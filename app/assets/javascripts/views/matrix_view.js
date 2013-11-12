@@ -46,7 +46,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 	stage: function(){
 		this.staged = true;
 		this.$el.addClass('staged');
-		ToneLotus.delegateDraggable();
+		setTimeout(ToneLotus.delegateDraggable, 100);
 
 		this.$el.html(this.instrument);
 		// this.$oldHtml = this.$el;

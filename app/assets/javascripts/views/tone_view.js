@@ -43,7 +43,8 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	potentiallyActivate: function(){
-		if(this.selected() && ( this.matrix.staged || this.matrix.currentMatrix )){
+		// if( this.selected() && ( this.matrix.staged || this.matrix.currentMatrix )){
+		if( this.selected() && !this.matrix.staged ){
 			this.activate();
 		}
 	},

@@ -1,3 +1,4 @@
+-should be able to drag staged instrument on top of current matrix
 -Add ToneLotus to list of backbone examples on backbonejs.org
 
 -remove all the masterlistener stuff from the router, maybe make a new class called MasterListener which is actually a router.
