@@ -51,6 +51,7 @@ body {
 #matrix-wrapper {
 	display: inline-block;
 	border-radius: 10px;
+	border: 5px dotted $tone-background-color;
 	width: 40%;
 	min-width: 530px;
 	min-height: 518px;

@@ -43,9 +43,6 @@ $(document).ready(function(){
 
   //listen for instrument changes
   $('.instrument').click(function( event ){
-    $('.instrument').removeClass('selectedInstrument');
-    $(event.target).addClass('selectedInstrument');
-
     Backbone.trigger(event.target.id);
   })
 
@@ -105,10 +102,9 @@ $(document).ready(function(){
       draggedMatrix.unstage();
       draggedMatrix.redraw();
 
-      // $('#matrix-wrapper').html(draggedMatrix.$el); // how to do if matrix is already present?
-      // have to router.assignCurrentMatrix(draggedMatrix) (done by router)
-      ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix
-      Backbone.trigger(draggedMatrix.instrument)
+      // only problem now is that the instrument isn't selected in the menu when it happens
+      ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix;
+      Backbone.trigger(draggedMatrix.instrument);
       
       Backbone.trigger('delegateEvents');
     }

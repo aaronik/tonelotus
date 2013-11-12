@@ -16,16 +16,20 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var that = this;
 		// set up a listener for each instrument
 		this.instruments.forEach(function(instrument){
+
 			that.listenTo(Backbone, instrument, function(){
 
+				// make a new instrument if one doesn't already exist
 				var matrix = ToneLotus.matrixHash[instrument];
 				if(!matrix){
 					matrix = that.initializeMatrix(instrument);
 				}
 
+				// do the things i need to do
 				that.assignCurrentMatrix(matrix);
-
 				that.drawMatrix(that.currentMatrix);
+				that.changeMenuInstrumentSelector(instrument);
+
 			});
 		});
 	},
@@ -34,6 +38,11 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		'':'initializePage',
 		':gridSize':'initializePage',
 		':gridSize/:totalLoopTime':'initializePage'
+	},
+
+	changeMenuInstrumentSelector: function(instrument){
+		$('.instrument').removeClass('selectedInstrument');
+    $('#' + instrument).addClass('selectedInstrument');
 	},
 
 	stageHandler: function(){
@@ -100,9 +109,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	assignCurrentMatrix: function(matrix){
 		this.currentMatrix && this.currentMatrix.removeCurrentMatrix();
-
 		matrix.makeCurrentMatrix();
-
 		this.currentMatrix = matrix;
 	},
 
@@ -126,16 +133,11 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		Backbone.trigger('delegateEvents');
 
 		var that = this;
+		console.log("from router / drawMatrix - given matrix then currentMatrix ");
 		console.log(matrix);
 		console.log(that.currentMatrix);
-		// debugger
-		this.$matrixEl.html(matrix.$el); // this guy is removing staged class
-		// html is being called on old matrix, it doesn't have time to leave yet.
-		// then the class is cleared.
-
-		// this may not be it, because i put a setTimeout on the redraw, it worked OK the first time
-		// but after that, when i staged and drew another one, the class on the first matrix
-		// got cleared too!
+		
+		this.$matrixEl.html(matrix.$el);
 	},
 
 	pause: function(){
