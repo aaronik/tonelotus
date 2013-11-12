@@ -27,9 +27,10 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		//  masterRedraw removes them entirely.
 		this.isSelected = false;
 
-		this.listenTo(Backbone, 'spacePress', this.spacePress);
-		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
-		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
+		this.listenTo( Backbone, 'spacePress', this.spacePress );
+		this.listenTo( Backbone, 'masterRedraw', this.stopListening );
+		this.listenTo( Backbone, 'delegateEvents', this.delegateEvents );
+		this.listenTo( Backbone, 'seppuku', this.seppuku );
 
 		var that = this;
 
@@ -98,4 +99,10 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 
 		return this;
 	},
+
+	seppuku: function(){
+		this.$el.empty();
+		this.stopListening();
+		delete this;
+	}
 });

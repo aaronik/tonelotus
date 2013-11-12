@@ -5,6 +5,7 @@ window.ToneLotus = {
   Routers: {},
 
   matrixHash: {},
+  matrixArray: [],
   isMouseDown: false,
 
   initialize: function() {
@@ -15,6 +16,12 @@ window.ToneLotus = {
   	Backbone.history.start();
   }
 };
+
+ToneLotus.delegateDraggable = function(){
+  $('.staged').draggable({
+    revert: true
+  });
+},
 
 $(document).ready(function(){
 
@@ -34,21 +41,14 @@ $(document).ready(function(){
       case 115: //s
         Backbone.trigger('stage');
         break;
+      case 107: //k
+        Backbone.trigger('seppuku');
+        break;
     }
   })
 
-  //make the menu on the side an accordion
-  $('#menu-accordion').accordion({
-    collapsible: true,
-    animate: 200,
-    // animated: 'bounceslide',
-    active: false,
-    heightStyle: 'content',
-    event: 'mouseover click'
-  });
-
   //listen for instrument changes
-  $('.instrument').click(function(event){
+  $('.instrument').click(function( event ){
     $('.instrument').removeClass('selectedInstrument');
     $(event.target).addClass('selectedInstrument');
 
@@ -56,13 +56,14 @@ $(document).ready(function(){
   })
 
   //temp, send Mainframe Operations events
-  $('.eventControls').click(function(event){
+  $('.eventControls').click(function( event ){
     console.log(event.target.id);
     Backbone.trigger(event.target.id);
   })
 
   //when update time is clicked
-  $('#update-time-button').click(function(){
+  $('#update-time-form').submit(function( event ){
+    event.preventDefault();
     Backbone.trigger('updateTime');
   })
 
@@ -77,6 +78,36 @@ $(document).ready(function(){
     ToneLotus.isMouseDown = true;    
   }).mouseup(function(){
     ToneLotus.isMouseDown = false;
+  });
+
+  //make the menu on the side an accordion
+  $('#menu-accordion').accordion({
+    collapsible: true,
+    animate: 200,
+    // animated: 'bounceslide',
+    active: false,
+    heightStyle: 'content',
+    // event: 'mouseover click'
+    event: 'click'
+  });
+
+  $('#matrix-wrapper').droppable({
+    drop: function(event){
+      console.log('dropped');
+      // $(event.toElement).attr('style', '');
+
+      var draggedMatrix = _.find(ToneLotus.matrixArray, function( matrix ){
+        return matrix.cid == $(event.toElement).attr('data-cid');
+      })
+
+      draggedMatrix.$el.detach();
+
+      draggedMatrix.unstage();
+      draggedMatrix.redraw();
+      $('#matrix-wrapper').html(draggedMatrix.$el);
+      
+      Backbone.trigger('delegateEvents');
+    }
   });
 
 });

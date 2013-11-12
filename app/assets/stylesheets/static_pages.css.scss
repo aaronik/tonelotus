@@ -53,6 +53,7 @@ body {
 	border-radius: 10px;
 	width: 40%;
 	min-width: 530px;
+	min-height: 518px;
 	margin-top: 2%;
 
 	>div {
@@ -187,6 +188,14 @@ footer {
 	cursor: pointer;
 }
 
+.staged {
+	cursor: pointer;
+	pointer-events: auto;
+	margin: 4px;
+	border-radius: 4px;
+	border: 1px dotted red;
+	background: $tone-background-color;
+}
 
 .tone {
 	display: inline-block;

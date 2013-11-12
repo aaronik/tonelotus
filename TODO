@@ -1,4 +1,4 @@
--Howl may be too damn big, cpu wise.  If a smaller library exists, that may work better.
+-Add ToneLotus to list of backbone examples on backbonejs.org
 
 -remove all the masterlistener stuff from the router, maybe make a new class called MasterListener which is actually a router.
  -put all the things from tonelotus.js and the router in there.  It's the conductor.

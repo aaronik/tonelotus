@@ -24,12 +24,15 @@
 		  	<p>p: Pause</p>
 		  	<p>space: Clear Everything</p>
 		  	<p>s: Stage Current Matrix</p>
+		  	<p>k: seppuku</p>
 		  </div>
 
 	  <h3 class='clickable'>Matrix Duration</h3>
 	  <div>
-		  <input id='update-time-text-input' type='text' placeholder='120 bpm'>
-		  <button id='update-time-button' class='clickable'>Update</button>
+	  	<form id='update-time-form'>
+			  <input id='update-time-text-input' type='text' placeholder='120 bpm'>
+			  <submit id='update-time-button' class='clickable'>Update</submit>
+		  </form>
 	  </div>
 
 	  <h3 class='clickable'>Mainframe Operations (dev_tools)</h3>
@@ -38,6 +41,7 @@
 	    <p id='spacePress' class='eventControls clickable'>Simulate Space Bar Press</p>
 	    <p id='0' class='eventControls clickable'>Trigger Column 1 Activate</p>
 	    <p id='delegateEvents' class='eventControls clickable'>Call delegateEvents() on each toneView</p>
+	    <p id='seppuku' class='eventControls clickable'>Destroy all items</p>
 	  </div>
 
 	  <h3 class='bottom-accordion-menu-tab'></h3>

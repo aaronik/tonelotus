@@ -1,4 +1,10 @@
+-Nov 11 left off at matrices, after staged, can be redrawn to their exact former glory.  Must call delegateEvents to work, but no probs.
+ -plan was to implement draggable, and allow the matrix to be dragged back into the matrix-wrapper to re-render it or whatever.  redraw().
+ -next is just a short (hahahahahahahahahhahahahahahhahahaha) hop to getting the track(s) working.
+
 -to add a new instrument: change dropdown on the right in appropriate erb file, add stuff to assign_tone.js, add listener to router
+-very minor speed can be had by minimizing or removing animations, just making divs.  z-index will have to be worked out.
+ -Howler is not crucial.  html5 audio will work as well.
 
 -cool instruments: Synth(Analog Filter 1)
 
