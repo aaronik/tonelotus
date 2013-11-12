@@ -1,23 +1,64 @@
 ToneLotus.Routers.AppRouter = Backbone.Router.extend({
-	initialize: function($matrixEl){
+	initialize: function($matrixEl, $stageEl){
 		this.$matrixEl = $matrixEl;
+		this.$stageEl = $stageEl;
 		this.instruments = ['fm_synth', 'drumkit_1', 'sine_pad'];
 
+		this.initializeListeners();
+	},
+
+	initializeListeners: function(){
+		this.listenTo( Backbone, 'updateTime', this.updateTime );
+		this.listenTo( Backbone, 'pause', this.pause );
+		this.listenTo( Backbone, 'stage', this.stageHandler );
+		this.listenTo( Backbone, 'spacePress', this.spacePressHandler );
+
 		var that = this;
+		// set up a listener for each instrument
 		this.instruments.forEach(function(instrument){
 			that.listenTo(Backbone, instrument, function(){
-				that.drawMatrix(instrument);
+
+				var matrix = ToneLotus.matrixHash[instrument];
+				if(!matrix){
+					matrix = that.initializeMatrix(instrument);
+				}
+				
+				that.assignCurrentMatrix(matrix);
+
+				that.drawMatrix(that.currentMatrix);
 			});
 		});
-
-		this.listenTo(Backbone, 'updateTime', this.updateTime);
-		this.listenTo(Backbone, 'pause', this.pause);
 	},
 
 	routes: {
 		'':'initializePage',
 		':gridSize':'initializePage',
 		':gridSize/:totalLoopTime':'initializePage'
+	},
+
+	stageHandler: function(){
+		var that = this;
+
+		this.stageCurrent();
+		var newMatrix = this.initializeMatrix(that.currentMatrix.instrument);
+		this.assignCurrentMatrix(newMatrix);
+		this.stageRedraw();
+
+		this.drawMatrix(newMatrix);
+	},
+
+	stageCurrent: function(){
+		this.currentMatrix.stage();
+	},
+
+	stageRedraw: function(){
+		var that = this;
+		that.$stageEl.html($('.staged'));
+	},
+
+	spacePressHandler: function(){
+
+		this.stageRedraw();
 	},
 
 	updateTime: function(){
@@ -36,7 +77,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	initializePage: function(gridSize, totalLoopTime){
-		this.broadcastRedraw();
+		this.broadcastRedraw(); // for diff grid sizes
 
 		this.gridSize = (gridSize || 16);
 		this.totalLoopTime = (totalLoopTime || 2000);
@@ -45,17 +86,20 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		// initialize and draw the instrument the user will see first.
 		var matrixView = this.initializeMatrix(this.instruments[0]);
 		this.assignCurrentMatrix(matrixView);
-		this.drawMatrix(matrixView.instrument);
+		this.drawMatrix(matrixView);
 
 		// initialize but DON"T draw the rest of the instruments
-		var that = this;
-		this.instruments.slice(1).forEach(function(instrument){
-			that.initializeMatrix(instrument);
-		})
+		// var that = this;
+		// this.instruments.slice(1).forEach(function(instrument){
+		// 	that.initializeMatrix(instrument);
+		// })
 	},
 
 	assignCurrentMatrix: function(matrix){
+		this.currentMatrix && this.currentMatrix.removeCurrentMatrix();
+
 		matrix.makeCurrentMatrix();
+
 		this.currentMatrix = matrix;
 	},
 
@@ -74,19 +118,26 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		return matrixView;
 	},
 
-	drawMatrix: function(instrument){
+	drawMatrix: function(matrix){
 		Backbone.trigger('delegateEvents');
 
-		var matrixView = ToneLotus.matrixHash[instrument];
-		this.assignCurrentMatrix(matrixView);
-		this.$matrixEl.html(matrixView.$el);
+		var that = this;
+		console.log(matrix);
+		console.log(that.currentMatrix);
+		// debugger
+		this.$matrixEl.html(matrix.$el); // this guy is removing staged class
+		// html is being called on old matrix, it doesn't have time to leave yet.
+		// then the class is cleared.
+
+		// this may not be it, because i put a setTimeout on the redraw, it worked OK the first time
+		// but after that, when i staged and drew another one, the class on the first matrix
+		// got cleared too!
 	},
 
 	pause: function(){
 		if(this.masterLoop){
 			this.removeMasterLoop();
 			delete this.masterLoop;
-			console.log('i detected a master loop')
 		} else {
 			this.startMasterLoop();
 		}

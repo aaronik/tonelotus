@@ -6,10 +6,19 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.currentMatrix = false;
 
 		this.listenTo( Backbone, 'masterRedraw', this.redraw );
+		this.listenTo( Backbone, 'spacePress', this.spacePress );
+	},
+
+	spacePress: function(){
+		this.unstage();
 	},
 
 	makeCurrentMatrix: function(){
 		this.currentMatrix = true;
+	},
+
+	removeCurrentMatrix: function(){
+		this.currentMatrix = false;
 	},
 
 	render: function(){
@@ -32,12 +41,15 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 	stage: function(){
 		this.staged = true;
-		this.reinitializeListeners();
+		this.$el.addClass('staged');
+
+		this.$el.html(this.instrument);
+		// this.$oldHtml = this.$el;
 	},
 
 	unstage: function(){
 		this.staged = false;
-		this.reinitializeListeners();
+		this.$el.removeClass('staged');
 	},
 
 	redraw: function(){

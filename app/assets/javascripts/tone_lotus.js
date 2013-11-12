@@ -9,8 +9,9 @@ window.ToneLotus = {
 
   initialize: function() {
   	var $matrixEl = $('#matrix-wrapper');
+    var $stageEl = $('#stage-wrapper');
 
-  	new ToneLotus.Routers.AppRouter($matrixEl);
+  	ToneLotus.router = new ToneLotus.Routers.AppRouter($matrixEl, $stageEl);
   	Backbone.history.start();
   }
 };
@@ -24,11 +25,14 @@ $(document).ready(function(){
   $(document).keypress(function(eventObject){
     console.log(eventObject.which)
     switch(eventObject.which){
-      case 32: 
+      case 32: //space
         Backbone.trigger('spacePress');
         break;
-      case 112:
+      case 112: //p
         Backbone.trigger('pause');
+        break;
+      case 115: //s
+        Backbone.trigger('stage');
         break;
     }
   })
@@ -73,7 +77,6 @@ $(document).ready(function(){
     ToneLotus.isMouseDown = true;    
   }).mouseup(function(){
     ToneLotus.isMouseDown = false;
-    console.log('mouse up')
   });
 
 });

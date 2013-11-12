@@ -1,3 +1,8 @@
+-Howl may be too damn big, cpu wise.  If a smaller library exists, that may work better.
+
+-remove all the masterlistener stuff from the router, maybe make a new class called MasterListener which is actually a router.
+ -put all the things from tonelotus.js and the router in there.  It's the conductor.
+
 -implement tone pause when not on page * won't work with window.onblur
 -make the updateTime form a view of its own
 -look into getting SASS to abstract away vendor prefixes (compass)

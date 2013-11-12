@@ -28,7 +28,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.isSelected = false;
 
 		this.listenTo(Backbone, 'spacePress', this.spacePress);
-		this.listenTo(Backbone, 'masterRedraw', this.stopListening); // WARNING< THIS DOESN"T EXIST
+		this.listenTo(Backbone, 'masterRedraw', this.stopListening);
 		this.listenTo(Backbone, 'delegateEvents', this.delegateEvents);
 
 		var that = this;
@@ -86,8 +86,6 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	toggleSelected: function(){
-		console.log('in toggleselected, tone_view.js');
-
 		this.isSelected = (this.isSelected == false ? true : false);
 
 		this.$el.toggleClass('selectedTone');

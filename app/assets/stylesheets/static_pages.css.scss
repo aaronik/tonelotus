@@ -39,12 +39,28 @@ body {
 }
 
 #track-stage-wrapper {
-	display: inline-block;
+	// display: inline-block;
+	min-width: 334px;
 	height: 518px;
 	width: 25%;
 	margin-top: 2%;
 	padding-right: 50px;
 	float: left;
+}
+
+#matrix-wrapper {
+	display: inline-block;
+	border-radius: 10px;
+	width: 40%;
+	min-width: 530px;
+	margin-top: 2%;
+
+	>div {
+		// inside matrix wrapper, contains all the tone divs
+		margin-left: auto;
+		margin-right: auto;
+		width: $tone-wrapper-width;
+	}
 }
 
 #menu-accordion-wrapper {
@@ -64,7 +80,8 @@ body {
 }
 
 #track-wrapper {
-	display: inline-block;
+	// display: inline-block;
+	float: left;
 	border-radius: 10px;
 	border: 3px dotted red;
 	height: 100%;
@@ -77,6 +94,8 @@ body {
 	border: 10px dotted white;
 	height: 100%;
 	width: 30%;
+	padding: 1px;
+	text-align: center;
 }
 
 #menu-accordion {
@@ -168,20 +187,6 @@ footer {
 	cursor: pointer;
 }
 
-#matrix-wrapper {
-	display: inline-block;
-	border-radius: 10px;
-	width: 40%;
-	min-width: 530px;
-	margin-top: 2%;
-
-	>div {
-		// inside matrix wrapper, contains all the tone divs
-		margin-left: auto;
-		margin-right: auto;
-		width: $tone-wrapper-width;
-	}
-}
 
 .tone {
 	display: inline-block;

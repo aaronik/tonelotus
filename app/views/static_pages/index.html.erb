@@ -1,6 +1,8 @@
 <div id='track-stage-wrapper'>
 	<div id='track-wrapper'>tracks</div>
-	<div id='stage-wrapper'>stage</div>
+	<div id='stage-wrapper'>
+		<p class='staged'>Stage</p>
+	</div>
 </div>
 
 <div id='matrix-wrapper'>
@@ -9,22 +11,27 @@
 
 <div id='menu-accordion-wrapper'>
 	<div id='menu-accordion'>
+
 	  <h3 class='top-accordion-menu-tab clickable'>Instruments</h3>
 	  <div>
 	    <p id='fm_synth' class='instrument selectedInstrument clickable'>fm_synth</p>
 	    <p id='sine_pad' class='instrument clickable'>sine_pad</p>
 	    <p id='drumkit_1' class='instrument clickable'>drumkit_1</p>
 	  </div>
+
 	  <h3 class='clickable'>Keyboard Shortcuts</h3>
 		  <div>
 		  	<p>p: Pause</p>
 		  	<p>space: Clear Everything</p>
+		  	<p>s: Stage Current Matrix</p>
 		  </div>
+
 	  <h3 class='clickable'>Matrix Duration</h3>
 	  <div>
 		  <input id='update-time-text-input' type='text' placeholder='120 bpm'>
 		  <button id='update-time-button' class='clickable'>Update</button>
 	  </div>
+
 	  <h3 class='clickable'>Mainframe Operations (dev_tools)</h3>
 	  <div>
 	    <p id='masterRedraw' class='eventControls clickable'>Master Redraw</p>
@@ -32,6 +39,7 @@
 	    <p id='0' class='eventControls clickable'>Trigger Column 1 Activate</p>
 	    <p id='delegateEvents' class='eventControls clickable'>Call delegateEvents() on each toneView</p>
 	  </div>
+
 	  <h3 class='bottom-accordion-menu-tab'></h3>
 	  <div>
 	  </div>
