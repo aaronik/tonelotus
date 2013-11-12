@@ -43,7 +43,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		// var newMatrix = this.initializeMatrix(that.currentMatrix.instrument);
 		// this.assignCurrentMatrix(newMatrix);
 		this.stageRedraw();
-		this.$matrixEl.html('<p>Select new instrument =)</p>');
+		this.$matrixEl.html('<p>Select new instrument ಠ益ಠ</p>');
 		this.$matrixEl.css('text-align', 'center');
 
 		// this.drawMatrix(newMatrix);

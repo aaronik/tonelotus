@@ -94,19 +94,21 @@ $(document).ready(function(){
 
   $('#matrix-wrapper').droppable({
     drop: function(event){
-      // once dropped, turn off draggable for shizzle.
+      $(event.toElement).draggable("disable");
 
       var draggedMatrix = _.find(ToneLotus.matrixArray, function( matrix ){
         return matrix.cid == $(event.toElement).attr('data-cid');
       })
 
-      $(event.toElement).draggable("disable");
 
       draggedMatrix.$el.detach();
-
       draggedMatrix.unstage();
       draggedMatrix.redraw();
-      $('#matrix-wrapper').html(draggedMatrix.$el);
+
+      // $('#matrix-wrapper').html(draggedMatrix.$el); // how to do if matrix is already present?
+      // have to router.assignCurrentMatrix(draggedMatrix) (done by router)
+      ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix
+      Backbone.trigger(draggedMatrix.instrument)
       
       Backbone.trigger('delegateEvents');
     }
