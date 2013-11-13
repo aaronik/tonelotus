@@ -185,35 +185,69 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	startMasterTrackLoop: function(){
+		console.log('started master track loop');
 		if(this.masterLoop){
 			this.killMasterLoop();
 		}
+		console.log('past if for killmasterloop');
 
 		var that = this;
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
-		var matrixCidArrayHash = this.getMatrixCidArray(); // works right on one
+		var matrixCidArrayHash = this.getMatrixCidArrayHash();
 		var column = 0;
 		var matrixIndex = 0;
+		var sizeBiggestMatrix = ToneLotus.findMaxLength(matrixCidArrayHash[0], 
+																									matrixCidArrayHash[1], 
+																									matrixCidArrayHash[2]); //works
+		var matrixCidHelperString = '';
+		var triggerString = '';
+		var matrixCounterHelper = 0;
+		var matrixCounter = 0;
+
+		console.log('finished initializing vars');
 
 		this.masterTrackLoop = setInterval(function(){
-			// iterate through the arrays of the matrixCidArrayHash and send a BB trigger for each
-			_(3).times()
-			var triggerString = 'tracked' + 
+			_(3).times(function(i){
+
+				if( !(matrixCidArrayHash[i][matrixCounter]) ){
+					matrixCidHelperString = 'blank';
+				} else {
+					matrixCidHelperString = matrixCidArrayHash[i][matrixCounter];
+				}
+
+				triggerString = 'tracked' + matrixCidHelperString + column;
+				console.log(triggerString);
+			})
+
 
 			column = (column + 1) % that.gridSize;
-			matrixIndex = (matrixIndex + 1) % matrixCidArray.length;
+			matrixCounterHelper += 0.125;
+			matrixCounter = Math.floor( matrixCounter + matrixCounterHelper ) % sizeBiggestMatrix;
+
 		}, columnLoopTime)
+
+		console.log('about to leave mastertracklop function');
 	},
 
 	// this is BAD FORM.  Must do things behind the curtain, and not rely on the curtain.
 	// maybe not.  check out notes for comparrison / contrastisson
-	getMatrixCidArray: function(){
+	getMatrixCidArrayHash: function(){
 		var matrixCidArrayHash = {};
+		var matrixCidArray0 = [];
 		var matrixCidArray1 = [];
 		var matrixCidArray2 = [];
-		var matrixCidArray3 = [];
 
 		$('#track1')
+			.children('ul')
+				.children('li')
+					.children('div')
+						.each(function(i,div){
+
+			matrixCidArray0.push($(div).attr('data-cid'));
+		});
+		matrixCidArrayHash[0] = matrixCidArray0;
+
+		$('#track2')
 			.children('ul')
 				.children('li')
 					.children('div')
@@ -223,7 +257,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		});
 		matrixCidArrayHash[1] = matrixCidArray1;
 
-		$('#track2')
+		$('#track3')
 			.children('ul')
 				.children('li')
 					.children('div')
@@ -233,22 +267,12 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		});
 		matrixCidArrayHash[2] = matrixCidArray2;
 
-		$('#track3')
-			.children('ul')
-				.children('li')
-					.children('div')
-						.each(function(i,div){
-
-			matrixCidArray3.push($(div).attr('data-cid'));
-		});
-		matrixCidArrayHash[3] = matrixCidArray3;
-
 		// matrixCidArrayHash is a hash with keys 1,2,3, each representing a track.
 		// the values to each key is an array of the cids of the matrices in that track.
 		return matrixCidArrayHash;
 	},
 
-	
+
 
 	broadcastRedraw: function(){
 		// broadcast a universal redraw event, errbody listens, errbody decouples themselves from listenTos and the dom.  This is important for when the gridSize is redrawn and the whole page is redone.  This will be implemented, along with multiple sizings, way later.  16 is a good number for now.

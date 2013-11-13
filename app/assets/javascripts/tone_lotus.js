@@ -27,6 +27,20 @@ ToneLotus.delegateDraggable = function(){
   });
 }
 
+ToneLotus.findMaxLength = function(){
+  var maxLength = 0;
+
+  for( i = 0; i < arguments.length; i++ ){
+    if( arguments[i].length > maxLength ){
+      maxLength = arguments[i].length;
+    } 
+  }
+
+  return maxLength;
+}
+
+ToneLotus.findMaxLength([1,2],[3,4,5]);
+
 $(document).ready(function(){
 
   // fire up the backbone
