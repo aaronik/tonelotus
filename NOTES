@@ -28,6 +28,13 @@
 
  -when you take a matrix out of the track, it calls untracked() on the matrix, and fills in the empty space with a blank
 
+ 
+ -Ok I'm working on how to represent the state of the tracks in the app.  
+ -I have a potential way hacked out that involves reaching into the DOM
+  -this is beneficial because when the items are sorted, the code will take care of itself.
+  -it's also beneficial because there won't be discrepencies between front and back end.
+  -don't have to write the code to add / subtract stuff when it is added / subbed from the front.
+  -don't have to write the code to reorganize the memory object when list is sorted
 
-
-----stopped on making masterTrackLoop stuff
+  -it's bad because it's bad form
+  -it'll be slower than if i maintained a state in memory.

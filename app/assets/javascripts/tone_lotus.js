@@ -14,8 +14,18 @@ window.ToneLotus = {
 
   	ToneLotus.router = new ToneLotus.Routers.AppRouter($matrixEl, $stageEl);
   	Backbone.history.start();
+
+    ToneLotus.delegateDraggable();
   }
 };
+
+ToneLotus.delegateDraggable = function(){
+  $('.staged').draggable({
+    revert: true,
+    revertDuration: 150,
+    disabled: false
+  });
+}
 
 $(document).ready(function(){
 
@@ -88,18 +98,12 @@ $(document).ready(function(){
     })
   }
 
-  ToneLotus.delegateDraggable = function(){
-    $('.staged').draggable({
-      revert: true,
-      revertDuration: 150,
-      disabled: false
-    });
-  }
-
   $('#matrix-wrapper').droppable({
     activeClass: 'droppable-active',
+    accept: '.non-blank',
+
     drop: function(event){
-      if( !(event.toElement.id === 'blank-track') ){
+      if( !(event.toElement.hasClass('blank-track')) ){
         $(event.toElement).draggable("disable");
 
         var draggedMatrix = getBackboneMatrixByJqueryEvent(event);
@@ -112,12 +116,28 @@ $(document).ready(function(){
         Backbone.trigger(draggedMatrix.instrument);
       }
     }
+
   });
 
-  $('#track-wrapper').droppable({
+  $('.track').droppable({
+    activeClass: 'droppable-active',
+
     drop: function(event){
-      $('#track-wrapper')
+      var $ref = $(event.toElement).clone();
+
+      $(event.target).children('ul').append('<li></li>');
+      $(event.target).children('ul').children('li').last().append($ref);
+      $ref.attr('style', 'position: relative; left: 0; top: 0;');
+
+      var matrix = getBackboneMatrixByJqueryEvent(event);
+
+      matrix.track();
+
+      // now i have to do the things on the back end that entail a thing being tracked
     }
-  })
+
+  });
+
+  $('.track-ul').sortable();
 
 });

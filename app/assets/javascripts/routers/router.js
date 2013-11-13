@@ -181,7 +181,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 			Backbone.trigger(triggerString);
 
 			column = (column + 1) % that.gridSize;
-
 		}, columnLoopTime)
 	},
 
@@ -190,8 +189,66 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 			this.killMasterLoop();
 		}
 
-		
+		var that = this;
+		var columnLoopTime = this.totalLoopTime / this.gridSize;
+		var matrixCidArrayHash = this.getMatrixCidArray(); // works right on one
+		var column = 0;
+		var matrixIndex = 0;
+
+		this.masterTrackLoop = setInterval(function(){
+			// iterate through the arrays of the matrixCidArrayHash and send a BB trigger for each
+			_(3).times()
+			var triggerString = 'tracked' + 
+
+			column = (column + 1) % that.gridSize;
+			matrixIndex = (matrixIndex + 1) % matrixCidArray.length;
+		}, columnLoopTime)
 	},
+
+	// this is BAD FORM.  Must do things behind the curtain, and not rely on the curtain.
+	// maybe not.  check out notes for comparrison / contrastisson
+	getMatrixCidArray: function(){
+		var matrixCidArrayHash = {};
+		var matrixCidArray1 = [];
+		var matrixCidArray2 = [];
+		var matrixCidArray3 = [];
+
+		$('#track1')
+			.children('ul')
+				.children('li')
+					.children('div')
+						.each(function(i,div){
+
+			matrixCidArray1.push($(div).attr('data-cid'));
+		});
+		matrixCidArrayHash[1] = matrixCidArray1;
+
+		$('#track2')
+			.children('ul')
+				.children('li')
+					.children('div')
+						.each(function(i,div){
+
+			matrixCidArray2.push($(div).attr('data-cid'));
+		});
+		matrixCidArrayHash[2] = matrixCidArray2;
+
+		$('#track3')
+			.children('ul')
+				.children('li')
+					.children('div')
+						.each(function(i,div){
+
+			matrixCidArray3.push($(div).attr('data-cid'));
+		});
+		matrixCidArrayHash[3] = matrixCidArray3;
+
+		// matrixCidArrayHash is a hash with keys 1,2,3, each representing a track.
+		// the values to each key is an array of the cids of the matrices in that track.
+		return matrixCidArrayHash;
+	},
+
+	
 
 	broadcastRedraw: function(){
 		// broadcast a universal redraw event, errbody listens, errbody decouples themselves from listenTos and the dom.  This is important for when the gridSize is redrawn and the whole page is redone.  This will be implemented, along with multiple sizings, way later.  16 is a good number for now.

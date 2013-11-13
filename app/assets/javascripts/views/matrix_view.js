@@ -55,7 +55,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 	stage: function(){
 		this.staged = true;
-		this.$el.addClass('staged');
+		this.$el.addClass('staged non-blank');
 		this.$el.removeClass('anim_4 scaleInv fadein');
 		setTimeout(ToneLotus.delegateDraggable, 100);
 
@@ -66,7 +66,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 	unstage: function(){
 		this.staged = false;
-		this.$el.removeClass('staged');
+		this.$el.removeClass('staged non-blank');
 	},
 
 	redraw: function(){

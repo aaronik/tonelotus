@@ -14,7 +14,7 @@ $tone-margin-left-right: 1px;
 
 $menu-highlight-color: #C5D200;
 $menu-background-color: black;
-$menu-shadow-color: white;
+$menu-shadow-color: grey;
 
 $tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-left-right * 2)) * 16;
 
@@ -23,13 +23,6 @@ body {
 	// pointer-events: none;
 	background: $body-background-color;
 	font-family: 'Sintony', sans-serif;
-	// background: url('random_grey_variations.png');
-	// background: url('rubber_grip.png');
-	// background: url('squares.png');
-	// background: url('woven.png');
-	// background: url('tactile_noise.png');
-	// background: url('micro_carbon.png');
-	// background: black;
 }
 
 #main-wrapper {
@@ -42,7 +35,7 @@ body {
 	// display: inline-block;
 	min-width: 334px;
 	height: 518px;
-	width: 28%;
+	width: 33%;
 	margin-top: 2%;
 	padding-right: 10px;
 	float: left;
@@ -91,8 +84,9 @@ body {
 	border-radius: 10px;
 	border: 3px dotted red;
 	height: 100%;
-	width: 60%;
+	width: 50%;
 	padding: 4px;
+	margin: 15px;
 	text-align: center;
 	// margin: 1px;
 }
@@ -236,6 +230,23 @@ footer {
 
 .selectedTone {
 	background: $tone-selected-background-color;
+}
+
+.track {
+	// text-align: left;
+	// display: inline-block;
+	height: 80%;
+	width: 25%;
+	border: thick solid red;
+	margin: 3px;
+	transition: all 0.3s;
+	float: left;
+
+	li {
+		list-style-type: none;
+		margin-left: -35px;
+		padding: 0;
+	}
 }
 
 .droppable-active {
