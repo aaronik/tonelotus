@@ -7,6 +7,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.tracked = false;
 		this.toneViewArray = [];
 		this.$el.attr('data-cid', this.cid);
+		this.$el.addClass('fadein scaleInv anim_4')
 
 		this.listenTo( Backbone, 'masterRedraw', this.masterRedraw );
 		this.listenTo( Backbone, 'spacePress', this.spacePress );
