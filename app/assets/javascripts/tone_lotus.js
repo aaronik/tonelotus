@@ -91,11 +91,13 @@ $(document).ready(function(){
   ToneLotus.delegateDraggable = function(){
     $('.staged').draggable({
       revert: true,
+      revertDuration: 150,
       disabled: false
     });
   }
 
   $('#matrix-wrapper').droppable({
+    activeClass: 'droppable-active',
     drop: function(event){
       if( !(event.toElement.id === 'blank-track') ){
         $(event.toElement).draggable("disable");
