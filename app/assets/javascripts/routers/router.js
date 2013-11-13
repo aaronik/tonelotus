@@ -163,7 +163,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	killMasterTrackLoop: function(){
-		window.clearInteval(this.masterTrackLoop);
+		window.clearInterval(this.masterTrackLoop);
 		delete this.masterTrackLoop;
 	},
 
@@ -185,11 +185,9 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	startMasterTrackLoop: function(){
-		console.log('started master track loop');
 		if(this.masterLoop){
 			this.killMasterLoop();
 		}
-		console.log('past if for killmasterloop');
 
 		var that = this;
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
@@ -202,31 +200,31 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var matrixCidHelperString = '';
 		var triggerString = '';
 		var matrixCounterHelper = 0;
-		var matrixCounter = 0;
 
-		console.log('finished initializing vars');
+		var trackInstrumentIndex = 0;
+
 
 		this.masterTrackLoop = setInterval(function(){
-			_(3).times(function(i){
+			_(3).times(function(trackNumber){
 
-				if( !(matrixCidArrayHash[i][matrixCounter]) ){
+				if( !(matrixCidArrayHash[trackNumber][trackInstrumentIndex]) ){
 					matrixCidHelperString = 'blank';
 				} else {
-					matrixCidHelperString = matrixCidArrayHash[i][matrixCounter];
+					matrixCidHelperString = matrixCidArrayHash[trackNumber][trackInstrumentIndex];
 				}
 
 				triggerString = 'tracked' + matrixCidHelperString + column;
 				console.log(triggerString);
+				Backbone.trigger(triggerString);
 			})
 
-
 			column = (column + 1) % that.gridSize;
-			matrixCounterHelper += 0.125;
-			matrixCounter = Math.floor( matrixCounter + matrixCounterHelper ) % sizeBiggestMatrix;
 
+			if (column == 0) {
+				trackInstrumentIndex = (trackInstrumentIndex + 1) % sizeBiggestMatrix;
+			}
 		}, columnLoopTime)
 
-		console.log('about to leave mastertracklop function');
 	},
 
 	// this is BAD FORM.  Must do things behind the curtain, and not rely on the curtain.
@@ -269,6 +267,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		// matrixCidArrayHash is a hash with keys 1,2,3, each representing a track.
 		// the values to each key is an array of the cids of the matrices in that track.
+		console.log(matrixCidArrayHash);
 		return matrixCidArrayHash;
 	},
 
