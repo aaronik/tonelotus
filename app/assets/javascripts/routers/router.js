@@ -49,13 +49,9 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var that = this;
 
 		this.stageCurrent();
-		// var newMatrix = this.initializeMatrix(that.currentMatrix.instrument);
-		// this.assignCurrentMatrix(newMatrix);
 		this.stageRedraw(); // removing staged class from elements
-		this.$matrixEl.html('<p>Select new instrument ಠ益ಠ</p>');
+		this.$matrixEl.html('<p>Select new instrument</p><p>Or drag from the stage</p><p>ಠ益ಠ</p>');
 		this.$matrixEl.css('text-align', 'center');
-
-		// this.drawMatrix(newMatrix);
 	},
 
 	stageCurrent: function(){
@@ -73,10 +69,13 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	updateTime: function(){
-		var bpm = parseInt($('#update-time-text-input').val())
-		var newTime = (240 / bpm) * 1000;
+		var $updateTimeInput = $('#update-time-text-input');
+		var bpm = parseInt($updateTimeInput.val());
 
-		console.log(newTime);
+		$updateTimeInput.attr('placeholder', bpm + ' bpm');
+		$updateTimeInput.val('');
+
+		var newTime = (240 / bpm) * 1000;
 
 		this.totalLoopTime = newTime;
 		this.killMasterLoop();
