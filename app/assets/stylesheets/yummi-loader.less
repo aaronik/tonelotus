@@ -1,0 +1,108 @@
+/*
+yummi-loader.css - V.1.1 http://gummibearlab.github.io/Yummi-loader/
+Licensed under the MIT license
+
+Copyright (c) 2013 Daniele Tabanella (gummibearlab)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+@import "lesshat.less";  // yummi-loader needs lesshat to compile, you can download it here: http://lesshat.com
+
+// VARIABLES
+
+/* we have 8 elements in this demo with a delay of 0.15ms this css is just a pre-compiled sample, you should compile your own .less file. */
+/* if you have trubles with less compilers that uses versions <1.4 use this loop FROM .anim_@{index} { TO (~".anim_@{index}") { */
+
+
+@iterations: 8;	// number of elements to apply effects on
+@delay: 0.15; 	// delay between elements transitions
+
+body { overflow-x: hidden } // zooming on body element causes horizontal bar to appear. Optional.
+
+// OPACITY
+
+@opacity_start: 		0;
+@opacity_finish:		1;
+@opacity_speed_in:		0.5s; 	// seconds
+@opacity_speed_out:		0.5s; 	// seconds
+@opacity_delay_in:		0.5s; 	// seconds
+@opacity_delay_out:		0.5s; 	// seconds
+@opacity_easing_in: 	cubic-bezier(0,0,1,1);
+@opacity_easing_out:	cubic-bezier(0,0,1,1);
+
+// SCALE
+
+@scale_start: 			1.1;
+@scale_start_inv:		0.9;
+@scale_finish:			1;
+@scale_speed_in:		0.5s;
+@scale_speed_out:		0.5s;
+@scale_delay_in:		0.5s;
+@scale_delay_out:		0.5s;
+@scale_easing_in:		cubic-bezier(0.175, 0.885, 0.320, 1.275); // ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier(0,0,1,1)
+@scale_easing_out:		cubic-bezier(0.600, -0.280, 0.735, 0.045);
+@scale_origin: 			center center; // [ left | center | right ] || [ top | center | bottom ]
+
+.fadein {
+	.off &, &.off {
+		.opacity(@opacity_start);
+		.transition-timing-function(@opacity_easing_out);
+		.transition-duration(@opacity_speed_out);
+
+	}
+	.on &, &.on {
+		.opacity(@opacity_finish);
+		.transition-timing-function(@opacity_easing_in);
+		.transition-duration(@opacity_speed_in);
+	}
+}
+
+.scale, scaleInv {
+	.transform-style(preserve-3d);
+	.transform-origin(@scale_origin);
+	.off &, &.off {
+		.scale(@scale_start);
+		.transition-timing-function(@scale_easing_out);
+		.transition-duration(@scale_speed_out);
+	}
+	.on &, &.on {
+		.scale(@scale_finish);
+		.transition-timing-function(@scale_easing_in);
+		.transition-duration(@scale_speed_in);
+	}
+}
+
+.scaleInv {
+	.off &, &.on {
+		.scale(@scale_start_inv);
+		.transition-timing-function(@scale_easing_out);
+	}
+	.on &, &.on {
+		.transition-timing-function(@scale_easing_in);
+	}
+}
+
+// ITERATIONS -> credits goes to : http://blog.thehippo.de/2012/04/programming/do-a-loop-with-less-css/ updated for LESS > v1.4 see note on top if you get errors on this loop.
+
+.loopingClass (@index) when (@index > 0) {
+
+	.anim_@{index} {		// .transition-duration(@scale_speed_out + @index); 	if you want to change the animation speed on index base
+		.off &, &.off {
+			.transition-delay(((unit(@iterations, s)) - @index) * @delay);
+		}
+		.on &, &.on {
+			.transition-delay(@opacity_delay_in + (@index * @delay));
+		}
+
+	}
+
+	.loopingClass(@index - 1);
+}
+
+.loopingClass (0) {}
+.loopingClass (@iterations);

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/yummi-loader.css"> <!-- the love you need -->
+
+        <!-- google fonts -->
+
+		<link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body class="off">
+
+		<div id="head" class="fadein scaleInv anim_1">
+
+			<h1 id="logo" class="fadein scale anim_8">
+				THE SIMPSONS&trade;
+			</h1>
+
+		</div>
+
+		<div id="main" class="fadein scaleInv anim_2">
+
+			<article class="fadein scaleInv anim_6">
+				<h1>The Simpson #1</h1>
+				<p>I'll keep it short and sweet &mdash; Family. Religion. Friendship. These are the three demons you must slay if you wish to succeed in business.<br /><i>Mr. Burns</i></p>
+			</article>
+
+			<article class="fadein scaleInv anim_7">
+				<h1>The Simpson #1</h1>
+				<p>Uh, no, they're saying "Boo-urns, Boo-urns."<br /><i>Smithers</i></p>
+			</article>
+
+			<article class="fadein scaleInv anim_7">
+				<p><a class="trigger" href="example.html">I'm a fancy link</a></p>
+			</article>
+
+		</div>
+
+		<div id="side" class="fadein scaleInv anim_3">
+			<div id="image" class="fadein anim_8"></div>
+		</div>
+
+		<div id="footer" class="fadein scaleInv anim_4">
+		</div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+        <script src="js/yummi-loader.min.js"></script>
+
+        <script>
+
+			var $body = $('body');
+
+	        $(window).load(function() {
+
+	            $body.toggleClass('on off');
+
+	            $('#trigger').click(function() {
+
+	                $body.toggleClass('on off');
+
+	                setTimeout(function() {
+
+	                    $body.toggleClass('on off');
+
+	                }, 2000)
+
+	            });
+
+	        });
+
+        </script>
+
+    </body>
+</html>

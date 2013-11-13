@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require yummi-loader
 //= require backbone
 //= require tone_lotus
 //= require howler.min
@@ -23,3 +24,7 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+$(window).load(function(){
+	$('body').toggleClass('off on');
+});

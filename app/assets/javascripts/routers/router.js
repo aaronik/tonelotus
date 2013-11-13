@@ -169,7 +169,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	startMasterLoop: function(){
-		// must make sure to stop mastertrackloop
+		if(this.masterTrackLoop){
+			this.killMasterTrackLoop();
+		}
+
 		var that = this;
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
 		var column = 0;
@@ -184,7 +187,11 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	startMasterTrackLoop: function(){
-		// must make sure to stop the masterloop
+		if(this.masterLoop){
+			this.killMasterLoop();
+		}
+
+		
 	},
 
 	broadcastRedraw: function(){

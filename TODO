@@ -1,4 +1,4 @@
--yummiloader
+-yummiloader - fix or delete from app.js, stylesheets folder, javascripts folder, gemfile, app.scss, classes from main-wrapper in app.html.erb
 
 -can't have two instruments running
 -Add ToneLotus to list of backbone examples on backbonejs.org
