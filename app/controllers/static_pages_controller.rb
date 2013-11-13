@@ -1,5 +1,1 @@
-class StaticPagesController < ApplicationController
-	def index
-		render :index
-	end
-end
+class StaticPagesController < ApplicationController ; end

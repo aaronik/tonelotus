@@ -51,7 +51,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.stageCurrent();
 		// var newMatrix = this.initializeMatrix(that.currentMatrix.instrument);
 		// this.assignCurrentMatrix(newMatrix);
-		this.stageRedraw();
+		this.stageRedraw(); // removing staged class from elements
 		this.$matrixEl.html('<p>Select new instrument ಠ益ಠ</p>');
 		this.$matrixEl.css('text-align', 'center');
 
@@ -64,7 +64,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	stageRedraw: function(){
-		this.$stageEl.html($('.staged'));
+		this.$stageEl.append($('.staged')); //honestly don't know why this works.
+		// i predict this will cause problems in the future.
 	},
 
 	spacePressHandler: function(){
@@ -78,12 +79,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		console.log(newTime);
 
 		this.totalLoopTime = newTime;
-		this.removeMasterLoop();
+		this.killMasterLoop();
 		this.startMasterLoop();
-	},
-
-	removeMasterLoop: function(){
-		window.clearInterval(this.masterLoop);
 	},
 
 	initializePage: function(gridSize, totalLoopTime){
@@ -141,15 +138,38 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	pause: function(){
+		// must modify this to encompass mastertrackloop as well
 		if(this.masterLoop){
-			this.removeMasterLoop();
-			delete this.masterLoop;
+			this.killMasterLoop();
+			this.lastLoopStartFunction = 'startMasterLoop';
 		} else {
-			this.startMasterLoop();
+			this[this.lastLoopStartFunction];
+		}
+
+		if(this.masterTrackLoop){
+			this.killMasterTrackLoop();
+			this.lastLoopStartFunction = 'startMasterTrackLoop';
+		} else {
+			this[this.lastLoopStartFunction];
 		}
 	},
 
+	removeMasterLoop: function(){
+		window.clearInterval(this.masterLoop);
+	},
+
+	killMasterLoop: function(){
+		window.clearInterval(this.masterLoop);
+		delete this.masterLoop;
+	},
+
+	killMasterTrackLoop: function(){
+		window.clearInteval(this.masterTrackLoop);
+		delete this.masterTrackLoop;
+	},
+
 	startMasterLoop: function(){
+		// must make sure to stop mastertrackloop
 		var that = this;
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
 		var column = 0;
@@ -161,6 +181,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 			column = (column + 1) % that.gridSize;
 
 		}, columnLoopTime)
+	},
+
+	startMasterTrackLoop: function(){
+		// must make sure to stop the masterloop
 	},
 
 	broadcastRedraw: function(){

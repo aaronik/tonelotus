@@ -42,9 +42,9 @@ body {
 	// display: inline-block;
 	min-width: 334px;
 	height: 518px;
-	width: 25%;
+	width: 28%;
 	margin-top: 2%;
-	padding-right: 50px;
+	padding-right: 10px;
 	float: left;
 }
 
@@ -52,10 +52,11 @@ body {
 	display: inline-block;
 	border-radius: 10px;
 	border: 5px dotted $tone-background-color;
-	width: 40%;
+	width: 44%;
 	min-width: 530px;
 	min-height: 518px;
 	margin-top: 2%;
+	padding: 5px 0 5px 0;
 
 	>div {
 		// inside matrix wrapper, contains all the tone divs
@@ -69,25 +70,26 @@ body {
 	display: inline-block;
 	pointer-events: auto;
 	width: 25%;
-	padding: 30px 0 80px 50px;
+	padding: 30px 0 80px 10px;
 	float: right;
 	margin-top: 2%;
 
-	opacity: 0.1;
-	transition: all 0.3s;
+	// opacity: 0.1;
+	// transition: all 0.3s;
 
-	&:hover {
-		opacity: 0.7;
-	}
+	// &:hover {
+		// opacity: 0.7;
+	// }
 }
 
 #track-wrapper {
-	// display: inline-block;
 	float: left;
 	border-radius: 10px;
 	border: 3px dotted red;
 	height: 100%;
 	width: 60%;
+	padding: 4px;
+	text-align: center;
 }
 
 #stage-wrapper {
@@ -187,6 +189,13 @@ footer {
 
 .clickable {
 	cursor: pointer;
+}
+
+#stage-title {
+	margin: 4px;
+	border-radius: 4px;
+	border: 1px dotted white;
+	background: $tone-background-color;
 }
 
 .staged {

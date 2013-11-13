@@ -82,32 +82,40 @@ $(document).ready(function(){
     event: 'click'
   });
 
+  var getBackboneMatrixByJqueryEvent = function(event){
+    return _.find(ToneLotus.matrixArray, function( matrix ){
+      return matrix.cid == $(event.toElement).attr('data-cid');
+    })
+  }
+
   ToneLotus.delegateDraggable = function(){
     $('.staged').draggable({
       revert: true,
       disabled: false
     });
-  },
+  }
 
   $('#matrix-wrapper').droppable({
     drop: function(event){
-      $(event.toElement).draggable("disable");
+      if( !(event.toElement.id === 'blank-track') ){
+        $(event.toElement).draggable("disable");
 
-      var draggedMatrix = _.find(ToneLotus.matrixArray, function( matrix ){
-        return matrix.cid == $(event.toElement).attr('data-cid');
-      })
+        var draggedMatrix = getBackboneMatrixByJqueryEvent(event);
 
+        draggedMatrix.$el.detach();
+        draggedMatrix.unstage();
+        draggedMatrix.redraw();
 
-      draggedMatrix.$el.detach();
-      draggedMatrix.unstage();
-      draggedMatrix.redraw();
-
-      // only problem now is that the instrument isn't selected in the menu when it happens
-      ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix;
-      Backbone.trigger(draggedMatrix.instrument);
-      
-      Backbone.trigger('delegateEvents');
+        ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix;
+        Backbone.trigger(draggedMatrix.instrument);
+      }
     }
   });
+
+  $('#track-wrapper').droppable({
+    drop: function(event){
+      $('#track-wrapper')
+    }
+  })
 
 });

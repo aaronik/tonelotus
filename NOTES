@@ -8,9 +8,26 @@
 
 -cool instruments: Synth(Analog Filter 1)
 
--CYCLE OF SELECTING NEW INSTRUMENTS
- -user clicks new instrument
- -backbone emits trigger with new instrument name
-  -router only party that hears it
-  -if that instrument exists in the matrix hash, which is should, it draws that without reinitializing it.
-  -if 
+-TRACKING
+ -when a matrix is tracked, i call tracked on the matrix
+ -when the track loop is playing, only tracked instruments play
+ ?then what about the instruments whose turn it isn't?
+ -could have another boolean, like currentOnTrack
+ -then do i need tracked?  probably
+
+ -tracked timer is playing
+ -8 tps emits playcolumn event
+ -toneview says Is my matrix tracked && currentOnTrack ? activatewithoutanimation : ""
+ 
+ -how to cycle between tracked matrices?
+ -triggerString can = 'tracked<matrixView_cid><column>', emit three at a time or however many there are
+ -have a blank string to occupy space and not make sound so as to avoid having extra blank matrices laying around
+
+ -then when you drag a matrix into the track, it creates a DOM element with the same name
+  and calls tracked() on the matrix
+
+ -when you take a matrix out of the track, it calls untracked() on the matrix, and fills in the empty space with a blank
+
+
+
+----stopped on making masterTrackLoop stuff

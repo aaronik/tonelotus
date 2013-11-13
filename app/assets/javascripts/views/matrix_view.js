@@ -4,12 +4,21 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.instrument = options.instrument;
 		this.staged = false;
 		this.currentMatrix = false;
+		this.tracked = false;
 		this.toneViewArray = [];
 		this.$el.attr('data-cid', this.cid);
 
 		this.listenTo( Backbone, 'masterRedraw', this.masterRedraw );
 		this.listenTo( Backbone, 'spacePress', this.spacePress );
 		this.listenTo( Backbone, 'masterDestroy', this.seppuku );
+	},
+
+	track: function(){
+		this.tracked = true;
+	},
+
+	untrack: function(){
+		this.tracked = false;
 	},
 
 	spacePress: function(){
@@ -48,7 +57,8 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.$el.addClass('staged');
 		setTimeout(ToneLotus.delegateDraggable, 100);
 
-		this.$el.html(this.instrument);
+		var newElString = this.instrument + this.cid.slice(4);
+		this.$el.html(newElString);
 		// this.$oldHtml = this.$el;
 	},
 
