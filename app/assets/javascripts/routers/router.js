@@ -80,8 +80,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var newTime = (240 / bpm) * 1000;
 
 		this.totalLoopTime = newTime;
-		this.killMasterLoop();
-		this.startMasterLoop();
+		this.pause();
+		this.pause();
 	},
 
 	initializePage: function(gridSize, totalLoopTime){
@@ -128,14 +128,13 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	drawMatrix: function(matrix){
-		Backbone.trigger('delegateEvents');
-
 		var that = this;
-		console.log("from router / drawMatrix - given matrix then currentMatrix ");
+		console.log("redrawing:");
 		console.log(matrix);
-		console.log(that.currentMatrix);
-		
+
 		this.$matrixEl.html(matrix.$el);
+		
+		Backbone.trigger('delegateEvents');
 	},
 
 	pause: function(){
