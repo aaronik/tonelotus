@@ -139,6 +139,7 @@ $(document).ready(function(){
 
     drop: function(event){
       var $ref = $(event.toElement).clone();
+      $ref.toggleClass('tracked staged');
 
       $(event.target).children('ul').append('<li></li>');
       $(event.target).children('ul').children('li').last().append($ref);
@@ -147,7 +148,7 @@ $(document).ready(function(){
       var matrix;
 
       if( $(event.toElement).hasClass('blank-track') ){
-        // not sure what to do here
+        $ref.addClass('tracked').attr('data-cid', 'blank');
       } else {
         matrix = getBackboneMatrixByJqueryEvent(event);
         matrix.track();
@@ -158,5 +159,9 @@ $(document).ready(function(){
   });
 
   $('.track-ul').sortable();
+
+  $('#tracks-play-button').click(function(){
+    ToneLotus.router.startMasterTrackLoop();
+  });
 
 });

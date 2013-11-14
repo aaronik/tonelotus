@@ -65,6 +65,8 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	spacePressHandler: function(){
+		$('.staged-matrix').off().remove();
+		$('.tracked').off().remove();
 		this.stageRedraw();
 	},
 
@@ -138,18 +140,17 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	pause: function(){
 		// must modify this to encompass mastertrackloop as well
-		if(this.masterLoop){
+		if( this.masterLoop ){
 			this.killMasterLoop();
 			this.lastLoopStartFunction = 'startMasterLoop';
-		} else {
-			this[this.lastLoopStartFunction];
-		}
-
-		if(this.masterTrackLoop){
+			console.log('paused masterloop');
+		} else if ( this.masterTrackLoop ){
 			this.killMasterTrackLoop();
 			this.lastLoopStartFunction = 'startMasterTrackLoop';
+			console.log('paused track loop');
 		} else {
-			this[this.lastLoopStartFunction];
+			console.log(this.lastLoopStartFunction);
+			this[this.lastLoopStartFunction]();
 		}
 	},
 
@@ -194,13 +195,13 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var matrixCidArrayHash = this.getMatrixCidArrayHash();
 		var column = 0;
 		var matrixIndex = 0;
-		var sizeBiggestMatrix = ToneLotus.findMaxLength(matrixCidArrayHash[0], 
-																									matrixCidArrayHash[1], 
-																									matrixCidArrayHash[2]); //works
 		var matrixCidHelperString = '';
 		var triggerString = '';
 		var matrixCounterHelper = 0;
 		var trackInstrumentIndex = 0;
+		var sizeBiggestMatrix = ToneLotus.findMaxLength(matrixCidArrayHash[0], 
+																									matrixCidArrayHash[1], 
+																									matrixCidArrayHash[2]); //works
 
 		this.masterTrackLoop = setInterval(function(){
 			_(3).times(function(trackNumber){
