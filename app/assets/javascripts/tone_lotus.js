@@ -144,11 +144,15 @@ $(document).ready(function(){
       $(event.target).children('ul').children('li').last().append($ref);
       $ref.attr('style', 'position: relative; left: 0; top: 0;');
 
-      var matrix = getBackboneMatrixByJqueryEvent(event);
+      var matrix;
 
-      matrix.track();
+      if( $(event.toElement).hasClass('blank-track') ){
+        // not sure what to do here
+      } else {
+        matrix = getBackboneMatrixByJqueryEvent(event);
+        matrix.track();
+      }
 
-      // now i have to do the things on the back end that entail a thing being tracked
     }
 
   });
