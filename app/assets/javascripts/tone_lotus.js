@@ -65,23 +65,6 @@ $(document).ready(function(){
     }
   })
 
-  //listen for instrument changes
-  $('.instrument').click(function( event ){
-    Backbone.trigger(event.target.id);
-  })
-
-  //temp, send Mainframe Operations events
-  $('.eventControls').click(function( event ){
-    console.log(event.target.id);
-    Backbone.trigger(event.target.id);
-  })
-
-  //when update time is clicked
-  $('#update-time-form').submit(function( event ){
-    event.preventDefault();
-    Backbone.trigger('updateTime');
-  })
-
   //when tab is switched.  BROKEN - happens when terminal is brought up...
   // window.onblur = function(){
   //   Backbone.trigger('pause');
@@ -99,7 +82,6 @@ $(document).ready(function(){
   $('#menu-accordion').accordion({
     collapsible: true,
     animate: 200,
-    // animated: 'bounceslide',
     active: false,
     heightStyle: 'content',
     // event: 'mouseover click'
@@ -138,8 +120,14 @@ $(document).ready(function(){
     activeClass: 'droppable-active',
 
     drop: function(event){
-      var $ref = $(event.toElement).clone();
-      $ref.toggleClass('tracked staged');
+      if( !$(event.toElement).hasClass('tracked') ){
+        var $ref = $(event.toElement).clone();
+      } else {
+        $ref = $(event.toElement);
+      }
+
+      $ref.addClass('tracked');
+      $ref.removeClass('staged');
 
       $(event.target).children('ul').append('<li></li>');
       $(event.target).children('ul').children('li').last().append($ref);
@@ -160,8 +148,36 @@ $(document).ready(function(){
 
   $('.track-ul').sortable();
 
+  //play the tracks
   $('#tracks-play-button').click(function(){
     ToneLotus.router.startMasterTrackLoop();
   });
+
+  //play the matrix
+  $('#main-play-button').click(function(){
+    ToneLotus.router.startMasterLoop();
+  });
+
+  //pause button
+  $('#pause-button').click(function(){
+    Backbone.trigger('pause');
+  });
+
+  //listen for instrument changes
+  $('.instrument').click(function( event ){
+    Backbone.trigger(event.target.id);
+  })
+
+  //temp, send Mainframe Operations events
+  $('.eventControls').click(function( event ){
+    console.log(event.target.id);
+    Backbone.trigger(event.target.id);
+  })
+
+  //when update time is clicked
+  $('#update-time-form').submit(function( event ){
+    event.preventDefault();
+    Backbone.trigger('updateTime');
+  })
 
 });

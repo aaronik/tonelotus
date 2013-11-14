@@ -66,7 +66,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 	unstage: function(){
 		this.staged = false;
-		this.$el.removeClass('staged non-blank');
+		this.$el.removeClass('staged non-blank staged-matrix');
 	},
 
 	redraw: function(){
