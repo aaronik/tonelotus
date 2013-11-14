@@ -48,7 +48,8 @@ body {
 	width: 44%;
 	min-width: 530px;
 	// min-height: 518px;
-	min-height: 588px;
+	height: 588px;
+	width: 577px;
 	// margin-top: 1%;
 	padding: 5px 0 5px 0;
 	box-shadow: inset 0 0 20px 20px grey;
@@ -84,7 +85,7 @@ body {
 	border-radius: 10px;
 	border: 3px dotted red;
 	height: 100%;
-	width: 50%;
+	width: 60%;
 	padding: 4px;
 	margin: 15px;
 	text-align: center;
@@ -96,7 +97,7 @@ body {
 	border-radius: 30px;
 	border: 10px dotted white;
 	height: 100%;
-	width: 30%;
+	width: 20%;
 	padding: 1px;
 	text-align: center;
 }
@@ -232,11 +233,16 @@ footer {
 	background: $tone-selected-background-color;
 }
 
+#tracks-label {
+	background: $tone-background-color;
+	border-radius: 10px;
+}
+
 .track {
 	// text-align: left;
 	// display: inline-block;
 	height: 80%;
-	width: 25%;
+	width: 27%;
 	border: thick solid red;
 	margin: 3px;
 	transition: all 0.3s;

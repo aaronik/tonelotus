@@ -5,7 +5,10 @@
  -put all the things from tonelotus.js and the router in there.  It's the conductor.
 -look into getting SASS to abstract away vendor prefixes (compass)
 
+-add button to start track
 -space bar should get rid of all staged stuff as well
 -drag blank to track should work
 -matrices in track should have some kind of text wrap or something
 -instrument names shouldn't be so unweildy
+-work out sortable
+-make sure stuff in track can be dragged back to stage to remove it from track
