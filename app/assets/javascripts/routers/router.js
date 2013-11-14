@@ -213,7 +213,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 				}
 
 				triggerString = 'tracked' + matrixCidHelperString + column;
-				console.log(triggerString);
 				Backbone.trigger(triggerString);
 			})
 

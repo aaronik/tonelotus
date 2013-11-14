@@ -7,17 +7,44 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.tracked = false;
 		this.toneViewArray = [];
 		this.$el.attr('data-cid', this.cid);
-		this.$el.addClass('fadein scaleInv anim_4')
+		this.$el.addClass('fadein scaleInv anim_4');
 
+		this.initializeListeners();
+	},
+
+	initializeListeners: function(){
 		this.listenTo( Backbone, 'masterRedraw', this.masterRedraw );
 		this.listenTo( Backbone, 'spacePress', this.spacePress );
 		this.listenTo( Backbone, 'masterDestroy', this.seppuku );
+		this.listenTo( Backbone, 'delegateEvents', this.delegateEventsForTones );
+
+		this.initializeToneColumnListeners();
+	},
+
+	initializeToneColumnListeners: function(){
+		var that = this;
+		var triggerString = '';
+
+		_(this.gridSize).times(function(column){
+			triggerString = 'triggerColumn' + column;
+			that.listenTo( Backbone, triggerString, function(){
+				that.triggerColumn(column);
+			})
+		});
+	},
+
+	triggerColumn: function(column){
+		var highestNumberedTone = Math.pow(this.gridSize, 2);
+
+		for(i = column; i < highestNumberedTone; i = i + this.gridSize){
+			this.toneViewArray[i].potentiallyActivate();
+		}
 	},
 
 	sendToTones: function(command){
-		this.toneViewArray.forEach(tone){
+		this.toneViewArray.forEach(function(tone){
 			tone[command]();
-		}
+		});
 	},
 
 	track: function(){
@@ -89,13 +116,17 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 	masterRedraw: function(){
 		this.$el.empty();
 		this.render();
+		this.sendToTones('stopListening');
 	},
 
-
-
 	seppuku: function(){
+		this.sendToTones('seppuku');
 		this.$el.empty();
 		this.stopListening();
 		delete this;
+	},
+
+	delegateEventsForTones: function(){
+		this.sendToTones('delegateEvents');
 	}
 })

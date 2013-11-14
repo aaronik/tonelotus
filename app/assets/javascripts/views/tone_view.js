@@ -5,6 +5,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.instrument = options.instrument;
 		this.matrix = options.matrix;
 		this.column = this.toneViewNumber % this.gridSize;
+		this.isSelected = false;
 
 		ToneLotus.assignTone(this);
 
@@ -16,29 +17,24 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		'mouseover':'mouseoverHandler'
 	},
 
+	initializeListeners: function(){
+		// var listenString = "triggerColumn" + this.column;
+		// this.listenTo( Backbone, listenString, this.potentiallyActivate );
+
+		var trackListenString = "tracked" + this.matrix.cid + this.column;
+		this.listenTo( Backbone, trackListenString, this.potentiallyTrackPlay );
+	},
+
+	triggerColumn: function(column_in_array){
+		if(column_in_array == this.column){
+			this.potentiallyActivate();
+		}
+	},
+
 	mouseoverHandler: function(){
 		if(ToneLotus.isMouseDown){
 			this.toggleSelected();
 		}
-	},
-
-	initializeListeners: function(){
-		// difference b/t spacePress and masterRedraw is spacePress unselects all elements,
-		//  masterRedraw removes them entirely.
-		this.isSelected = false;
-
-		// this.listenTo( Backbone, 'spacePress', this.spacePress );
-		this.listenTo( Backbone, 'masterRedraw', this.stopListening );
-		this.listenTo( Backbone, 'delegateEvents', this.delegateEvents );
-		this.listenTo( Backbone, 'seppuku', this.seppuku );
-
-		var that = this;
-
-		var listenString = "triggerColumn" + this.column;
-		this.listenTo( Backbone, listenString, this.potentiallyActivate );
-
-		var trackListenString = "tracked" + this.matrix.cid + this.column;
-		this.listenTo( Backbone, trackListenString, this.potentiallyTrackPlay );
 	},
 
 	spacePress: function(){
@@ -52,7 +48,6 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	potentiallyActivate: function(){
-		// if( this.selected() && ( this.matrix.staged || this.matrix.currentMatrix )){
 		if( this.selected() && !this.matrix.staged ){
 			this.activate();
 		}
