@@ -14,6 +14,12 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.listenTo( Backbone, 'masterDestroy', this.seppuku );
 	},
 
+	sendToTones: function(command){
+		this.toneViewArray.forEach(tone){
+			tone[command]();
+		}
+	},
+
 	track: function(){
 		this.tracked = true;
 	},
@@ -24,6 +30,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 	spacePress: function(){
 		this.unstage();
+		this.sendToTones('spacePress');
 	},
 
 	makeCurrentMatrix: function(){

@@ -18,11 +18,11 @@ $menu-shadow-color: grey;
 
 $tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-left-right * 2)) * 16;
 
-
 body {
 	pointer-events: none;
 	background: $body-background-color;
 	font-family: 'Sintony', sans-serif;
+	overflow: auto !important;
 }
 
 #main-wrapper {

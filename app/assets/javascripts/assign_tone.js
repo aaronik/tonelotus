@@ -2,13 +2,13 @@ ToneLotus.assignTone = function(view){
 	var row = Math.floor(view.toneViewNumber / view.gridSize);
 
 	switch(view.instrument){
-		case 'fm_synth':
+		case 'synth':
 			fm_synth(row, view);
 			break;
-		case 'drumkit_1':
+		case 'kit':
 			drumkit_1(row, view);
 			break;
-		case 'sine_pad':
+		case 'pad':
 			sine_pad(row, view);
 			break;
 	}

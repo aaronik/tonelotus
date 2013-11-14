@@ -76,11 +76,12 @@
   display: none;
 }
 
-/* line 22, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 21, ../../app/assets/stylesheets/static_pages.css.scss */
 body {
   pointer-events: none;
   background: #333333;
   font-family: 'Sintony', sans-serif;
+  overflow: auto !important;
 }
 
 /* line 28, ../../app/assets/stylesheets/static_pages.css.scss */

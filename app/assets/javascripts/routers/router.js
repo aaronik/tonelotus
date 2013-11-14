@@ -2,7 +2,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	initialize: function($matrixEl, $stageEl){
 		this.$matrixEl = $matrixEl;
 		this.$stageEl = $stageEl;
-		this.instruments = ['fm_synth', 'drumkit_1', 'sine_pad'];
+		this.instruments = ['synth', 'kit', 'pad'];
 
 		this.initializeListeners();
 	},

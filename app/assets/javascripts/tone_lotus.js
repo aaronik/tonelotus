@@ -119,6 +119,8 @@ $(document).ready(function(){
         matrix = getBackboneMatrixByJqueryEvent(event);
         matrix.track();
       }
+
+      $ref.draggable();
     }
   });
 
