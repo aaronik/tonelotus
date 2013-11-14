@@ -117,7 +117,8 @@ $(document).ready(function(){
     accept: '.non-blank',
 
     drop: function(event){
-      if( !(event.toElement.hasClass('blank-track')) ){
+      console.log(event);
+      if( !($(event.toElement).hasClass('blank-track')) ){
         $(event.toElement).draggable("disable");
 
         var draggedMatrix = getBackboneMatrixByJqueryEvent(event);
