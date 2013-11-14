@@ -7,7 +7,6 @@
 
 -matrices in track should have some kind of text wrap or something
 -instrument names shouldn't be so unweildy
--work out sortable
 -make sure stuff in track can be dragged back to stage to remove it from track
 -once track is started, logically can never start matrix again
 -put play track in menu

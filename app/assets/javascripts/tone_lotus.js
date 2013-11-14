@@ -94,28 +94,6 @@ $(document).ready(function(){
     })
   }
 
-  $('#matrix-wrapper').droppable({
-    activeClass: 'droppable-active',
-    accept: '.non-blank',
-
-    drop: function(event){
-      console.log(event);
-      if( !($(event.toElement).hasClass('blank-track')) ){
-        $(event.toElement).draggable("disable");
-
-        var draggedMatrix = getBackboneMatrixByJqueryEvent(event);
-
-        draggedMatrix.$el.detach();
-        draggedMatrix.unstage();
-        draggedMatrix.redraw();
-
-        ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix;
-        Backbone.trigger(draggedMatrix.instrument);
-      }
-    }
-
-  });
-
   $('.track').droppable({
     activeClass: 'droppable-active',
 
@@ -141,9 +119,37 @@ $(document).ready(function(){
         matrix = getBackboneMatrixByJqueryEvent(event);
         matrix.track();
       }
-
     }
+  });
 
+  $('#matrix-wrapper').droppable({
+    activeClass: 'droppable-active',
+    accept: '.non-blank',
+
+    drop: function(event){
+      console.log(event);
+      if( !($(event.toElement).hasClass('blank-track')) ){
+        $(event.toElement).draggable("disable");
+
+        var draggedMatrix = getBackboneMatrixByJqueryEvent(event);
+
+        draggedMatrix.$el.detach();
+        draggedMatrix.unstage();
+        draggedMatrix.redraw();
+
+        ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix;
+        Backbone.trigger(draggedMatrix.instrument);
+      }
+    }
+  });
+
+  $('#stage-wrapper').droppable({
+    activeClass: 'droppable-active',
+    accept: '.tracked',
+
+    drop: function(event){
+      $(event.toElement).remove();
+    }
   });
 
   $('.track-ul').sortable();
