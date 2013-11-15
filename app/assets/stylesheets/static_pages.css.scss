@@ -3,16 +3,24 @@
 // @import "ceaser-easing";
 
 // Globals
-$body-background-color: #333333;
-$tone-background-color: #C5D200;
-$tone-selected-background-color: #73A4D9;
-$tone-active-background-color: #DE2C0E;
+$body-background-color: #111111;
+
+$tone-background-color: teal;
+$tone-selected-background-color: lightgreen;
+$tone-active-background-color: red;
+
+$matrix-shadow-color: black;
+
+$stage-color: white;
+$stage-track-title-background-color: #F88302;
+$track-color: red;
+
 $tone-height-width: 24px;
 $tone-padding: 3px;
 $tone-margin-top-bottom: -1px;
 $tone-margin-left-right: 1px;
 
-$menu-highlight-color: #C5D200;
+$menu-highlight-color: $tone-background-color;
 $menu-background-color: black;
 $menu-shadow-color: grey;
 
@@ -49,7 +57,7 @@ body {
 	height: 583px;
 	width: 577px;
 	padding: 5px 0 5px 0;
-	box-shadow: inset 0 0 20px 20px grey;
+	box-shadow: inset 0 0 20px 20px $matrix-shadow-color;
 
 	>div {
 		// inside matrix wrapper, contains all the tone divs
@@ -80,7 +88,7 @@ body {
 #track-wrapper {
 	float: left;
 	border-radius: 10px;
-	border: 3px dotted red;
+	border: 3px dotted $track-color;
 	height: 100%;
 	width: 60%;
 	padding: 4px;
@@ -91,11 +99,12 @@ body {
 #stage-wrapper {
 	display: inline-block;
 	border-radius: 30px;
-	border: 10px dotted white;
+	border: 10px dotted $stage-color;
 	height: 100%;
 	width: 20%;
 	padding: 1px;
 	text-align: center;
+	transition: all 0.3s;
 }
 
 #menu-accordion {
@@ -175,7 +184,7 @@ footer {
 	margin: 4px;
 	border-radius: 4px;
 	border: 1px dotted white;
-	background: $tone-background-color;
+	background: $stage-track-title-background-color;
 }
 
 .staged {
@@ -183,7 +192,7 @@ footer {
 	pointer-events: auto;
 	margin: 4px;
 	border-radius: 4px;
-	border: 1px dotted red;
+	border: 1px dotted $tone-selected-background-color;
 	background: $tone-background-color;
 }
 
@@ -223,7 +232,7 @@ footer {
 }
 
 #tracks-label {
-	background: $tone-background-color;
+	background: $stage-track-title-background-color;
 	border-radius: 10px;
 }
 
@@ -381,3 +390,8 @@ div.explode {
 		z-index: -1;  
 	}
 }
+
+// $i: 30;
+// @-webkit-keyframes colorchange {
+// 	from { $tone-background-color: hsla($i) }
+// }
