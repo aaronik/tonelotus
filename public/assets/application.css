@@ -25,7 +25,7 @@
   bottom: 0;
   width: 200px;
   height: 25px;
-  border: 2px solid #c5d200;
+  border: 2px solid #f88302;
   background-color: #fff;
 }
 
@@ -58,8 +58,8 @@
   top: 3px;
   height: 15px;
   font-size: 12px;
-  background: #c5d200;
-  color: #c5d200;
+  background: #f88302;
+  color: #f88302;
   line-height: 60px;
   font-weight: bold;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -226,9 +226,10 @@ footer {
 /* line 179, ../../app/assets/stylesheets/static_pages.css.scss */
 .clickable {
   cursor: pointer;
+  pointer-events: auto;
 }
 
-/* line 183, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 184, ../../app/assets/stylesheets/static_pages.css.scss */
 #stage-title {
   margin: 4px;
   border-radius: 4px;
@@ -236,7 +237,7 @@ footer {
   background: #f88302;
 }
 
-/* line 190, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 191, ../../app/assets/stylesheets/static_pages.css.scss */
 .staged {
   cursor: pointer;
   pointer-events: auto;
@@ -246,7 +247,7 @@ footer {
   background: teal;
 }
 
-/* line 199, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 200, ../../app/assets/stylesheets/static_pages.css.scss */
 .tracked {
   cursor: pointer;
   pointer-events: auto;
@@ -256,7 +257,7 @@ footer {
   background: teal;
 }
 
-/* line 208, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 209, ../../app/assets/stylesheets/static_pages.css.scss */
 .tone {
   display: inline-block;
   pointer-events: auto;
@@ -273,23 +274,23 @@ footer {
   opacity: 0.9;
   transition: opacity 0.3s, background 0.3s;
 }
-/* line 225, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 226, ../../app/assets/stylesheets/static_pages.css.scss */
 .tone:hover {
   opacity: 1;
 }
 
-/* line 230, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 231, ../../app/assets/stylesheets/static_pages.css.scss */
 .selectedTone {
   background: lightgreen;
 }
 
-/* line 234, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 235, ../../app/assets/stylesheets/static_pages.css.scss */
 #tracks-label {
   background: #f88302;
   border-radius: 10px;
 }
 
-/* line 239, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 240, ../../app/assets/stylesheets/static_pages.css.scss */
 .track {
   height: 85%;
   width: 27%;
@@ -298,7 +299,7 @@ footer {
   transition: all 0.3s;
   float: left;
 }
-/* line 247, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 248, ../../app/assets/stylesheets/static_pages.css.scss */
 .track li {
   list-style-type: none;
   margin-left: -35px;
@@ -306,12 +307,12 @@ footer {
   white-space: pre-wrap;
 }
 
-/* line 255, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 256, ../../app/assets/stylesheets/static_pages.css.scss */
 .droppable-active {
   box-shadow: inset 0 0 20px 20px teal !important;
 }
 
-/* line 260, ../../app/assets/stylesheets/static_pages.css.scss */
+/* line 261, ../../app/assets/stylesheets/static_pages.css.scss */
 div.explode {
   -webkit-animation: explode 0.3s;
   -ms-animation: explode 0.3s;
@@ -321,49 +322,49 @@ div.explode {
 }
 
 @-webkit-keyframes highlight {
-  /* line 269, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 270, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: inset 0 0 0 0 red;
   }
 
-  /* line 270, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 271, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: inset 0 0 10px 10px red;
   }
 
-  /* line 271, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 272, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: inset 0 0 0 0 red;
   }
 }
 
 @-webkit-keyframes explode {
-  /* line 275, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 276, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
   }
 
-  /* line 279, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 280, ../../app/assets/stylesheets/static_pages.css.scss */
   25% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 283, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 284, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: 0 0 10px 10px #DE2C0E;
     z-index: -1;
     background: red;
   }
 
-  /* line 288, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 289, ../../app/assets/stylesheets/static_pages.css.scss */
   75% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 292, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 293, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
@@ -371,32 +372,32 @@ div.explode {
 }
 
 @-moz-keyframes explode {
-  /* line 299, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 300, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
   }
 
-  /* line 303, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 304, ../../app/assets/stylesheets/static_pages.css.scss */
   25% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 307, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 308, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: 0 0 10px 10px #DE2C0E;
     z-index: -1;
     background: red;
   }
 
-  /* line 312, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 313, ../../app/assets/stylesheets/static_pages.css.scss */
   75% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 316, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 317, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
@@ -404,32 +405,32 @@ div.explode {
 }
 
 @-ms-keyframes explode {
-  /* line 323, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 324, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
   }
 
-  /* line 327, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 328, ../../app/assets/stylesheets/static_pages.css.scss */
   25% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 331, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 332, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: 0 0 10px 10px #DE2C0E;
     z-index: -1;
     background: red;
   }
 
-  /* line 336, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 337, ../../app/assets/stylesheets/static_pages.css.scss */
   75% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 340, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 341, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
@@ -437,32 +438,32 @@ div.explode {
 }
 
 @-o-keyframes explode {
-  /* line 347, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 348, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
   }
 
-  /* line 351, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 352, ../../app/assets/stylesheets/static_pages.css.scss */
   25% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 355, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 356, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: 0 0 10px 10px #DE2C0E;
     z-index: -1;
     background: red;
   }
 
-  /* line 360, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 361, ../../app/assets/stylesheets/static_pages.css.scss */
   75% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 364, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 365, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
@@ -470,32 +471,32 @@ div.explode {
 }
 
 @keyframes explode {
-  /* line 371, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 372, ../../app/assets/stylesheets/static_pages.css.scss */
   0% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;
   }
 
-  /* line 375, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 376, ../../app/assets/stylesheets/static_pages.css.scss */
   25% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 379, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 380, ../../app/assets/stylesheets/static_pages.css.scss */
   50% {
     box-shadow: 0 0 10px 10px #DE2C0E;
     z-index: -1;
     background: red;
   }
 
-  /* line 384, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 385, ../../app/assets/stylesheets/static_pages.css.scss */
   75% {
     box-shadow: 0 0 5px 5px #0086FF;
     z-index: -1;
   }
 
-  /* line 388, ../../app/assets/stylesheets/static_pages.css.scss */
+  /* line 389, ../../app/assets/stylesheets/static_pages.css.scss */
   100% {
     box-shadow: 0 0 0px 0px #3EBBF3;
     z-index: -1;

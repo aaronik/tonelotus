@@ -156,6 +156,10 @@ $(document).ready(function(){
 
   $('.track-ul').sortable();
 
+  $('#stage-title').click(function(){
+    Backbone.trigger('stage');
+  });
+
   //play the tracks
   $('#tracks-play-button').click(function(){
     ToneLotus.router.startMasterTrackLoop();
