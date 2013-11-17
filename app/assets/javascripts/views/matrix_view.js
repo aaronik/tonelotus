@@ -25,12 +25,34 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		var that = this;
 		var triggerString = '';
 
-		_(this.gridSize).times(function(column){
+		_(this.gridSize).times(function( column ){
 			triggerString = 'triggerColumn' + column;
+
 			that.listenTo( Backbone, triggerString, function(){
 				that.triggerColumn(column);
 			})
 		});
+	},
+
+	initializeTrackedToneColumnListeners: function(){
+		var that = this;
+		var triggerString = '';
+
+		_(this.gridSize).times(function( column ){
+			triggerString = 'tracked' + that.cid + column;
+
+			that.listenTo( Backbone, triggerString, function(){
+				that.triggerTrackedColumn(column);
+			})
+		});
+	},
+
+	triggerTrackedColumn: function(){
+		var highestNumberedTone = Math.pow(this.gridSize, 2);
+
+		for(i = column; i < highestNumberedTone; i = i + this.gridSize){
+			this.toneViewArray[i].potentiallyTrackPlay();
+		}
 	},
 
 	triggerColumn: function(column){

@@ -1,40 +1,7 @@
--Nov 11 left off at matrices, after staged, can be redrawn to their exact former glory.  Must call delegateEvents to work, but no probs.
- -plan was to implement draggable, and allow the matrix to be dragged back into the matrix-wrapper to re-render it or whatever.  redraw().
- -next is just a short (hahahahahahahahahhahahahahahhahahaha) hop to getting the track(s) working.
+-get timing worked out
+-add clear current matrix button
+-bring track play to new style of delegation
 
 -to add a new instrument: change dropdown on the right in appropriate erb file, add stuff to assign_tone.js, add listener to router
--very minor speed can be had by minimizing or removing animations, just making divs.  z-index will have to be worked out.
- -Howler is not crucial.  html5 audio will work as well.
 
 -cool instruments: Synth(Analog Filter 1)
-
--TRACKING
- -when a matrix is tracked, i call tracked on the matrix
- -when the track loop is playing, only tracked instruments play
- ?then what about the instruments whose turn it isn't?
- -could have another boolean, like currentOnTrack
- -then do i need tracked?  probably
-
- -tracked timer is playing
- -8 tps emits playcolumn event
- -toneview says Is my matrix tracked && currentOnTrack ? activatewithoutanimation : ""
- 
- -how to cycle between tracked matrices?
- -triggerString can = 'tracked<matrixView_cid><column>', emit three at a time or however many there are
- -have a blank string to occupy space and not make sound so as to avoid having extra blank matrices laying around
-
- -then when you drag a matrix into the track, it creates a DOM element with the same name
-  and calls tracked() on the matrix
-
- -when you take a matrix out of the track, it calls untracked() on the matrix, and fills in the empty space with a blank
-
- 
- -Ok I'm working on how to represent the state of the tracks in the app.  
- -I have a potential way hacked out that involves reaching into the DOM
-  -this is beneficial because when the items are sorted, the code will take care of itself.
-  -it's also beneficial because there won't be discrepencies between front and back end.
-  -don't have to write the code to add / subtract stuff when it is added / subbed from the front.
-  -don't have to write the code to reorganize the memory object when list is sorted
-
-  -it's bad because it's bad form
-  -it'll be slower than if i maintained a state in memory.

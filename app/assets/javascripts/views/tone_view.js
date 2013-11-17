@@ -21,8 +21,8 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		// var listenString = "triggerColumn" + this.column;
 		// this.listenTo( Backbone, listenString, this.potentiallyActivate );
 
-		var trackListenString = "tracked" + this.matrix.cid + this.column;
-		this.listenTo( Backbone, trackListenString, this.potentiallyTrackPlay );
+		// var trackListenString = "tracked" + this.matrix.cid + this.column;
+		// this.listenTo( Backbone, trackListenString, this.potentiallyTrackPlay );
 	},
 
 	triggerColumn: function(column_in_array){
@@ -43,7 +43,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 
 	potentiallyTrackPlay: function(){
 		if( this.selected() ){
-			this.toneSound.play();
+			this.activateWithoutAnimation();
 		}
 	},
 

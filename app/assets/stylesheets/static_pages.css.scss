@@ -57,6 +57,9 @@ body {
 	height: 583px;
 	width: 577px;
 	padding: 5px 0 5px 0;
+	// float: right;
+	margin-right: auto;
+	margin-left: auto;
 	box-shadow: inset 0 0 20px 20px $matrix-shadow-color;
 
 	>div {
@@ -251,6 +254,11 @@ footer {
 		padding: 0;
 		white-space: pre-wrap;
 	}
+}
+
+.matrix-bumper-div {
+	display: inline-block;
+	width: 5%;
 }
 
 .droppable-active {
