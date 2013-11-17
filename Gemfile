@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '~>3.2'
+gem 'rails', '3.2.13'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -21,6 +21,7 @@ end
 group :production do
 	gem 'pg'
 	gem 'unicorn'
+	gem 'rails_12factor'
 end
 
 gem 'jquery-rails'
