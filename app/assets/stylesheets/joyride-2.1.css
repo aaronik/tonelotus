@@ -9,9 +9,10 @@ body {
 
 /* Default styles for the container */
 .joyride-tip-guide {
+  pointer-events: auto;
   position: absolute;
-  background: #000;
-  background: rgba(0,0,0,0.8);
+  background: #333;
+  /*background: rgba(0,0,0,0.8);*/
   display: none;
   color: #fff;
   width: 300px;

@@ -19,6 +19,8 @@
 //= require tone_lotus
 //= require howler.min
 //= require jquery-ui-1.10.3.custom.min
+//= require jquery.cookie
+//= require jquery.joyride-2.1
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

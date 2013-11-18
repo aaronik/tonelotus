@@ -3,7 +3,7 @@
 // @import "ceaser-easing";
 
 // Globals
-$body-background-color: #111111;
+$body-background-color: #111;
 
 $tone-background-color: teal;
 $tone-selected-background-color: lightgreen;
@@ -256,9 +256,8 @@ footer {
 	}
 }
 
-.matrix-bumper-div {
-	display: inline-block;
-	width: 5%;
+#joyride-ol {
+	display: none;
 }
 
 .droppable-active {
