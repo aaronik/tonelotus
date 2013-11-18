@@ -39,12 +39,13 @@ ToneLotus.findMaxLength = function(){
   return maxLength;
 }
 
-ToneLotus.findMaxLength([1,2],[3,4,5]);
-
 $(document).ready(function(){
 
   // fire up the backbone
   ToneLotus.initialize();
+
+  // grab tone 147 for joyride
+  $('.tone').eq(147).attr('id', 'joyride-tone');
 
   // listen for space press or others...
   $(document).keypress(function(eventObject){
