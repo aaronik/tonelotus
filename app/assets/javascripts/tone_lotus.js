@@ -23,7 +23,10 @@ ToneLotus.delegateDraggable = function(){
   $('.staged').draggable({
     revert: true,
     revertDuration: 150,
-    disabled: false
+    disabled: false,
+    stop: function(event){
+      $(event.toElement).attr('style',"position: relative; left: 0; top: 0");
+    }
   });
 }
 

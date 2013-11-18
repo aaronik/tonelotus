@@ -1,0 +1,2 @@
+class LotusesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+module LotusesHelper
+end

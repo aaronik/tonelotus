@@ -1,7 +1,3 @@
-// Imports
-@import "compass/css3";
-// @import "ceaser-easing";
-
 // Globals
 $body-background-color: #111;
 
@@ -15,7 +11,8 @@ $stage-color: white;
 $stage-track-title-background-color: #F88302;
 $track-color: red;
 
-$tone-height-width: 24px;
+// $tone-height-width: 24px;
+$tone-height-width: 29px;
 $tone-padding: 3px;
 $tone-margin-top-bottom: -1px;
 $tone-margin-left-right: 1px;
@@ -24,8 +21,11 @@ $menu-highlight-color: $tone-background-color;
 $menu-background-color: black;
 $menu-shadow-color: grey;
 
-$tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-left-right * 2)) * 16;
+// $tone-wrapper-width: ($tone-height-width + ($tone-padding * 2) + ($tone-margin-left-right * 2)) * 16;
+$tone-wrapper-width: ($tone-height-width + ($tone-margin-left-right * 2)) * 16;
 
+
+// Styles
 body {
 	pointer-events: none;
 	background: $body-background-color;
@@ -104,7 +104,7 @@ body {
 	border-radius: 30px;
 	border: 10px dotted $stage-color;
 	height: 100%;
-	width: 20%;
+	width: 30%;
 	padding: 1px;
 	text-align: center;
 	transition: all 0.3s;
@@ -242,7 +242,7 @@ footer {
 
 .track {
 	height: 85%;
-	width: 27%;
+	width: 30%;
 	border: thick solid red;
 	margin: 3px;
 	transition: all 0.3s;
@@ -395,7 +395,7 @@ div.explode {
 	}
 	100% { 
 		box-shadow: 0 0 0px 0px #3EBBF3; 
-		z-index: -1;  
+		z-index: -1;
 	}
 }
 
