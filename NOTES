@@ -1,0 +1,7 @@
+-get timing worked out
+-add clear current matrix button
+-bring track play to new style of delegation
+
+-to add a new instrument: change dropdown on the right in appropriate erb file, add stuff to assign_tone.js, add listener to router
+
+-cool instruments: Synth(Analog Filter 1)
