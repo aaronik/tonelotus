@@ -19,6 +19,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.listenTo( Backbone, 'delegateEvents', this.delegateEventsForTones );
 
 		this.initializeToneColumnListeners();
+		this.initializeTrackedToneColumnListeners();
 	},
 
 	initializeToneColumnListeners: function(){
@@ -47,7 +48,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		});
 	},
 
-	triggerTrackedColumn: function(){
+	triggerTrackedColumn: function( column ){
 		var highestNumberedTone = Math.pow(this.gridSize, 2);
 
 		for(i = column; i < highestNumberedTone; i = i + this.gridSize){

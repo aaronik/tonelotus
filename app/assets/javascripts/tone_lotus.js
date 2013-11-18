@@ -182,18 +182,24 @@ $(document).ready(function(){
   //listen for instrument changes
   $('.instrument').click(function( event ){
     Backbone.trigger(event.target.id);
-  })
+  });
 
   //temp, send Mainframe Operations events
-  $('.eventControls').click(function( event ){
-    console.log(event.target.id);
-    Backbone.trigger(event.target.id);
-  })
+  // $('.eventControls').click(function( event ){
+  //   console.log(event.target.id);
+  //   Backbone.trigger(event.target.id);
+  // })
+
+  $('#help-button-launch-joyride').click(function(){
+    // not sure why two is required, but it is.
+    $('#joyride-ol').joyride({});
+    $('#joyride-ol').joyride({});
+  });
 
   //when update time is clicked
   $('#update-time-form').submit(function( event ){
     event.preventDefault();
     Backbone.trigger('updateTime');
-  })
+  });
 
 });

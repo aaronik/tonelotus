@@ -12,7 +12,7 @@ body {
   pointer-events: auto;
   position: absolute;
   background: #333;
-  /*background: rgba(0,0,0,0.8);*/
+  background: rgba(100,100,100,0.8);
   display: none;
   color: #fff;
   width: 300px;
@@ -64,8 +64,8 @@ body {
   border-bottom-color so here we set the border-color
   and override the top,left,right colors below.
   */
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8);
+  border-color: #333;
+  border-color: rgba(100,100,100,0.8);
   border-top-color: transparent !important;
   border-left-color: transparent !important;
   border-right-color: transparent !important;
@@ -82,8 +82,8 @@ body {
   border-top-color so here we set the border-color
   and override the bottom,left,right colors below.
   */
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8) !important;
+  border-color: #333;
+  border-color: rgba(100,100,100,0.8) !important;
   border-bottom-color: transparent !important;
   border-left-color: transparent !important;
   border-right-color: transparent !important;
@@ -93,8 +93,8 @@ body {
 }
 
 .joyride-tip-guide span.joyride-nub.right {
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8) !important;
+  border-color: #333;
+  border-color: rgba(100,100,100,0.8) !important;
   border-top-color: transparent !important;
   border-right-color: transparent !important;
   border-bottom-color: transparent !important;
@@ -106,8 +106,8 @@ body {
 }
 
 .joyride-tip-guide span.joyride-nub.left {
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8) !important;
+  border-color: #333;
+  border-color: rgba(100,100,100,0.8) !important;
   border-top-color: transparent !important;
   border-left-color: transparent !important;
   border-bottom-color: transparent !important;
@@ -119,8 +119,8 @@ body {
 }
 
 .joyride-tip-guide span.joyride-nub.top-right {
-  border-color: #000;
-  border-color: rgba(0,0,0,0.8);
+  border-color: #333;
+  border-color: rgba(100,100,100,0.8);
   border-top-color: transparent !important;
   border-left-color: transparent !important;
   border-right-color: transparent !important;
@@ -162,6 +162,7 @@ body {
 /* Button Style */
 .joyride-tip-guide .joyride-next-tip {
   width: auto;
+  margin: 30px;
   padding: 6px 18px 4px;
   font-size: 13px;
   text-decoration: none;
@@ -175,7 +176,7 @@ body {
   background: -ms-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0063ff', endColorstr='#0055d6',GradientType=0 );
   background: linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 0 rgba(100,100,100,0.5);
   -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
           border-radius: 2px;

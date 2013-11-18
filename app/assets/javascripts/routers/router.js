@@ -264,7 +264,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		// matrixCidArrayHash is a hash with keys 1,2,3, each representing a track.
 		// the values to each key is an array of the cids of the matrices in that track.
-		console.log(matrixCidArrayHash);
 		return matrixCidArrayHash;
 	},
 
