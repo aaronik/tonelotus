@@ -20,7 +20,7 @@ window.ToneLotus = {
 };
 
 ToneLotus.delegateDraggable = function(){
-  $('.staged').draggable({
+  $('.staged, .tracked').draggable({
     revert: true,
     revertDuration: 150,
     disabled: false,
@@ -110,6 +110,7 @@ $(document).ready(function(){
 
       $ref.addClass('tracked');
       $ref.removeClass('staged');
+      $ref.removeClass('staged-matrix');
 
       $(event.target).children('ul').append('<li></li>');
       $(event.target).children('ul').children('li').last().append($ref);
@@ -118,19 +119,19 @@ $(document).ready(function(){
       var matrix;
 
       if( $(event.toElement).hasClass('blank-track') ){
-        $ref.addClass('tracked').attr('data-cid', 'blank');
+        $ref.attr('data-cid', 'blank');
       } else {
         matrix = getBackboneMatrixByJqueryEvent(event);
         matrix.track();
       }
 
-      $ref.draggable();
+      ToneLotus.delegateDraggable();
     }
   });
 
   $('#matrix-wrapper').droppable({
     activeClass: 'droppable-active',
-    accept: '.non-blank',
+    accept: '.staged-matrix',
 
     drop: function(event){
       console.log(event);
