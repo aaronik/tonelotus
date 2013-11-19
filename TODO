@@ -12,3 +12,4 @@
 
 -matrices in track should have some kind of text wrap or something - was an option for this, forget already.  like hard-wrap or something.
 -handle when staged matrix is dragged into matrix-wrapper and there's already an instance of that instrument in existence
+-why is, in .track.droppable, $ref turning into the entire html document sometimes????

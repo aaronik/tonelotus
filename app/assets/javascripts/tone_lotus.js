@@ -103,14 +103,21 @@ $(document).ready(function(){
 
     drop: function(event){
       if( !$(event.toElement).hasClass('tracked') ){
+        // if pulled from stage
         var $ref = $(event.toElement).clone();
+        $ref.addClass('tracked');
+        $ref.removeClass('staged');
+        $ref.removeClass('staged-matrix');
       } else {
+        // if already a track
         $ref = $(event.toElement);
       }
 
-      $ref.addClass('tracked');
-      $ref.removeClass('staged');
-      $ref.removeClass('staged-matrix');
+      // why does this happen sometimes???
+      if($ref.is('html')){
+        console.log('whoops, looks like droppable had an error.')
+        return
+      }
 
       $(event.target).children('ul').append('<li></li>');
       $(event.target).children('ul').children('li').last().append($ref);
