@@ -262,8 +262,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		return matrixCidArrayHash;
 	},
 
-
-
 	broadcastRedraw: function(){
 		// broadcast a universal redraw event, errbody listens, errbody decouples themselves from listenTos and the dom.  This is important for when the gridSize is redrawn and the whole page is redone.  This will be implemented, along with multiple sizings, way later.  16 is a good number for now.
 

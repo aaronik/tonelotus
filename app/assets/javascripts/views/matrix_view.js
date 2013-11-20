@@ -85,6 +85,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 	makeCurrentMatrix: function(){
 		this.currentMatrix = true;
+		this.$el.addClass('live-matrix');
 	},
 
 	removeCurrentMatrix: function(){
@@ -113,7 +114,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 	stage: function(){
 		this.staged = true;
 		this.$el.addClass('staged non-blank staged-matrix');
-		this.$el.removeClass('anim_4 scaleInv fadein');
+		this.$el.removeClass('anim_4 scaleInv fadein live-matrix');
 		setTimeout(ToneLotus.delegateDraggable, 100);
 
 		var newElString = this.instrument + this.cid.slice(4);
@@ -124,6 +125,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 	unstage: function(){
 		this.staged = false;
 		this.$el.removeClass('staged non-blank staged-matrix');
+		this.$el.addClass('live-matrix');
 	},
 
 	redraw: function(){
