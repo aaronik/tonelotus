@@ -36,8 +36,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	routes: {
 		'':'initializePage',
-		':gridSize':'initializePage',
-		':gridSize/:totalLoopTime':'initializePage'
 	},
 
 	changeMenuInstrumentSelector: function(instrument){
