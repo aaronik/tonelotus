@@ -153,8 +153,9 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		}
 	},
 
-	removeMasterLoop: function(){
-		window.clearInterval(this.masterLoop);
+	killAllLoops: function(){
+		this.masterLoop && this.killMasterLoop();
+		this.masterTrackLoop && this.killMasterTrackLoop();
 	},
 
 	killMasterLoop: function(){
@@ -168,9 +169,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	startMasterLoop: function(){
-		if(this.masterTrackLoop){
-			this.killMasterTrackLoop();
-		}
+		this.killAllLoops();
 
 		var that = this;
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
@@ -185,9 +184,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	startMasterTrackLoop: function(){
-		if(this.masterLoop){
-			this.killMasterLoop();
-		}
+		this.killAllLoops();
 
 		var that = this;
 		var columnLoopTime = this.totalLoopTime / this.gridSize;
