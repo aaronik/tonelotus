@@ -15,6 +15,7 @@ gem 'rails_12factor'
 gem 'less-rails'
 gem 'backbone-on-rails'
 gem 'ejs'
+gem 'unicorn'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -29,6 +30,5 @@ end
 
 group :production do
 	gem 'pg'
-	gem 'unicorn'
 end
 
