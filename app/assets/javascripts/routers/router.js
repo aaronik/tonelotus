@@ -48,7 +48,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		this.stageCurrent();
 		this.stageRedraw(); // removing staged class from elements
-		this.$matrixEl.html('<p>Select new instrument</p><p>Or drag from the stage</p><h2>ಠ益ಠ</h2>');
+		this.$matrixEl.html('<p>Select new instrument</p><p>or drag from the stage</p><h2>ಠ益ಠ</h2>');
 		this.$matrixEl.css('text-align', 'center');
 	},
 
