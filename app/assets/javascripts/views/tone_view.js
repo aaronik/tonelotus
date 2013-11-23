@@ -7,22 +7,12 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.column = this.toneViewNumber % this.gridSize;
 		this.isSelected = false;
 
-		ToneLotus.assignTone(this);
-
-		this.initializeListeners();
+		ToneLotus.Store.assignTone(this);
 	},
 
 	events: {
 		'click':'toggleSelected',
 		'mouseover':'mouseoverHandler'
-	},
-
-	initializeListeners: function(){
-		// var listenString = "triggerColumn" + this.column;
-		// this.listenTo( Backbone, listenString, this.potentiallyActivate );
-
-		// var trackListenString = "tracked" + this.matrix.cid + this.column;
-		// this.listenTo( Backbone, trackListenString, this.potentiallyTrackPlay );
 	},
 
 	triggerColumn: function(column_in_array){
@@ -32,7 +22,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	mouseoverHandler: function(){
-		if(ToneLotus.isMouseDown){
+		if(ToneLotus.Store.isMouseDown){
 			this.toggleSelected();
 		}
 	},
@@ -103,11 +93,5 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		this.$el.attr('class', 'tone');
 
 		return this;
-	},
-
-	seppuku: function(){
-		this.$el.empty();
-		this.stopListening();
-		delete this;
 	}
 });

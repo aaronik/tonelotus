@@ -1,4 +1,4 @@
-ToneLotus.findMaxLength = function(){
+ToneLotus.Store.findMaxLength = function(){
   var maxLength = 0;
 
   for( i = 0; i < arguments.length; i++ ){
@@ -10,7 +10,7 @@ ToneLotus.findMaxLength = function(){
   return maxLength;
 };
 
-ToneLotus.getBackboneMatrixByJqueryEvent = function(event){
+ToneLotus.Store.getBackboneMatrixByJqueryEvent = function(event){
   return _.find(ToneLotus.matrixArray, function( matrix ){
     return matrix.cid == $(event.toElement).attr('data-cid');
   })

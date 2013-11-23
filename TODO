@@ -1,3 +1,5 @@
+-big text when paused, saved, play matrix, play lotus
+
 -Audio files should be passed out by a controller to a collection.  Then they should be mined from that collection to be played.
  -or even each tone view could have a model, that model belongs to the collection.  If I then mess around with the models, without
  -telling them which collection they are part of, will my collection still know about all those models?  Are model URLs and collections

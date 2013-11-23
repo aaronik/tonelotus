@@ -1,4 +1,4 @@
-ToneLotus.assignTone = function(view){
+ToneLotus.Store.assignTone = function(view){
 	var row = Math.floor(view.toneViewNumber / view.gridSize);
 
 	switch(view.instrument){
@@ -14,20 +14,18 @@ ToneLotus.assignTone = function(view){
 	}
 }
 
-ToneLotus.prefetchTones = function(){
+ToneLotus.Store.prefetchTones = function(){
 	var audioFileNames = ["c3", "d3", "e3", "g3", "a3", "c4", "d4", "e4", "g4", "a4", "c5", "d5", "e5", "g5", "a5", "c6"];
 
 	audioFileNames.forEach(function( fileName ){
 		new Howl({ urls: ['audios/fm_synth/' + fileName + '.mp3', 'audios/fm_synth/' + fileName + '.ogg']});
 		new Howl({ urls: ['audios/sine_pad/' + fileName + '.mp3', 'audios/sine_pad/' + fileName + '.ogg']});
-		console.log('prefetching ' + fileName);
 	});	
 
 	audioFileNames = ["bass", "bass_snare", "kick", "floor", "block_snare", "snare", "hh_closed", "hh_loose", "hh_open", "tom1", "tom2", "tom3", "tom4", "tom5", "tom6", "woodblock"];
 
 	audioFileNames.forEach(function( fileName ){
 		new Howl({ urls: ['audios/drumkit_1/' + fileName + '.mp3', 'audios/drumkit_1/' + fileName + '.ogg']});
-		console.log('prefetching ' + fileName);
 	});
 }
 

@@ -5,15 +5,10 @@ $(document).ready(function(){
     accept: '.staged-matrix',
 
     drop: function(event){
-      var draggedMatrix = ToneLotus.getBackboneMatrixByJqueryEvent(event);
+      var draggedMatrix = ToneLotus.Store.getBackboneMatrixByJqueryEvent(event);
 
       if( draggedMatrix ){
-	      draggedMatrix.$el.detach();
-	      draggedMatrix.unstage();
-	      draggedMatrix.redraw();
-
-	      ToneLotus.matrixHash[draggedMatrix.instrument] = draggedMatrix;
-	      Backbone.trigger(draggedMatrix.instrument);
+	      ToneLotus.router.unstageMatrix(draggedMatrix);
 	    }
 
     }
@@ -58,11 +53,11 @@ $(document).ready(function(){
       if( $(event.toElement).hasClass('blank-track') ){
         $ref.attr('data-cid', 'blank');
       } else {
-        matrix = ToneLotus.getBackboneMatrixByJqueryEvent(event);
+        matrix = ToneLotus.Store.getBackboneMatrixByJqueryEvent(event);
         matrix.track();
       }
 
-      ToneLotus.delegateDraggable();
+      ToneLotus.Store.delegateDraggable();
     }
   });
 
@@ -70,7 +65,7 @@ $(document).ready(function(){
 
 });
 
-ToneLotus.delegateDraggable = function(){
+ToneLotus.Store.delegateDraggable = function(){
   $('.staged, .tracked').draggable({
     revert: true,
     revertDuration: 150,

@@ -3,10 +3,12 @@ window.ToneLotus = {
   Collections: {},
   Views: {},
   Routers: {},
+  Store: {
+    isMouseDown: false
+  },
 
   matrixHash: {},
   matrixArray: [],
-  isMouseDown: false,
 
   initialize: function() {
   	var $matrixEl = $('#matrix-wrapper');
@@ -15,10 +17,12 @@ window.ToneLotus = {
   	ToneLotus.router = new ToneLotus.Routers.AppRouter($matrixEl, $stageEl);
   	Backbone.history.start();
 
-    ToneLotus.delegateDraggable();
+    ToneLotus.Store.delegateDraggable();
   }
 };
 
 $(document).ready(function(){
   ToneLotus.initialize();
+
+  console.log("Welcome to Tone Lotus.  ;)");
 });

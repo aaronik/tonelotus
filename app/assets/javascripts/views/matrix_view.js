@@ -13,9 +13,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 	},
 
 	initializeListeners: function(){
-		this.listenTo( Backbone, 'masterRedraw', this.masterRedraw );
 		this.listenTo( Backbone, 'spacePress', this.spacePress );
-		this.listenTo( Backbone, 'masterDestroy', this.seppuku );
 		this.listenTo( Backbone, 'delegateEvents', this.delegateEventsForTones );
 
 		this.initializeToneColumnListeners();
@@ -115,7 +113,7 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.staged = true;
 		this.$el.addClass('staged non-blank staged-matrix');
 		this.$el.removeClass('anim_4 scaleInv fadein live-matrix');
-		setTimeout(ToneLotus.delegateDraggable, 100);
+		setTimeout(ToneLotus.Store.delegateDraggable, 100);
 
 		var newElString = this.instrument + this.cid.slice(4);
 		this.$el.html(newElString);
@@ -136,19 +134,6 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 		this.toneViewArray.forEach(function(toneView){
 			that.$el.append(toneView.$el);
 		})
-	},
-
-	masterRedraw: function(){
-		this.$el.empty();
-		this.render();
-		this.sendToTones('stopListening');
-	},
-
-	seppuku: function(){
-		this.sendToTones('seppuku');
-		this.$el.empty();
-		this.stopListening();
-		delete this;
 	},
 
 	delegateEventsForTones: function(){

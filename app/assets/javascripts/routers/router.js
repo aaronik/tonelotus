@@ -14,28 +14,63 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.listenTo( Backbone, 'spacePress', this.spacePressHandler );
 
 		var that = this;
+
 		// set up a listener for each instrument
+		// this will be triggered when a new instrument is created or one is dragged from the stage
 		this.instruments.forEach(function(instrument){
-
 			that.listenTo(Backbone, instrument, function(){
-
-				// make a new instrument if one doesn't already exist
-				var matrix = ToneLotus.matrixHash[instrument];
-				if(!matrix){
-					matrix = that.initializeMatrix(instrument);
-				}
-
-				// do the things i need to do
-				that.assignCurrentMatrix(matrix);
-				that.drawMatrix(that.currentMatrix);
-				that.changeMenuInstrumentSelector(instrument);
-
+				that.instrumentEventHandler(instrument);
 			});
 		});
 	},
 
 	routes: {
 		'':'initializePage',
+	},
+
+	instrumentEventHandler: function(instrument) {
+		// make a new instrument if one doesn't already exist
+		var matrix = this.findMatrix(instrument);
+
+		// finish setting up specific instrument
+		this.assignCurrentMatrix(matrix);
+		this.drawMatrix(this.currentMatrix);
+		this.changeMenuInstrumentSelector(instrument);
+	},
+
+	findMatrix: function(instrument){
+		// find a matrix from the hash, an unstaged one from the array, or make a new one
+		if( ToneLotus.matrixHash[instrument] ){
+			var matrix = ToneLotus.matrixHash[instrument];
+		} else if( this.getUnstagedMatrixFromArray(instrument) ){
+			var matrix = this.getUnstagedMatrixFromArray(instrument)
+		} else {
+			var matrix = this.initializeMatrix(instrument);
+		}
+
+		return matrix;
+	},
+
+	getUnstagedMatrixFromArray: function(instrument){
+		var final_matrix;
+
+		ToneLotus.matrixArray.forEach(function(matrix){
+			if( !matrix.staged && matrix.instrument == instrument ){
+				final_matrix = matrix;
+			}
+		})
+
+		return final_matrix;
+	},
+
+	unstageMatrix: function(matrix){
+    ToneLotus.matrixHash[matrix.instrument] = matrix;
+
+		matrix.$el.detach();
+    matrix.unstage();
+    matrix.redraw();
+
+    Backbone.trigger(matrix.instrument);
 	},
 
 	changeMenuInstrumentSelector: function(instrument){
@@ -58,8 +93,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	stageRedraw: function(){
-		this.$stageEl.append($('.staged')); //honestly don't know why this works.
-		// i predict this will cause problems in the future.
+		this.$stageEl.append($('.staged'));
 	},
 
 	spacePressHandler: function(){
@@ -83,8 +117,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	initializePage: function(gridSize, totalLoopTime){
-		this.broadcastRedraw(); // for diff grid sizes
-
 		this.gridSize = (gridSize || 16);
 		this.totalLoopTime = (totalLoopTime || 2000);
 		this.startMasterLoop();
@@ -94,7 +126,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.assignCurrentMatrix(matrixView);
 		this.drawMatrix(matrixView);
 
-		ToneLotus.prefetchTones();
+		ToneLotus.Store.prefetchTones();
 
 		// initialize but DON"T draw the rest of the instruments
 		// var that = this;
@@ -193,7 +225,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		var triggerString = '';
 		var matrixCounterHelper = 0;
 		var trackInstrumentIndex = 0;
-		var sizeBiggestMatrix = ToneLotus.findMaxLength(matrixCidArrayHash[0], 
+		var sizeBiggestMatrix = ToneLotus.Store.findMaxLength(matrixCidArrayHash[0], 
 																									matrixCidArrayHash[1], 
 																									matrixCidArrayHash[2]); //works
 
@@ -219,8 +251,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	},
 
-	// this is BAD FORM.  Must do things behind the curtain, and not rely on the curtain.
-	// maybe not.  check out notes for comparrison / contrastisson
 	getMatrixCidArrayHash: function(){
 		var matrixCidArrayHash = {};
 		var matrixCidArray0 = [];
@@ -260,12 +290,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		// matrixCidArrayHash is a hash with keys 1,2,3, each representing a track.
 		// the values to each key is an array of the cids of the matrices in that track.
 		return matrixCidArrayHash;
-	},
-
-	broadcastRedraw: function(){
-		// broadcast a universal redraw event, errbody listens, errbody decouples themselves from listenTos and the dom.  This is important for when the gridSize is redrawn and the whole page is redone.  This will be implemented, along with multiple sizings, way later.  16 is a good number for now.
-
-		Backbone.trigger('masterRedraw');
 	}
 
 })
