@@ -5,12 +5,12 @@ $(document).ready(function(){
 
   //play the tracks
   $('#tracks-play-button').click(function(){
-    ToneLotus.router.startMasterTrackLoop();
+    ToneLotus.Metronome.startMasterTrackLoop();
   });
 
   //play the matrix
   $('#main-play-button').click(function(){
-    ToneLotus.router.startMasterLoop();
+    ToneLotus.Metronome.startMasterLoop();
   });
 
   //pause button

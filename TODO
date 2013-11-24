@@ -1,17 +1,11 @@
+-save functionality:
+ -/#/?lt=<loop time>&i=<instrument><bit for staged or not><on/off>&i=...&t1=0b001%t2=bbbbb&t3=11111
+
+-put matrixHash, matrixArray into Store or Data?
 -big text when paused, saved, play matrix, play lotus
 
--Audio files should be passed out by a controller to a collection.  Then they should be mined from that collection to be played.
- -or even each tone view could have a model, that model belongs to the collection.  If I then mess around with the models, without
- -telling them which collection they are part of, will my collection still know about all those models?  Are model URLs and collections
- -one to one?
-
--why does tone_view have selected() and not just ask directly for isSelected, or even make selected a boolean
--yummiloader - fix or delete from app.js, stylesheets folder, javascripts folder, gemfile, app.scss, classes from main-wrapper in app.html.erb
 -Add ToneLotus to list of backbone examples on backbonejs.org
 -remove all the masterlistener stuff from the router, maybe make a new class called MasterListener which is actually a router.
- -put all the things from tonelotus.js and the router in there.  It's the conductor.
--look into getting SASS to abstract away vendor prefixes (compass)
 
 -matrices in track should have some kind of text wrap or something - was an option for this, forget already.  like hard-wrap or something.
--handle when staged matrix is dragged into matrix-wrapper and there's already an instance of that instrument in existence
 -why is, in .track.droppable, $ref turning into the entire html document sometimes????

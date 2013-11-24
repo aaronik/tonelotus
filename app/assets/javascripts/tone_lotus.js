@@ -4,11 +4,15 @@ window.ToneLotus = {
   Views: {},
   Routers: {},
   Store: {
-    isMouseDown: false
+    isMouseDown: false,
+    totalLoopTime: 2000,
+    gridSize: 16,
+    matrixHash: {},
+    matrixArray: []
   },
+  State: {},
+  Metronome: {},
 
-  matrixHash: {},
-  matrixArray: [],
 
   initialize: function() {
   	var $matrixEl = $('#matrix-wrapper');
