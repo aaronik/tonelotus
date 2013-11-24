@@ -51,6 +51,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		console.log(state)
 	},
 
+	pause: function(){
+		ToneLotus.Metronome.pause();
+	},
+
 	instrumentEventHandler: function(instrument) {
 		// make a new instrument if one doesn't already exist
 		var matrix = ToneLotus.Store.findMatrix(instrument);
@@ -71,9 +75,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
     Backbone.trigger(matrix.instrument);
 	},
 
-	changeMenuInstrumentSelector: function(instrument){
-		$('.instrument').removeClass('selectedInstrument');
-    $('#' + instrument).addClass('selectedInstrument');
+	spacePressHandler: function(){
+		$('.staged-matrix').off().remove();
+		$('.tracked').off().remove();
+		this.stageRedraw();
 	},
 
 	stageHandler: function(){
@@ -94,24 +99,13 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.$stageEl.append($('.staged'));
 	},
 
-	spacePressHandler: function(){
-		$('.staged-matrix').off().remove();
-		$('.tracked').off().remove();
-		this.stageRedraw();
+	updateTime: function(){
+		ToneLotus.Metronome.updateTime();
 	},
 
-	updateTime: function(){
-		var $updateTimeInput = $('#update-time-text-input');
-		var bpm = parseInt($updateTimeInput.val());
-
-		$updateTimeInput.attr('placeholder', bpm + ' bpm');
-		$updateTimeInput.val('');
-
-		var newTime = (240 / bpm) * 1000;
-
-		ToneLotus.Store.totalLoopTime = newTime;
-		this.pause();
-		this.pause();
+	changeMenuInstrumentSelector: function(instrument){
+		$('.instrument').removeClass('selectedInstrument');
+    $('#' + instrument).addClass('selectedInstrument');
 	},
 
 	assignCurrentMatrix: function(matrix){
@@ -129,9 +123,5 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		
 		Backbone.trigger('delegateEvents');
 	},
-
-	pause: function(){
-		ToneLotus.Metronome.pause();
-	}
 
 })

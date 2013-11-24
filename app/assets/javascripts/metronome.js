@@ -83,4 +83,18 @@
 		}, columnLoopTime)
 	};
 
+	Metronome.updateTime = function(){
+		var $updateTimeInput = $('#update-time-text-input');
+		var bpm = parseInt($updateTimeInput.val());
+
+		$updateTimeInput.attr('placeholder', bpm + ' bpm');
+		$updateTimeInput.val('');
+
+		var newTime = (240 / bpm) * 1000;
+
+		ToneLotus.Store.totalLoopTime = newTime;
+		this.pause();
+		this.pause();
+	};
+
 })(ToneLotus);
