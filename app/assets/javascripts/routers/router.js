@@ -33,7 +33,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		ToneLotus.Metronome.startMasterLoop();
 
 		// initialize and draw the instrument the user will see first.
-		var matrixView = this.initializeMatrix(this.instruments[0]);
+		var matrixView = ToneLotus.Store.initializeMatrix(this.instruments[0]);
 		this.assignCurrentMatrix(matrixView);
 		this.drawMatrix(matrixView);
 
@@ -42,7 +42,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		// initialize but DON"T draw the rest of the instruments
 		// var that = this;
 		// this.instruments.slice(1).forEach(function(instrument){
-		// 	that.initializeMatrix(instrument);
+		// 	ToneLotus.Store.initializeMatrix(instrument);
 		// })
 	},
 
@@ -118,22 +118,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.currentMatrix && this.currentMatrix.removeCurrentMatrix();
 		matrix.makeCurrentMatrix();
 		this.currentMatrix = matrix;
-	},
-
-	initializeMatrix: function(instrument){
-		// creates the matrix View, AND renders it.  
-
-		var matrixView = new ToneLotus.Views.MatrixView({
-			gridSize: ToneLotus.Store.gridSize,
-			totalLoopTime: ToneLotus.Store.totalLoopTime,
-			instrument: instrument
-		});
-
-		matrixView.render();
-
-		ToneLotus.Store.matrixHash[instrument] = matrixView;
-		ToneLotus.Store.matrixArray.push(matrixView);
-		return matrixView;
 	},
 
 	drawMatrix: function(matrix){

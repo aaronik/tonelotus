@@ -36,7 +36,7 @@
     } else if( Store.getUnstagedMatrixFromArray(instrument) ){
       var matrix = Store.getUnstagedMatrixFromArray(instrument)
     } else {
-      var matrix = ToneLotus.router.initializeMatrix(instrument);
+      var matrix = ToneLotus.Store.initializeMatrix(instrument);
     }
 
     return matrix;
@@ -93,6 +93,22 @@
     // matrixCidArrayHash is a hash with keys 1,2,3, each representing a track.
     // the values to each key is an array of the cids of the matrices in that track.
     return matrixCidArrayHash;
-  }
+  };
+
+  Store.initializeMatrix = function(instrument){
+    // creates the matrix View, AND renders it.  
+
+    var matrixView = new ToneLotus.Views.MatrixView({
+      gridSize: ToneLotus.Store.gridSize,
+      totalLoopTime: ToneLotus.Store.totalLoopTime,
+      instrument: instrument
+    });
+
+    matrixView.render();
+
+    ToneLotus.Store.matrixHash[instrument] = matrixView;
+    ToneLotus.Store.matrixArray.push(matrixView);
+    return matrixView;
+  };
 
 })(ToneLotus);
