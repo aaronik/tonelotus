@@ -12,8 +12,7 @@
 			this.lastLoopStartFunction = 'startMasterTrackLoop';
 			console.log('paused track loop');
 		} else {
-			console.log(this.lastLoopStartFunction);
-			this[this.lastLoopStartFunction]();
+			this.startMasterLoop();
 		}
 	};
 

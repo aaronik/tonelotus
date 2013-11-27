@@ -71,7 +71,7 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 	},
 
 	select: function(){
-		this.isSelected = false;
+		this.isSelected = true;
 		this.$el.addClass('selectedTone');
 	},
 

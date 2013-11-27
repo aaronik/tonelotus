@@ -117,20 +117,15 @@ ToneLotus.Views.MatrixView = Backbone.View.extend({
 
 		var newElString = this.instrument + this.cid.slice(4);
 		this.$el.html(newElString);
-		// this.$oldHtml = this.$el;
+		delete ToneLotus.Store.matrixHash[this.instrument];
 	},
 
 	unstage: function(){
+		var that = this;
 		this.staged = false;
 		this.$el.removeClass('staged non-blank staged-matrix');
 		this.$el.addClass('live-matrix');
-	},
-
-	redraw: function(){
-		var that = this;
-
 		this.$el.empty();
-
 		this.toneViewArray.forEach(function(toneView){
 			that.$el.append(toneView.$el);
 		})

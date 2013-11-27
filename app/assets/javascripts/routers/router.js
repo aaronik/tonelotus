@@ -10,7 +10,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	initializeListeners: function(){
 		this.listenTo( Backbone, 'updateTime', this.updateTime );
 		this.listenTo( Backbone, 'pause', this.pause );
-		this.listenTo( Backbone, 'stage', this.stageHandler );
+		this.listenTo( Backbone, 'stage', this.stage );
 		this.listenTo( Backbone, 'spacePress', this.spacePressHandler );
 
 		var that = this;
@@ -26,7 +26,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	routes: {
 		''				: 	'initializePage',
-		'/:state'	: 	'constructState'
+		':state'	: 	'constructState'
 	},
 
 	initializePage: function(){
@@ -47,8 +47,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	constructState: function(state){
-		this.initializePage();
-		console.log(state)
+		ToneLotus.State.initialize(state);
 	},
 
 	pause: function(){
@@ -70,7 +69,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		matrix.$el.detach();
     matrix.unstage();
-    matrix.redraw();
 
     Backbone.trigger(matrix.instrument);
 	},
@@ -81,13 +79,15 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.stageRedraw();
 	},
 
-	stageHandler: function(){
-		var that = this;
+	stage: function(matrix){
+		if(matrix){
+			matrix.stage();
+		} else {
+			this.stageCurrent();
+		}
 
-		this.stageCurrent();
 		this.stageRedraw(); // removing staged class from elements
 		this.$matrixEl.html('<p>Select new instrument</p><p>or drag from the stage</p><h2>ಠ益ಠ</h2>');
-		this.$matrixEl.css('text-align', 'center');
 	},
 
 	stageCurrent: function(){
@@ -96,7 +96,12 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	stageRedraw: function(){
-		this.$stageEl.append($('.staged'));
+		var that = this;
+		ToneLotus.Store.matrixArray.forEach(function(matrix){
+			if(matrix.staged){
+				that.$stageEl.append(matrix.$el);
+			}
+		})
 	},
 
 	updateTime: function(){

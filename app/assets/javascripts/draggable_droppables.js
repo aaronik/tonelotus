@@ -23,10 +23,16 @@ $(document).ready(function(){
     }
   });
 
-    $('.track').droppable({
+  $('.track').droppable({
     activeClass: 'droppable-active',
 
     drop: function(event){
+      // why does this happen sometimes???
+      if($(event.toElement).is('html')){
+        console.log('whoops, looks like droppable had an error.')
+        return
+      }
+
       if( !$(event.toElement).hasClass('tracked') ){
         // if pulled from stage
         var $ref = $(event.toElement).clone();
@@ -35,13 +41,7 @@ $(document).ready(function(){
         $ref.removeClass('staged-matrix');
       } else {
         // if already a track
-        $ref = $(event.toElement);
-      }
-
-      // why does this happen sometimes???
-      if($ref.is('html')){
-        console.log('whoops, looks like droppable had an error.')
-        return
+        var $ref = $(event.toElement);
       }
 
       $(event.target).children('ul').append('<li></li>');
@@ -64,16 +64,3 @@ $(document).ready(function(){
 	$('.track-ul').sortable();
 
 });
-
-ToneLotus.Store.delegateDraggable = function(){
-  $('.staged, .tracked').draggable({
-    revert: true,
-    revertDuration: 150,
-    disabled: false,
-    cancel: '.live-matrix',
-
-    stop: function(event){
-      $(event.toElement).attr('style',"position: relative; left: 0; top: 0"); // must check this out
-    }
-  });
-}

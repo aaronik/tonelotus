@@ -1,11 +1,9 @@
 -save functionality:
  -/#/?lt=<loop time>&i=<instrument><bit for staged or not><on/off>&i=...&t1=0b001%t2=bbbbb&t3=11111
 
--put matrixHash, matrixArray into Store or Data?
 -big text when paused, saved, play matrix, play lotus
-
+-way to clear current matrix only
 -Add ToneLotus to list of backbone examples on backbonejs.org
--remove all the masterlistener stuff from the router, maybe make a new class called MasterListener which is actually a router.
 
 -matrices in track should have some kind of text wrap or something - was an option for this, forget already.  like hard-wrap or something.
 -why is, in .track.droppable, $ref turning into the entire html document sometimes????

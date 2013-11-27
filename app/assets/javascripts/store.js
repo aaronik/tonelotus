@@ -111,4 +111,17 @@
     return matrixView;
   };
 
+  Store.delegateDraggable = function(){
+    $('.staged, .tracked').draggable({
+      revert: true,
+      revertDuration: 150,
+      disabled: false,
+      cancel: '.live-matrix',
+
+      stop: function(event){
+        $(event.toElement).attr('style',"position: relative; left: 0; top: 0"); // must check this out
+      }
+    });
+  };
+
 })(ToneLotus);
