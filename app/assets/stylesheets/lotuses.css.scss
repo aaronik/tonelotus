@@ -249,7 +249,19 @@ footer {
 	}
 }
 
-#joyride-ol {
+#lotus-logo-wrapper {
+	opacity: .6;
+}
+
+#lotus-logo {
+	position: absolute;
+	left: 40px;
+	// top: 0px;
+	bottom: 45px;
+	// opacity: .8;
+}
+
+.joyride-ol {
 	display: none;
 }
 

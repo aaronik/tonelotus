@@ -5,7 +5,7 @@ window.ToneLotus = {
   Routers: {},
   Store: {
     isMouseDown: false,
-    totalLoopTime: 2000,
+    totalLoopTime: 240/110 * 1000,
     gridSize: 16,
     matrixHash: {},
     matrixArray: []
