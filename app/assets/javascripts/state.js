@@ -62,6 +62,9 @@
 
 		if(staged == 1){
 			ToneLotus.router.stage(matrix);
+		} else {
+			ToneLotus.router.assignCurrentMatrix(matrix);
+			ToneLotus.router.drawMatrix(matrix);
 		}
 
 	};
