@@ -106,7 +106,7 @@
 
 	//****** Begin Save functionality *******//
 	State.save = function(){
-		var url = 'localhost:3000/#/';
+		var url = 'http://the.tonelot.us/#/';
 		url += State.generateLoopTime();
 		url += State.generateInstruments();
 		url += State.generateTracks();
