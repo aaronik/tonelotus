@@ -77,4 +77,9 @@ ToneLotus::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Added by Aaron to help with stumbleupon
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOW',
+  }
 end
