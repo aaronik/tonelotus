@@ -11,8 +11,8 @@ $(document).ready(function(){
       case 115: //s
         Backbone.trigger('stage');
         break;
-      case 107: //k
-        Backbone.trigger('seppuku');
+      case 99: //c
+        Backbone.trigger('clear');
         break;
     }
   })

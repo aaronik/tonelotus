@@ -12,6 +12,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.listenTo( Backbone, 'pause', this.pause );
 		this.listenTo( Backbone, 'stage', this.stage );
 		this.listenTo( Backbone, 'spacePress', this.spacePressHandler );
+		this.listenTo( Backbone, 'clear', this.clearHandler );
 
 		var that = this;
 
@@ -113,6 +114,10 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	updateTime: function(){
 		ToneLotus.Metronome.updateTime();
+	},
+
+	clearHandler: function(){
+		this.currentMatrix.sendToTones('unselect');
 	},
 
 	changeMenuInstrumentSelector: function(instrument){
