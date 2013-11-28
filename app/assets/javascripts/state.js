@@ -1,11 +1,12 @@
 // /#/lt=<loop time>&i=<bit for staged or not><on/off><instrument>&i=...&t1=0b001%t2=bbbbb&t3=11111
-// localhost:3000/#/lt=100&i=10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000synth&i=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000pad&i=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000pad&t1=0,0&t2=b,b&t3=b,b
+// localhost:3000/#/lt=100&i=10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000synth&i=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000pad&i=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000pad&t1=0,0&t2=b,b&t3=b,b
 
 (function(root){
 
 	var State = root.State = (root.State || {});
 
-	State.initialize = function(query){
+	//****** Begin Load functionality *******//
+	State.load = function(query){
 		state = query.split("&");
 
 		var prefix = '';
@@ -64,9 +65,7 @@
 	};
 
 	State.populateTracks = function(item, trackNumber){
-		console.log("**** in State.populateTracks ****");
 		var itemArray = item.split('=')[1].split(',');
-		console.log(itemArray);
 
 		var matrix;
 		itemArray.forEach(function(matrixNumber){
@@ -75,10 +74,9 @@
 			} else {
 				matrix = 'b';
 			}
-			
+
 			State.trackMatrix(matrix, trackNumber);
 		})
-		console.log("**** leaving State.populateTracks ****");
 	};
 
   State.trackMatrix = function(matrix, trackNumber){
@@ -100,5 +98,62 @@
 
 	  ToneLotus.Store.delegateDraggable();
 	};
+	//****** End Load functionality *******//
+
+	//****** Begin Save functionality *******//
+	State.save = function(){
+		var url = 'localhost:3000/#/';
+		url += State.generateLoopTime();
+		url += State.generateInstruments();
+		url += State.generateTracks();
+
+		return url;
+	};
+
+	State.generateLoopTime = function(){
+		var urlString = 'lt=' + (240 / ToneLotus.Store.totalLoopTime) * 1000; // that's bpm
+		return urlString;
+	};
+
+	State.generateInstruments = function(){
+		var urlString = '';
+		ToneLotus.Store.matrixArray.forEach(function(matrix){
+			urlString += '&';
+			urlString += 'i=';
+
+			var staged = (matrix.staged ? 1 : 0);
+			urlString += staged;
+
+			matrix.toneViewArray.forEach(function(tone){
+				urlString += (tone.isSelected ? 1 : 0);
+			})
+
+			urlString += matrix.instrument;
+		})
+
+		return urlString;
+	};
+
+	State.generateTracks = function(){
+		var urlString = '';
+		var current_matrix;
+		var index;
+
+		for(var trackNumber = 1; trackNumber <= 3; trackNumber++){
+			urlString += '&t' + trackNumber + '=';
+
+			$('#track' + trackNumber).children('ul').children('li').children().each(function(i, matrix){
+				current_matrix = ToneLotus.Store.getMatrixByCID($(matrix).attr('data-cid'));
+				index = ToneLotus.Store.matrixArray.indexOf(current_matrix);
+				if( !current_matrix ){ index = 'b' }
+				urlString += index + ',';
+			})
+
+			urlString = urlString.slice(0,-1);
+		}
+
+		return urlString;
+	};
+	//****** End Save functionality *******//
 
 })(ToneLotus);

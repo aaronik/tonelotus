@@ -1,6 +1,8 @@
 (function(root){
   var Store = root.Store = (root.Store || {});
 
+  Store.columnLoopTime = ToneLotus.Store.totalLoopTime / ToneLotus.Store.gridSize;
+
   Store.findMaxLength = function(){
     var maxLength = 0;
 
@@ -156,6 +158,18 @@
     }
 
     ToneLotus.Store.delegateDraggable();
-  }
+  };
+
+  Store.getMatrixByCID = function(cid){
+    var final_matrix;
+
+    ToneLotus.Store.matrixArray.forEach(function(matrix){
+     if(matrix.cid == cid){
+      final_matrix = matrix;
+     }
+    })
+
+    return final_matrix;
+  };
 
 })(ToneLotus);

@@ -27,10 +27,6 @@ ToneLotus.Views.ToneView = Backbone.View.extend({
 		}
 	},
 
-	spacePress: function(){
-		this.unselect();
-	},
-
 	potentiallyTrackPlay: function(){
 		if( this.selected() ){
 			this.activateWithoutAnimation();

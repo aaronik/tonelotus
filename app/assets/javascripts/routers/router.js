@@ -47,7 +47,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	constructState: function(state){
-		ToneLotus.State.initialize(state);
+		ToneLotus.State.load(state);
 	},
 
 	pause: function(){
@@ -74,9 +74,15 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	spacePressHandler: function(){
-		$('.staged-matrix').off().remove();
-		$('.tracked').off().remove();
+		// $('.staged-matrix').off().remove();
+		$('.tracked').remove();
+		// ToneLotus.Store.matrixHash = {};
+		ToneLotus.Store.matrixArray.forEach(function(matrix){
+			matrix.sendToTones('unselect');
+			matrix.unstage();
+		})
 		this.stageRedraw();
+		Backbone.trigger('delegateEvents');
 	},
 
 	stage: function(matrix){
@@ -97,6 +103,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 	stageRedraw: function(){
 		var that = this;
+		this.$stageEl.empty();
 		ToneLotus.Store.matrixArray.forEach(function(matrix){
 			if(matrix.staged){
 				that.$stageEl.append(matrix.$el);

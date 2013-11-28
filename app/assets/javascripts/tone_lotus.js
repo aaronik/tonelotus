@@ -16,7 +16,7 @@ window.ToneLotus = {
 
   initialize: function() {
   	var $matrixEl = $('#matrix-wrapper');
-    var $stageEl = $('#stage-wrapper');
+    var $stageEl = $('#stage-matrix-container');
 
   	ToneLotus.router = new ToneLotus.Routers.AppRouter($matrixEl, $stageEl);
   	Backbone.history.start();
