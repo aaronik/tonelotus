@@ -1,8 +1,7 @@
--save functionality:
- -/#/?lt=<loop time>&i=<instrument><bit for staged or not><on/off>&i=...&t1=0b001%t2=bbbbb&t3=11111
+-add mobile-fu or something and ditch mobile devices
+-x-frame-options is a tad sketch ATM
 
 -big text when paused, saved, play matrix, play lotus
--way to clear current matrix only
 -Add ToneLotus to list of backbone examples on backbonejs.org
 
 -matrices in track should have some kind of text wrap or something - was an option for this, forget already.  like hard-wrap or something.
