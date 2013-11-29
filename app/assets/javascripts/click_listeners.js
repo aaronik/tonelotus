@@ -39,8 +39,12 @@ $(document).ready(function(){
 	  $('.tone').eq(147).attr('id', 'joyride-tone');
 	  
     // not sure why two is required, but it is.
-    $('#joyride-ol-tour').joyride({});
-    $('#joyride-ol-tour').joyride({});
+    $('#joyride-ol-tour').joyride({
+      postRideCallback: function(){$('#joyride-ol-save').joyride('destroy')}
+    });
+    $('#joyride-ol-tour').joyride({
+      postRideCallback: function(){$('#joyride-ol-save').joyride('destroy')}
+    });
   });
 
   //when update time is clicked
@@ -54,7 +58,11 @@ $(document).ready(function(){
     var url = ToneLotus.State.save();
     $('#joyride-ol-save-url-p').html('<p>Paste the following URL to reload this configuration:</p>');
     $('#joyride-ol-save-url-p').append(url);
-    $('#joyride-ol-save').joyride({});
-    $('#joyride-ol-save').joyride({});
+    $('#joyride-ol-save').joyride({
+      postRideCallback: function(){ $('#joyride-ol-save').joyride('destroy') }
+    });
+    $('#joyride-ol-save').joyride({
+      postRideCallback: function(){ $('#joyride-ol-save').joyride('destroy') }
+    });
   })
 });
