@@ -12,8 +12,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'rails_12factor'
 gem 'geocoder'
-# gem 'gabba'
-gem 'google-analytics-rails'
+# gem 'gabba' # seems to always tells me Michigan for location
+# gem 'google-analytics-rails' can't get it working
+gem 'rack-google-analytics'
 
 gem 'less-rails'
 gem 'backbone-on-rails'

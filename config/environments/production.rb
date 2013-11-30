@@ -83,6 +83,6 @@ ToneLotus::Application.configure do
     'X-Frame-Options' => 'ALLOW',
   }
 
-  # Added by Aaron for server side analytics
-  GA.tracker = "UA-37815249-2"
+  # Added by Aaron for server side analytics, google-analytics-rails
+  # GA.tracker = "UA-37815249-2"
 end
