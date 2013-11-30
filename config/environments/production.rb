@@ -82,4 +82,7 @@ ToneLotus::Application.configure do
   config.action_dispatch.default_headers = {
     'X-Frame-Options' => 'ALLOW',
   }
+
+  # Added by Aaron for server side analytics
+  GA.tracker = "UA-37815249-2"
 end
