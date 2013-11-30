@@ -1,3 +1,12 @@
+-maybe each matrix should really have a separate $el for each state it can be in.
+ tracked, staged, or live.  Or maybe, the app should maintain one matrix, and have
+ different view objects that face the world and respond to different things.  They can
+ listen to the matrix and learn when to detach() themselves from the DOM.  
+ Each matrixView has a view for each of it's variously faced $els.  
+ Each of these views - say the liveEl, the stageEl, the trackEl - knows about
+ its parent view.  Plus the parent knows about the children.  Communication.
+
+-double click text to change staged and tracked instrument
 -on loading from string, should fail gracefully if string is wrong
 -bug where instrument is tracked AND NOT staged
 -remove long url once info is extracted

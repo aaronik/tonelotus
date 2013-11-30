@@ -37,7 +37,7 @@
 		this.killAllLoops();
 
 		var that = this;
-		var columnLoopTime = ToneLotus.Store.totalLoopTime / ToneLotus.Store.gridSize;
+		var columnLoopTime = ToneLotus.Metronome.totalLoopTime / ToneLotus.Store.gridSize;
 		var column = 0;
 
 		this.masterLoop = setInterval(function(){
@@ -52,7 +52,7 @@
 		this.killAllLoops();
 
 		var that = this;
-		var columnLoopTime = ToneLotus.Store.totalLoopTime / ToneLotus.Store.gridSize;
+		var columnLoopTime = ToneLotus.Metronome.totalLoopTime / ToneLotus.Store.gridSize;
 		var matrixCidArrayHash = ToneLotus.Store.getMatrixCidArrayHash();
 		var column = 0;
 		var matrixIndex = 0;
@@ -93,7 +93,7 @@
 
 		var newTime = (240 / bpm) * 1000;
 
-		ToneLotus.Store.totalLoopTime = newTime;
+		ToneLotus.Metronome.totalLoopTime = newTime;
 		this.pause();
 		this.pause();
 	};

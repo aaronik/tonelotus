@@ -1,7 +1,7 @@
 (function(root){
   var Store = root.Store = (root.Store || {});
 
-  Store.columnLoopTime = ToneLotus.Store.totalLoopTime / ToneLotus.Store.gridSize;
+  Store.columnLoopTime = ToneLotus.Metronome.totalLoopTime / ToneLotus.Store.gridSize;
 
   Store.findMaxLength = function(){
     var maxLength = 0;
@@ -102,7 +102,7 @@
 
     var matrixView = new ToneLotus.Views.MatrixView({
       gridSize: ToneLotus.Store.gridSize,
-      totalLoopTime: ToneLotus.Store.totalLoopTime,
+      totalLoopTime: ToneLotus.Metronome.totalLoopTime,
       instrument: instrument
     });
 
