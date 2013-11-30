@@ -1,3 +1,5 @@
+-on loading from string, should fail gracefully if string is wrong
+-bug where instrument is tracked AND NOT staged
 -remove long url once info is extracted
 -add mobile-fu or something and ditch mobile devices
 -x-frame-options is a tad sketch ATM
