@@ -10,7 +10,6 @@ $(document).ready(function(){
       if( draggedMatrix ){
 	      ToneLotus.router.unstageMatrix(draggedMatrix);
 	    }
-
     }
   });
 

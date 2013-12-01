@@ -1,7 +1,10 @@
--get timing worked out
--add clear current matrix button
--bring track play to new style of delegation
+-modeling:
+ -change all ToneLotus.Views.MatrixView to ToneLotus.Models.Matrix
+ -change up the matrixView.$el and matrix.$el stuff to their respective new views
+ -move matrix_model#render to matrix_model.liveView.render()
+ -put parent into options for always
+ -change the many instances of variables matrixView to matrixModel or appropriate
+ -spacePressHandler can probably be beefed up now
+
 
 -to add a new instrument: change dropdown on the right in appropriate erb file, add stuff to assign_tone.js, add listener to router
-
--cool instruments: Synth(Analog Filter 1)

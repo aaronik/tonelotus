@@ -21,8 +21,6 @@
     })
   };
 
-  // Store.delegateDraggable() is in draggable_droppables.js.
-
   Store.stagedMatrices = function(){
 
   };
@@ -98,19 +96,17 @@
   };
 
   Store.initializeMatrix = function(instrument){
-    // creates the matrix View, AND renders it.  
+    // creates the matrix Model.
 
-    var matrixView = new ToneLotus.Views.MatrixView({
+    var matrix = new ToneLotus.Models.Matrix({},{
       gridSize: ToneLotus.Store.gridSize,
       totalLoopTime: ToneLotus.Metronome.totalLoopTime,
       instrument: instrument
     });
 
-    matrixView.render();
-
-    ToneLotus.Store.matrixHash[instrument] = matrixView;
-    ToneLotus.Store.matrixArray.push(matrixView);
-    return matrixView;
+    ToneLotus.Store.matrixHash[instrument] = matrix;
+    ToneLotus.Store.matrixArray.push(matrix);
+    return matrix;
   };
 
   Store.delegateDraggable = function(){

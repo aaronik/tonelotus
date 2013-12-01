@@ -36,7 +36,6 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		// initialize and draw the instrument the user will see first.
 		var matrixView = ToneLotus.Store.initializeMatrix(this.instruments[0]);
 		this.assignCurrentMatrix(matrixView);
-		this.drawMatrix(matrixView);
 
 		ToneLotus.Store.prefetchTones();
 
@@ -61,16 +60,12 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 
 		// finish setting up specific instrument
 		this.assignCurrentMatrix(matrix);
-		this.drawMatrix(this.currentMatrix);
 		this.changeMenuInstrumentSelector(instrument);
 	},
 
 	unstageMatrix: function(matrix){
     ToneLotus.Store.matrixHash[matrix.instrument] = matrix;
-
-		matrix.$el.detach();
     matrix.unstage();
-
     Backbone.trigger(matrix.instrument);
 	},
 
@@ -93,7 +88,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 			this.stageCurrent();
 		}
 
-		this.stageRedraw(); // removing staged class from elements
+		this.stageRedraw();
 		this.$matrixEl.html('<p>Select new instrument</p><p>or drag from the stage</p><h2>ಠ益ಠ</h2>');
 	},
 
@@ -107,9 +102,12 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.$stageEl.empty();
 		ToneLotus.Store.matrixArray.forEach(function(matrix){
 			if(matrix.staged){
-				that.$stageEl.append(matrix.$el);
+				matrix.$stageEl.attr('style', 'position: relative; left: 0; top: 0;');
+				that.$stageEl.append(matrix.$stageEl);
 			}
 		})
+
+		ToneLotus.Store.delegateDraggable();
 	},
 
 	updateTime: function(){
@@ -129,6 +127,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		this.currentMatrix && this.currentMatrix.removeCurrentMatrix();
 		matrix.makeCurrentMatrix();
 		this.currentMatrix = matrix;
+		this.drawMatrix(matrix);
 	},
 
 	drawMatrix: function(matrix){
@@ -136,7 +135,7 @@ ToneLotus.Routers.AppRouter = Backbone.Router.extend({
 		console.log("redrawing:");
 		console.log(matrix);
 
-		this.$matrixEl.html(matrix.$el);
+		this.$matrixEl.html(matrix.$liveEl);
 		
 		Backbone.trigger('delegateEvents');
 	},

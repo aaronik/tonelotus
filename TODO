@@ -1,3 +1,4 @@
+-The controller should only issue a Gabba if in production
 -maybe each matrix should really have a separate $el for each state it can be in.
  tracked, staged, or live.  Or maybe, the app should maintain one matrix, and have
  different view objects that face the world and respond to different things.  They can
