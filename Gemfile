@@ -19,6 +19,7 @@ gem 'gabba' # seems to always tells me Michigan for location
 gem 'less-rails'
 gem 'backbone-on-rails'
 gem 'ejs'
+gem 'jquery-ui-rails'
 gem 'unicorn'
 
 group :doc do

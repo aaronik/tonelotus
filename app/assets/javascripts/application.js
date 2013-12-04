@@ -18,7 +18,13 @@
 //= require backbone
 //= require tone_lotus
 //= require howler.min
-//= require jquery-ui-1.10.3.custom.min
+//
+// require jquery-ui-1.10.3.custom.min
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
+//= require jquery.ui.accordion
+//= require jquery.ui.dialog
+//
 //= require jquery.joyride-2.1
 //= require_tree ../templates
 //= require_tree ./models
