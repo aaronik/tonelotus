@@ -10,6 +10,7 @@
 	State.load = function(query){
 		ToneLotus.Store.prefetchTones();
 		state = query.split("&");
+		window.location.hash = "";
 
 		var prefix = '';
 		state.forEach(function(item){
