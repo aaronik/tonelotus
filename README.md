@@ -1,5 +1,7 @@
 ## The Tone Lotus
 
-Find me officially at [Tonelot.us](http://tonelot.us)
+It's recommended to use a chrome based browser.
+
+[Tonelot.us](http://tonelot.us)
 
 Enjoy = )
